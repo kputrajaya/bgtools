@@ -11,14 +11,13 @@ document.addEventListener('alpine:init', () => {
 
   Alpine.data('bgs', () => ({
     username: '',
-    usernameParam: '',
     items: null,
     loading: false,
     init() {
       const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
       });
-      this.username = this.usernameParam = params.u || '';
+      this.username = params.u || '';
       if (!this.username) return;
 
       this.load();
