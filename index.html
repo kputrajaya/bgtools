@@ -1,36 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
     <title>Board Game Shelf</title>
-  </head>
-  <body>
-    <div x-data="bgs">
-      <div>
-        <input type="text" x-model="username" />
-        <button @click="set">Load</button>
-      </div>
-      <div>
-        <template x-for="item in items">
-          <div>
-            <img :src="item.thumbnail" />
-            <h3><span x-text="item.name"></span> (<span x-text="item.year"></span>)</h3>
-            <div>
-              Rating: [<span x-text="item.rating"></span>] | BGG: [<span x-text="item.ratingBgg"></span>] (<span
-                x-text="item.ratingBggCount"
-              ></span
-              >)
-            </div>
-            <div>
-              <span x-text="item.players.min"></span> &ndash; <span x-text="item.players.max"></span> players |
-              <span x-text="item.playTime.min"></span> &ndash; <span x-text="item.playTime.max"></span> mins
-            </div>
-            <div>
-              <pre x-text="item.comment"></pre>
-            </div>
-          </div>
-        </template>
-      </div>
-    </div>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
+      integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="site.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/fast-xml-parser/4.0.12/fxparser.min.js"
+      integrity="sha512-HGrrIN/LyGNpsITQqS0Oz+0rCFt/+2/eymCPchz/Pvx8JofaxmLfoEJNIix9R1iHEnScT+HSt8WBifDINQu89g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"
+      integrity="sha512-JRlcvSZAXT8+5SQQAvklXGJuxXTouyq8oIMaYERZQasB8SBDHZaUbeASsJWpk0UUrf89DP3/aefPPrlMR1h1yQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      defer
+    ></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.5/cdn.min.js"
       integrity="sha512-y22y4rJ9d7NGoRLII5LVwUv0BfQKf6MpATy5ebVu/fbHdtJCxBpZRHZMHJv8VYl8scWjuwZcMPzwYk4sEoyL4A=="
@@ -38,91 +32,107 @@
       referrerpolicy="no-referrer"
       defer
     ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"
-      integrity="sha512-QTnb9BQkG4fBYIt9JGvYmxPpd6TBeKp6lsUrtiVQsrJ9sb33Bn9s0wMQO9qVBFbPX3xHRAsBHvXlcsrnJjExjg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/fast-xml-parser/4.0.12/fxparser.min.js"
-      integrity="sha512-HGrrIN/LyGNpsITQqS0Oz+0rCFt/+2/eymCPchz/Pvx8JofaxmLfoEJNIix9R1iHEnScT+HSt8WBifDINQu89g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script>
-      document.addEventListener('alpine:init', () => {
-        Alpine.data('bgs', () => ({
-          username: '',
-          items: [],
-          init() {
-            const params = new Proxy(new URLSearchParams(window.location.search), {
-              get: (searchParams, prop) => searchParams.get(prop),
-            });
-            this.username = params.u || '';
-            this.load();
-          },
-          set() {
-            if (!this.username) return;
+  </head>
+  <body class="bg-light">
+    <div class="container" x-data="bgs">
+      <form class="row mt-4" method="GET">
+        <div class="col-auto">
+          <label class="visually-hidden" for="usernameInput">BGG Username</label>
+          <input
+            name="u"
+            type="text"
+            class="form-control"
+            id="usernameInput"
+            placeholder="BGG Username"
+            x-model="username"
+          />
+        </div>
+        <div class="col-auto" x-show="username !== usernameParam">
+          <button type="submit" class="btn btn-primary">Load</button>
+        </div>
+        <div class="col-auto d-flex align-items-center" x-show="loading">
+          <span class="spinner-border spinner-border-sm text-secondary" role="status" x-show="loading">
+            <span class="visually-hidden">Loading...</span>
+          </span>
+        </div>
+      </form>
 
-            // Set query param
-            var searchParams = new URLSearchParams(window.location.search);
-            searchParams.set('u', this.username);
-            window.location.search = searchParams.toString();
-          },
-          async load() {
-            if (!this.username) return;
+      <div x-show="items" x-cloak>
+        <div class="my-3 text-muted">
+          <span x-text="items.length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')"></span>
+          items in collection
+        </div>
 
-            // Initiate constants
-            const host = 'https://boardgamegeek.com/xmlapi';
-            const options = { 'Content-Type': 'application/xml' };
-            const parser = new XMLParser({ ignoreAttributes: false });
-
-            // Get collection data and retry
-            let resCollection = null;
-            while (!resCollection) {
-              resCollection = await axios.get(host + '/collection/' + this.username, options).catch(() => false);
-              if (resCollection.status === 202) {
-                resCollection = null;
-                await new Promise((resolve) => setTimeout(resolve, 1000));
-              }
-            }
-
-            // Parse collection data
-            const collection = parser
-              .parse(resCollection.data)
-              .items.item.map((item) => ({
-                id: item['@_objectid'],
-                image: item.image,
-                thumbnail: item.thumbnail,
-                name: String(item.name['#text']),
-                year: item.yearpublished,
-                players: {
-                  min: Math.floor(item.stats['@_minplayers']),
-                  max: Math.floor(item.stats['@_maxplayers']),
-                },
-                playTime: {
-                  min: Math.floor(item.stats['@_minplaytime']),
-                  max: Math.floor(item.stats['@_maxplaytime']),
-                },
-                rating: Math.floor(item.stats.rating['@_value']),
-                ratingBgg: Math.round(parseFloat(item.stats.rating.average['@_value']) * 100) / 100,
-                ratingBggCount:
-                  item.stats.rating.usersrated['@_value'].length > 3
-                    ? Math.round(Math.floor(item.stats.rating.usersrated['@_value']) / 1000) + 'k'
-                    : item.stats.rating.usersrated['@_value'],
-                comment: item.comment,
-                owned: item.status['@_own'] == '1',
-              }))
-              .filter((item) => item.owned);
-
-            // Sort by rating then name
-            collection.sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
-
-            this.items = collection;
-          },
-        }));
-      });
-    </script>
+        <div id="wrapper" class="row">
+          <template x-for="item in items">
+            <div class="col-lg-4 col-md-6 col-12 mb-4">
+              <a
+                class="card"
+                :href="'https://boardgamegeek.com/boardgame/' + item.id"
+                target="_blank"
+                rel="”noreferrer"
+                noopener”
+              >
+                <div class="bg-secondary rounded">
+                  <img class="bgs-image rounded" :src="item.image" loading="lazy" />
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title mb-3">
+                    <span x-html="item.name"></span>
+                    <span class="text-muted fw-normal" x-show="item.year">(<span x-text="item.year"></span>)</span>
+                  </h5>
+                  <div class="card-subtitle text-muted fw-normal">
+                    <div class="row">
+                      <div class="col-5 mt-1">
+                        <span class="me-1" title="Player count">&#128100;</span>
+                        <span x-show="item.players.min">
+                          <span x-text="item.players.min"></span
+                          ><span x-show="item.players.max > item.players.min"
+                            >&ndash;<span x-text="item.players.max"></span
+                          ></span>
+                        </span>
+                        <span x-show="!item.players.min">-</span>
+                      </div>
+                      <div class="col-7 mt-1">
+                        <span class="me-1" title="Play time">&#128337;</span>
+                        <span x-show="item.playTime.min">
+                          <span x-text="item.playTime.min"></span
+                          ><span x-show="item.playTime.max > item.playTime.min"
+                            >&ndash;<span x-text="item.playTime.max"></span
+                          ></span>
+                          min
+                        </span>
+                        <span x-show="!item.playTime.min">-</span>
+                      </div>
+                      <div class="col-5 mt-1" x-show="item.rating">
+                        <span class="me-1" title="User rating">&#11088;</span>
+                        <span
+                          class="badge text-bg-success fs-7 fw-normal"
+                          :class="{ 'text-bg-danger': item.rating < 6, 'text-bg-warning': item.rating < 7.5 }"
+                          x-text="item.rating"
+                        ></span>
+                      </div>
+                      <div class="col-7 mt-1">
+                        <span class="me-1" title="BGG rating">&#127758;</span>
+                        <span
+                          class="badge text-bg-success fs-7 fw-normal"
+                          :class="{ 'text-bg-danger': item.ratingBgg < 6, 'text-bg-warning': item.ratingBgg < 7.5 }"
+                          x-text="item.ratingBgg"
+                        ></span>
+                        (<span x-text="item.ratingBggCount"></span>)
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body border-top" x-show="item.comment">
+                  <div class="fs-8 whitespace-pre-line" x-text="item.comment"></div>
+                </div>
+              </a>
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
+    <script src="site.js"></script>
   </body>
 </html>

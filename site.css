@@ -1,0 +1,25 @@
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+a:hover {
+  color: inherit;
+}
+
+[x-cloak] {
+  display: none;
+}
+
+.fs-7 {
+  font-size: 0.8rem;
+}
+
+.whitespace-pre-line {
+  white-space: pre-line;
+}
+
+.bgs-image {
+  width: 100%;
+  max-height: 480px;
+  object-fit: contain;
+}
