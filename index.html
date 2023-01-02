@@ -65,10 +65,16 @@
           <span class="spinner-border spinner-border-sm -my-1 ms-3 text-secondary" role="status" x-show="loading">
             <span class="visually-hidden">Loading...</span>
           </span>
-          <span class="text-muted fs-7" x-show="!loading && items">
+          <a
+            class="fs-7 text-primary text-decoration-underline"
+            :href="'https://boardgamegeek.com/collection/user/' + username"
+            target="_blank"
+            rel="noreferrer noopener"
+            x-show="!loading && items"
+          >
             <span x-text="formatNumber(itemsLength())"></span>
             items
-          </span>
+          </a>
         </div>
       </form>
 
@@ -80,8 +86,7 @@
                 class="card"
                 :href="'https://boardgamegeek.com/boardgame/' + item.id"
                 target="_blank"
-                rel="”noreferrer"
-                noopener”
+                rel="noreferrer noopener"
               >
                 <div class="bg-secondary rounded">
                   <img class="bgs-image lazyload rounded" :src="item.thumbnail" :data-src="item.image" />
