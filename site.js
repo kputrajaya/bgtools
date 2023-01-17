@@ -2,6 +2,7 @@ document.addEventListener('alpine:init', () => {
   const wrapper = new Masonry('#wrapper', {
     itemSelector: '.col-12',
     percentPosition: true,
+    transitionDuration: 0,
   });
   const relayout = () => {
     wrapper.reloadItems();
@@ -53,7 +54,7 @@ document.addEventListener('alpine:init', () => {
       const collectionObj = parser.parse(collectionText);
       const collection = collectionObj.items.item.map((item) => ({
         id: item['@_objectid'],
-        image: item.image,
+        image: item.image.replace(/cf\.geekdo-images\.com/, 'ik.imagekit.io/kvn/bgg') + '?tr=w-800',
         thumbnail: item.thumbnail,
         name: String(item.name['#text']),
         year: item.yearpublished,
