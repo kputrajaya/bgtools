@@ -97,7 +97,7 @@
                   <h5 class="card-title mb-3 align-middle" x-html="item.name"></h5>
                   <div class="card-subtitle text-muted fw-normal">
                     <div class="row">
-                      <div class="col-5 mt-1">
+                      <div class="col-6 mt-1">
                         <span class="me-1" title="Player count">&#128100;</span>
                         <span x-show="item.players.min">
                           <span x-text="item.players.min"></span
@@ -107,7 +107,12 @@
                         </span>
                         <span x-show="!item.players.min">-</span>
                       </div>
-                      <div class="col-7 mt-1">
+                      <div class="col-6 mt-1">
+                        <span class="me-1" title="BGG rank">&#127942;</span>
+                        <span x-show="item.rank" x-text="formatNumber(item.rank)"> </span>
+                        <span x-show="!item.rank">-</span>
+                      </div>
+                      <div class="col-6 mt-1">
                         <span class="me-1" title="Play time">&#128337;</span>
                         <span x-show="item.playTime.min">
                           <span x-text="item.playTime.min"></span
@@ -118,17 +123,21 @@
                         </span>
                         <span x-show="!item.playTime.min">-</span>
                       </div>
-                      <div class="col-5 mt-1">
-                        <span class="me-1" title="Board game rank">&#127942;</span>
-                        <span x-show="item.rank" x-text="formatNumber(item.rank)"> </span>
-                        <span x-show="!item.rank">-</span>
+                      <div class="col-6 mt-1">
+                        <span class="me-1" title="BGG rating">&#127758;</span>
+                        <span
+                          class="badge text-bg-success fs-7 fw-normal"
+                          :class="{ 'text-bg-danger': item.ratingBgg < 6, 'text-bg-warning': item.ratingBgg < 7.5 }"
+                          x-text="item.ratingBgg"
+                        ></span>
+                        (<span x-text="item.ratingBggCount"></span>)
                       </div>
-                      <div class="col-5 mt-1">
+                      <div class="col-6 mt-1">
                         <span class="me-1" title="Year released">&#128640;</span>
                         <span x-show="item.year" x-text="item.year"> </span>
                         <span x-show="!item.year">-</span>
                       </div>
-                      <div class="col-5 mt-1">
+                      <div class="col-6 mt-1">
                         <span class="me-1" title="User rating">&#11088;</span>
                         <span
                           class="badge text-bg-success fs-7 fw-normal"
@@ -137,15 +146,6 @@
                           x-show="item.rating"
                         ></span>
                         <span x-show="!item.rating">-</span>
-                      </div>
-                      <div class="col-7 mt-1">
-                        <span class="me-1" title="BGG rating">&#127758;</span>
-                        <span
-                          class="badge text-bg-success fs-7 fw-normal"
-                          :class="{ 'text-bg-danger': item.ratingBgg < 6, 'text-bg-warning': item.ratingBgg < 7.5 }"
-                          x-text="item.ratingBgg"
-                        ></span>
-                        (<span x-text="item.ratingBggCount"></span>)
                       </div>
                     </div>
                   </div>
