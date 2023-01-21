@@ -94,10 +94,7 @@
                   <img class="bgs-image rounded" :src="item.image" loading="lazy" />
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title mb-3">
-                    <span x-html="item.name"></span>
-                    <span class="text-muted fw-normal" x-show="item.year">(<span x-text="item.year"></span>)</span>
-                  </h5>
+                  <h5 class="card-title mb-3 align-middle" x-html="item.name"></h5>
                   <div class="card-subtitle text-muted fw-normal">
                     <div class="row">
                       <div class="col-5 mt-1">
@@ -120,6 +117,16 @@
                           min
                         </span>
                         <span x-show="!item.playTime.min">-</span>
+                      </div>
+                      <div class="col-5 mt-1">
+                        <span class="me-1" title="Board game rank">&#127942;</span>
+                        <span x-show="item.rank" x-text="formatNumber(item.rank)"> </span>
+                        <span x-show="!item.rank">-</span>
+                      </div>
+                      <div class="col-5 mt-1">
+                        <span class="me-1" title="Year released">&#128640;</span>
+                        <span x-show="item.year" x-text="item.year"> </span>
+                        <span x-show="!item.year">-</span>
                       </div>
                       <div class="col-5 mt-1">
                         <span class="me-1" title="User rating">&#11088;</span>

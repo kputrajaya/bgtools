@@ -66,7 +66,7 @@ document.addEventListener('alpine:init', () => {
 
       // Get collection data and retry
       let resCollection = null;
-      const url = `https://boardgamegeek.com/xmlapi/collection/${this.username}?own=1`;
+      const url = `https://boardgamegeek.com/xmlapi2/collection/?username=${this.username}&own=1&excludesubtype=boardgameexpansion&stats=1`;
       const options = { 'Content-Type': 'application/xml' };
       while (true) {
         resCollection = await fetch(url, options).catch(() => null);
@@ -98,11 +98,13 @@ document.addEventListener('alpine:init', () => {
             item.stats.rating.usersrated['@_value'].length > 3
               ? Math.round(Math.floor(item.stats.rating.usersrated['@_value']) / 1000) + 'k'
               : item.stats.rating.usersrated['@_value'],
+          rank: Math.floor((item.stats.rating.ranks.rank[0] || item.stats.rating.ranks.rank)['@_value']),
           comment: item.comment,
           owned: item.status['@_own'] == '1',
         }))
-        .sort((a, b) => b.rating - a.rating || b.ratingBgg - a.ratingBgg || a.name.localeCompare(b.name));
+        .sort((a, b) => b.rating - a.rating || a.rank - b.rank);
 
+      console.log(collection);
       // Render to view
       this.items = collection;
       setTimeout(relayout, 10);
