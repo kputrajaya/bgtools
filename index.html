@@ -146,7 +146,7 @@
                         <span
                           class="badge text-bg-success fs-7 fw-normal"
                           :class="{ 'text-bg-danger': item.ratingBgg < 6.5, 'text-bg-warning': item.ratingBgg < 7.5 }"
-                          x-text="item.ratingBgg.toFixed(1)"
+                          x-text="(item.ratingBgg || 0).toFixed(1)"
                         ></span>
                         (<span x-text="item.ratingBggCount"></span>)
                       </div>
@@ -155,7 +155,7 @@
                         <span
                           class="badge text-bg-success fs-7 fw-normal"
                           :class="{ 'text-bg-danger': item.weight >= 4, 'text-bg-warning': item.weight >= 3 }"
-                          x-text="item.weight.toFixed(2)"
+                          x-text="(item.weight || 0).toFixed(2)"
                           x-show="item.weight"
                         ></span>
                         <span x-show="!item.weight">-</span>
