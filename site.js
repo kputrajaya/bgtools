@@ -4,6 +4,23 @@ document.addEventListener('alpine:init', () => {
     percentPosition: true,
     transitionDuration: 0,
   });
+
+  const getData = async (path) => {
+    // Fetch data
+    let fetchRes = null;
+    const url = `https://boardgamegeek.com/xmlapi2/${path}`;
+    const options = { 'Content-Type': 'application/xml' };
+    while (true) {
+      fetchRes = await fetch(url, options).catch(() => null);
+      if (fetchRes && fetchRes.status === 200) break;
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+    }
+
+    // Parse XML
+    const collectionText = await fetchRes.text();
+    const parser = new XMLParser({ ignoreAttributes: false });
+    return parser.parse(collectionText);
+  };
   const relayout = () => {
     wrapper.reloadItems();
     wrapper.layout();
@@ -64,20 +81,9 @@ document.addEventListener('alpine:init', () => {
     async load() {
       this.loading = true;
 
-      // Get collection data and retry
-      let resCollection = null;
-      const url = `https://boardgamegeek.com/xmlapi2/collection/?username=${this.username}&own=1&excludesubtype=boardgameexpansion&stats=1`;
-      const options = { 'Content-Type': 'application/xml' };
-      while (true) {
-        resCollection = await fetch(url, options).catch(() => null);
-        if (resCollection && resCollection.status === 200) break;
-        await new Promise((resolve) => setTimeout(resolve, 3000));
-      }
-
-      // Parse collection data
-      const collectionText = await resCollection.text();
-      const parser = new XMLParser({ ignoreAttributes: false });
-      const collectionObj = parser.parse(collectionText);
+      const collectionObj = await getData(
+        `collection/?username=${this.username}&own=1&excludesubtype=boardgameexpansion&stats=1`
+      );
       const collection = collectionObj.items.item
         .map((item) => ({
           id: item['@_objectid'],
@@ -92,6 +98,7 @@ document.addEventListener('alpine:init', () => {
             min: Math.floor(item.stats['@_minplaytime']),
             max: Math.floor(item.stats['@_maxplaytime']),
           },
+          weight: null,
           rating: Math.floor(item.stats.rating['@_value']) || null,
           ratingBgg: (Math.round(parseFloat(item.stats.rating.average['@_value']) * 10) / 10).toFixed(1),
           ratingBggCount:
@@ -104,12 +111,22 @@ document.addEventListener('alpine:init', () => {
         }))
         .sort((a, b) => b.rating - a.rating || a.rank - b.rank);
 
-      console.log(collection);
       // Render to view
       this.items = collection;
       setTimeout(relayout, 10);
 
       this.loading = false;
+      this.enrich();
+    },
+    async enrich() {
+      const objectIds = this.items.map((item) => item.id);
+      const chunkSize = 100;
+      for (let i = 0; i < objectIds.length; i += chunkSize) {
+        const thingObjs = await getData(`thing?id=${objectIds.slice(i, i + chunkSize).join(',')}&stats=1&pagesize=100`);
+        thingObjs.items.item.forEach((item, j) => {
+          this.items[i + j].weight = parseFloat(item.statistics.ratings.averageweight['@_value']).toFixed(2);
+        });
+      }
     },
   }));
 });

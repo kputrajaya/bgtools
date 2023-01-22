@@ -94,15 +94,18 @@
                   <img class="bgs-image rounded" :src="item.image" loading="lazy" />
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title mb-3 align-middle" x-html="item.name"></h5>
+                  <h5 class="card-title mb-3 align-middle">
+                    <span x-html="item.name"></span>
+                    <span class="fs-6 text-muted" x-show="item.year">(<span x-text="item.year"></span>)</span>
+                  </h5>
                   <div class="card-subtitle text-muted fw-normal">
                     <div class="row">
                       <div class="col-6 mt-1">
                         <span class="me-1" title="Player count">&#128100;</span>
                         <span x-show="item.players.min">
-                          <span x-text="item.players.min"></span
+                          <span x-text="formatNumber(item.players.min)"></span
                           ><span x-show="item.players.max > item.players.min"
-                            >&ndash;<span x-text="item.players.max"></span
+                            >&ndash;<span x-text="formatNumber(item.players.max)"></span
                           ></span>
                         </span>
                         <span x-show="!item.players.min">-</span>
@@ -115,9 +118,9 @@
                       <div class="col-6 mt-1">
                         <span class="me-1" title="Play time">&#128337;</span>
                         <span x-show="item.playTime.min">
-                          <span x-text="item.playTime.min"></span
+                          <span x-text="formatNumber(item.playTime.min)"></span
                           ><span x-show="item.playTime.max > item.playTime.min"
-                            >&ndash;<span x-text="item.playTime.max"></span
+                            >&ndash;<span x-text="formatNumber(item.playTime.max)"></span
                           ></span>
                           min
                         </span>
@@ -133,9 +136,9 @@
                         (<span x-text="item.ratingBggCount"></span>)
                       </div>
                       <div class="col-6 mt-1">
-                        <span class="me-1" title="Year released">&#128640;</span>
-                        <span x-show="item.year" x-text="item.year"> </span>
-                        <span x-show="!item.year">-</span>
+                        <span class="me-1" title="Weight">&#129504;</span>
+                        <span x-show="item.weight" x-text="item.weight"></span>
+                        <span x-show="!item.weight">-</span>
                       </div>
                       <div class="col-6 mt-1">
                         <span class="me-1" title="User rating">&#11088;</span>
