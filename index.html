@@ -45,7 +45,6 @@
               type="text"
               class="form-control"
               placeholder="Input username..."
-              aria-label="Username"
               x-model="username"
               @focus="$event.target.select()"
             />
@@ -106,8 +105,8 @@
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                <div class="bg-secondary rounded">
-                  <img class="bgs-image rounded" :src="item.image" loading="lazy" />
+                <div class="bgs-image bg-secondary rounded">
+                  <img class="rounded" :src="item.image" loading="lazy" />
                 </div>
                 <div class="card-body">
                   <h5 class="card-title mb-3 align-middle">
@@ -176,8 +175,8 @@
             </div>
           </template>
         </div>
-        <div class="mb-4 fs-7 text-muted" x-show="itemsLength() > limit">
-          Showing top <span x-text="formatNumber(limit)"></span> items
+        <div class="mb-4 fs-7 text-muted" x-show="itemsLength() > itemsLimit">
+          Showing top <span x-text="formatNumber(itemsLimit)"></span> items
         </div>
       </div>
     </div>

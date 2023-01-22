@@ -4,9 +4,9 @@ document.addEventListener('alpine:init', () => {
     percentPosition: true,
     transitionDuration: 0,
   });
+  const parser = new XMLParser({ ignoreAttributes: false });
 
   const getData = async (path) => {
-    // Fetch data
     let fetchRes = null;
     const url = `https://boardgamegeek.com/xmlapi2/${path}`;
     const options = { 'Content-Type': 'application/xml' };
@@ -15,22 +15,20 @@ document.addEventListener('alpine:init', () => {
       if (fetchRes && fetchRes.status === 200) break;
       await new Promise((resolve) => setTimeout(resolve, 3000));
     }
-
-    // Parse XML
     const collectionText = await fetchRes.text();
-    const parser = new XMLParser({ ignoreAttributes: false });
     return parser.parse(collectionText);
   };
   const relayout = () => {
     wrapper.reloadItems();
     wrapper.layout();
   };
+
   setInterval(relayout, 1000);
 
   Alpine.data('bgs', () => ({
     // Constants
-    limit: 1000,
-    maxFilterable: 10,
+    itemsLimit: 1000,
+    filterPlayerMax: 10,
 
     // Data
     username: '',
@@ -55,14 +53,14 @@ document.addEventListener('alpine:init', () => {
       if (this.filter.weight) {
         items = items.filter((item) => item.weight >= this.filter.weight && item.weight < this.filter.weight + 1);
       }
-      return items.slice(0, this.limit);
+      return items.slice(0, this.itemsLimit);
     },
     filterPlayerOptions() {
       if (!this.items) return [];
 
       const counter = {};
       this.items.forEach((item) => {
-        for (i = item.players.min; i <= item.players.max && i <= this.maxFilterable; i++) {
+        for (i = item.players.min; i <= item.players.max && i <= this.filterPlayerMax; i++) {
           counter[i] = (counter[i] || 0) + 1;
         }
       });
@@ -70,7 +68,7 @@ document.addEventListener('alpine:init', () => {
         .sort((a, b) => a - b)
         .map((count) => ({
           value: count,
-          text: `${count < this.maxFilterable ? count : `${this.maxFilterable}+`}
+          text: `${count < this.filterPlayerMax ? count : `${this.filterPlayerMax}+`}
             player${count > 1 ? 's' : ''}
             (${this.formatNumber(counter[count])})`,
         }));
@@ -81,6 +79,8 @@ document.addEventListener('alpine:init', () => {
       const counter = {};
       this.items.forEach((item) => {
         const group = Math.floor(item.weight);
+        if (!group) return;
+
         counter[group] = (counter[group] || 0) + 1;
       });
       return Object.keys(counter)
@@ -148,7 +148,8 @@ document.addEventListener('alpine:init', () => {
       for (let i = 0; i < objectIds.length; i += chunkSize) {
         const thingObjs = await getData(`thing?id=${objectIds.slice(i, i + chunkSize).join(',')}&stats=1&pagesize=100`);
         thingObjs.items.item.forEach((item, j) => {
-          this.items[i + j].weight = parseFloat(item.statistics.ratings.averageweight['@_value']).toFixed(2);
+          const weight = parseFloat(item.statistics.ratings.averageweight['@_value']);
+          this.items[i + j].weight = weight ? weight.toFixed(2) : null;
         });
       }
     },
