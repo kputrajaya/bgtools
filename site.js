@@ -35,7 +35,10 @@ document.addEventListener('alpine:init', () => {
     // Data
     username: '',
     items: null,
-    filter: null,
+    filter: {
+      player: null,
+      weight: null,
+    },
     loading: false,
 
     // Computed
@@ -44,12 +47,17 @@ document.addEventListener('alpine:init', () => {
     },
     itemsSliced() {
       let items = this.items || [];
-      if (this.filter) {
-        items = items.filter((item) => item.players.min <= this.filter && item.players.max >= this.filter);
+      if (this.filter.player) {
+        items = items.filter(
+          (item) => item.players.min <= this.filter.player && item.players.max >= this.filter.player
+        );
+      }
+      if (this.filter.weight) {
+        items = items.filter((item) => item.weight >= this.filter.weight && item.weight < this.filter.weight + 1);
       }
       return items.slice(0, this.limit);
     },
-    filterOptions() {
+    filterPlayerOptions() {
       if (!this.items) return [];
 
       const counter = {};
@@ -65,6 +73,22 @@ document.addEventListener('alpine:init', () => {
           text: `${count < this.maxFilterable ? count : `${this.maxFilterable}+`}
             player${count > 1 ? 's' : ''}
             (${this.formatNumber(counter[count])})`,
+        }));
+    },
+    filterWeightOptions() {
+      if (!this.items) return [];
+
+      const counter = {};
+      this.items.forEach((item) => {
+        const group = Math.floor(item.weight);
+        counter[group] = (counter[group] || 0) + 1;
+      });
+      return Object.keys(counter)
+        .sort((a, b) => a - b)
+        .map((group) => ({
+          value: group,
+          text: `${group}+
+            (${this.formatNumber(counter[group])})`,
         }));
     },
 
