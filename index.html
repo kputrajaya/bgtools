@@ -145,7 +145,7 @@
                         <span class="me-1" title="BGG rating">&#127758;</span>
                         <span
                           class="badge text-bg-success fs-7 fw-normal"
-                          :class="{ 'text-bg-danger': item.ratingBgg < 6, 'text-bg-warning': item.ratingBgg < 7.5 }"
+                          :class="{ 'text-bg-danger': item.ratingBgg < 6.5, 'text-bg-warning': item.ratingBgg < 7.5 }"
                           x-text="item.ratingBgg.toFixed(1)"
                         ></span>
                         (<span x-text="item.ratingBggCount"></span>)
@@ -164,7 +164,7 @@
                         <span class="me-1" title="User rating">&#11088;</span>
                         <span
                           class="badge text-bg-success fs-7 fw-normal"
-                          :class="{ 'text-bg-danger': item.rating < 6, 'text-bg-warning': item.rating < 7.5 }"
+                          :class="{ 'text-bg-danger': item.rating < 6.5, 'text-bg-warning': item.rating < 7.5 }"
                           x-text="item.rating"
                           x-show="item.rating"
                         ></span>
