@@ -127,7 +127,7 @@
                       </div>
                       <div class="col-6 mt-1">
                         <span class="me-1" title="BGG rank">&#127942;</span>
-                        <span x-show="item.rank" x-text="formatNumber(item.rank)"> </span>
+                        <span x-text="formatNumber(item.rank)" x-show="item.rank"> </span>
                         <span x-show="!item.rank">-</span>
                       </div>
                       <div class="col-6 mt-1">
@@ -146,13 +146,18 @@
                         <span
                           class="badge text-bg-success fs-7 fw-normal"
                           :class="{ 'text-bg-danger': item.ratingBgg < 6, 'text-bg-warning': item.ratingBgg < 7.5 }"
-                          x-text="item.ratingBgg"
+                          x-text="item.ratingBgg.toFixed(1)"
                         ></span>
                         (<span x-text="item.ratingBggCount"></span>)
                       </div>
                       <div class="col-6 mt-1">
                         <span class="me-1" title="Weight">&#129504;</span>
-                        <span x-show="item.weight" x-text="item.weight"></span>
+                        <span
+                          class="badge text-bg-success fs-7 fw-normal"
+                          :class="{ 'text-bg-danger': item.weight >= 4, 'text-bg-warning': item.weight >= 3 }"
+                          x-text="item.weight.toFixed(2)"
+                          x-show="item.weight"
+                        ></span>
                         <span x-show="!item.weight">-</span>
                       </div>
                       <div class="col-6 mt-1">

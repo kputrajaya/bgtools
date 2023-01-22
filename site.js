@@ -124,7 +124,7 @@ document.addEventListener('alpine:init', () => {
           },
           weight: null,
           rating: Math.floor(item.stats.rating['@_value']) || null,
-          ratingBgg: (Math.round(parseFloat(item.stats.rating.average['@_value']) * 10) / 10).toFixed(1),
+          ratingBgg: Math.round(parseFloat(item.stats.rating.average['@_value']) * 10) / 10,
           ratingBggCount:
             item.stats.rating.usersrated['@_value'].length > 3
               ? Math.round(Math.floor(item.stats.rating.usersrated['@_value']) / 1000) + 'k'
@@ -148,8 +148,7 @@ document.addEventListener('alpine:init', () => {
       for (let i = 0; i < objectIds.length; i += chunkSize) {
         const thingObjs = await getData(`thing?id=${objectIds.slice(i, i + chunkSize).join(',')}&stats=1&pagesize=100`);
         thingObjs.items.item.forEach((item, j) => {
-          const weight = parseFloat(item.statistics.ratings.averageweight['@_value']);
-          this.items[i + j].weight = weight ? weight.toFixed(2) : null;
+          this.items[i + j].weight = parseFloat(item.statistics.ratings.averageweight['@_value']) || null;
         });
       }
     },
