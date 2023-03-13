@@ -116,59 +116,71 @@
                   <div class="card-subtitle text-muted fw-normal">
                     <div class="row">
                       <div class="col-6 mt-1">
-                        <span class="me-1" title="Player count">&#128100;</span>
-                        <span x-show="item.players.min">
-                          <span x-text="formatNumber(item.players.min)"></span
-                          ><span x-show="item.players.max > item.players.min"
-                            >&ndash;<span x-text="formatNumber(item.players.max)"></span
-                          ></span>
+                        <span title="Player count">
+                          <span class="me-1">&#128100;</span>
+                          <span x-show="item.players.min">
+                            <span x-text="formatNumber(item.players.min)"></span
+                            ><span x-show="item.players.max > item.players.min"
+                              >&ndash;<span x-text="formatNumber(item.players.max)"></span
+                            ></span>
+                          </span>
+                          <span x-show="!item.players.min">-</span>
                         </span>
-                        <span x-show="!item.players.min">-</span>
                       </div>
                       <div class="col-6 mt-1">
-                        <span class="me-1" title="BGG rank">&#128081;</span>
-                        <span x-text="formatNumber(item.rank)" x-show="item.rank"></span>
-                        <span x-show="!item.rank">-</span>
-                      </div>
-                      <div class="col-6 mt-1">
-                        <span class="me-1" title="Play time">&#128337;</span>
-                        <span x-show="item.playTime.min">
-                          <span x-text="formatNumber(item.playTime.min)"></span
-                          ><span x-show="item.playTime.max > item.playTime.min"
-                            >&ndash;<span x-text="formatNumber(item.playTime.max)"></span
+                        <span title="My rating">
+                          <span class="me-1">&#11088;</span>
+                          <span
+                            class="badge text-bg-success fs-7 fw-normal"
+                            :class="{ 'text-bg-danger': item.rating < 6.5, 'text-bg-warning': item.rating < 7.5 }"
+                            x-text="item.rating"
+                            x-show="item.rating"
                           ></span>
-                          min
+                          <span x-show="!item.rating">-</span>
                         </span>
-                        <span x-show="!item.playTime.min">-</span>
                       </div>
                       <div class="col-6 mt-1">
-                        <span class="me-1" title="BGG rating">&#127758;</span>
-                        <span
-                          class="badge text-bg-success fs-7 fw-normal"
-                          :class="{ 'text-bg-danger': item.ratingBgg < 6.5, 'text-bg-warning': item.ratingBgg < 7.5 }"
-                          x-text="(item.ratingBgg || 0).toFixed(1)"
-                        ></span>
-                        (<span x-text="item.ratingBggCount"></span>)
+                        <span title="Play time">
+                          <span class="me-1">&#128337;</span>
+                          <span x-show="item.playTime.min">
+                            <span x-text="formatNumber(item.playTime.min)"></span
+                            ><span x-show="item.playTime.max > item.playTime.min"
+                              >&ndash;<span x-text="formatNumber(item.playTime.max)"></span
+                            ></span>
+                            min
+                          </span>
+                          <span x-show="!item.playTime.min">-</span>
+                        </span>
                       </div>
                       <div class="col-6 mt-1">
-                        <span class="me-1" title="Weight">&#129504;</span>
-                        <span
-                          class="badge text-bg-success fs-7 fw-normal"
-                          :class="{ 'text-bg-danger': item.weight >= 4, 'text-bg-warning': item.weight >= 3 }"
-                          x-text="(item.weight || 0).toFixed(2)"
-                          x-show="item.weight"
-                        ></span>
-                        <span x-show="!item.weight">-</span>
+                        <span title="BGG rating">
+                          <span class="me-1">&#127758;</span>
+                          <span
+                            class="badge text-bg-success fs-7 fw-normal"
+                            :class="{ 'text-bg-danger': item.ratingBgg < 6.5, 'text-bg-warning': item.ratingBgg < 7.5 }"
+                            x-text="(item.ratingBgg || 0).toFixed(1)"
+                          ></span>
+                          (<span x-text="item.ratingBggCount"></span>)
+                        </span>
                       </div>
                       <div class="col-6 mt-1">
-                        <span class="me-1" title="User rating">&#11088;</span>
-                        <span
-                          class="badge text-bg-success fs-7 fw-normal"
-                          :class="{ 'text-bg-danger': item.rating < 6.5, 'text-bg-warning': item.rating < 7.5 }"
-                          x-text="item.rating"
-                          x-show="item.rating"
-                        ></span>
-                        <span x-show="!item.rating">-</span>
+                        <span title="Weight">
+                          <span class="me-1">&#129504;</span>
+                          <span
+                            class="badge text-bg-success fs-7 fw-normal"
+                            :class="{ 'text-bg-danger': item.weight >= 4, 'text-bg-warning': item.weight >= 3 }"
+                            x-text="(item.weight || 0).toFixed(2)"
+                            x-show="item.weight"
+                          ></span>
+                          <span x-show="!item.weight">-</span>
+                        </span>
+                      </div>
+                      <div class="col-6 mt-1">
+                        <span title="BGG rank">
+                          <span class="me-1">&#128081;</span>
+                          <span x-text="formatNumber(item.rank)" x-show="item.rank"></span>
+                          <span x-show="!item.rank">-</span>
+                        </span>
                       </div>
                     </div>
                   </div>
