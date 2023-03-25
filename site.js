@@ -59,7 +59,7 @@ document.addEventListener('alpine:init', () => {
     wrapper.layout();
   };
 
-  setInterval(relayout, 1000);
+  setInterval(relayout, 750);
 
   Alpine.data('bgs', () => ({
     // Constants
