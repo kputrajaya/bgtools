@@ -1,4 +1,5 @@
 document.addEventListener('alpine:init', () => {
+  const defaultUsername = 'kputrajaya';
   const wrapper = new Masonry('#wrapper', {
     itemSelector: '.col-12',
     percentPosition: true,
@@ -131,7 +132,7 @@ document.addEventListener('alpine:init', () => {
     },
     init() {
       const params = new URLSearchParams(window.location.search);
-      this.username = params.get('u') || '';
+      this.username = params.get('u') || defaultUsername;
       if (!this.username) return;
       this.load();
     },
