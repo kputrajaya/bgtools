@@ -19,7 +19,11 @@ a:hover {
 }
 
 .bgs-image {
+  max-height: 320px;
+}
+.bgs-image > img {
   width: 100%;
-  max-height: 360px;
+  height: 100%;
+  max-height: 320px;
   object-fit: contain;
 }
