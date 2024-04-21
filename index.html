@@ -31,7 +31,7 @@
               x-model="username"
               @focus="$event.target.select()"
             />
-            <button class="btn btn-secondary" type="submit" id="submitBtn">&#128640;</button>
+            <button class="btn btn-secondary" type="submit" id="submitBtn">Go</button>
           </div>
         </div>
         <div class="flex-grow-1"></div>
@@ -60,6 +60,17 @@
               <select class="form-select" x-model="filter.player">
                 <option value="">All player count</option>
                 <template x-for="option in filterPlayerOptions()">
+                  <option :value="option.value" x-text="option.text"></option>
+                </template>
+              </select>
+            </div>
+          </div>
+          <div class="ms-3">
+            <div class="input-group input-group-sm">
+              <span class="input-group-text">&#128337;</span>
+              <select class="form-select" x-model="filter.playTime">
+                <option value="">All play time</option>
+                <template x-for="option in filterPlayTimeOptions()">
                   <option :value="option.value" x-text="option.text"></option>
                 </template>
               </select>
@@ -175,8 +186,8 @@
             </div>
           </template>
         </div>
-        <div class="mb-4 fs-7 text-muted" x-show="itemsLength() > itemsLimit">
-          Showing top <span x-text="formatNumber(itemsLimit)"></span> items
+        <div class="mb-4 fs-7 text-muted" x-show="itemsLength() > ITEMS_LIMIT">
+          Showing top <span x-text="formatNumber(ITEMS_LIMIT)"></span> items
         </div>
       </div>
     </div>

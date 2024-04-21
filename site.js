@@ -64,13 +64,13 @@ document.addEventListener('alpine:init', () => {
 
   Alpine.data('bgs', () => ({
     // Constants
-    itemsLimit: 1000,
-    filterPlayerMax: 10,
+    ITEMS_LIMIT: 1000,
+    FILTER_PLAYER_MAX: 10,
 
     // Data
     username: '',
     items: null,
-    filter: { player: null, weight: null },
+    filter: { player: null, playTime: null, weight: null },
     loading: false,
 
     // Computed
@@ -85,18 +85,22 @@ document.addEventListener('alpine:init', () => {
         const filterPlayer = Math.floor(this.filter.player);
         items = items.filter((item) => item.players.min <= filterPlayer && item.players.max >= filterPlayer);
       }
+      if (this.filter.playTime) {
+        const filterPlayTime = Math.floor(this.filter.playTime);
+        items = items.filter((item) => item.playTime.max <= filterPlayTime);
+      }
       if (this.filter.weight) {
         const filterWeight = Math.floor(this.filter.weight);
         items = items.filter((item) => item.weight >= filterWeight && item.weight < filterWeight + 1);
       }
-      return items.slice(0, this.itemsLimit);
+      return items.slice(0, this.ITEMS_LIMIT);
     },
     filterPlayerOptions() {
       if (!this.items) return [];
 
       const counter = {};
       this.items.forEach((item) => {
-        for (let i = item.players.min; i <= item.players.max && i <= this.filterPlayerMax; i++) {
+        for (let i = item.players.min; i <= item.players.max && i <= this.FILTER_PLAYER_MAX; i++) {
           counter[i] = (counter[i] || 0) + 1;
         }
       });
@@ -104,9 +108,25 @@ document.addEventListener('alpine:init', () => {
         .sort((a, b) => a - b)
         .map((count) => ({
           value: count,
-          text: `${count < this.filterPlayerMax ? count : this.filterPlayerMax + '+'} player${count > 1 ? 's' : ''}
+          text: `${count < this.FILTER_PLAYER_MAX ? count : this.FILTER_PLAYER_MAX + '+'} player${count > 1 ? 's' : ''}
             (${this.formatNumber(counter[count])})`,
         }));
+    },
+    filterPlayTimeOptions() {
+      if (!this.items) return [];
+
+      const counter = { 30: 0, 60: 0, 120: 0 };
+      this.items.forEach((item) => {
+        for (let duration in counter) {
+          if (duration >= item.playTime.max) {
+            counter[duration] += 1;
+          }
+        }
+      });
+      return Object.keys(counter).map((minutes) => ({
+        value: minutes,
+        text: `${minutes} minutes (${this.formatNumber(counter[minutes])})`,
+      }));
     },
     filterWeightOptions() {
       if (!this.items) return [];
@@ -115,7 +135,6 @@ document.addEventListener('alpine:init', () => {
       this.items.forEach((item) => {
         const group = Math.floor(item.weight);
         if (!group) return;
-
         counter[group] = (counter[group] || 0) + 1;
       });
       return Object.keys(counter)
