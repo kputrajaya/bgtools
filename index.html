@@ -143,7 +143,7 @@
                         <span title="User rating">
                           <span class="me-1">&#11088;</span>
                           <span
-                            class="badge text-bg-success fs-7 fw-normal"
+                            class="badge px-2 fs-7 fw-normal text-bg-success"
                             :class="{'text-bg-danger': item.rating < 6.5, 'text-bg-warning': item.rating < 7.5}"
                             x-text="item.rating"
                             x-show="item.rating"
@@ -168,18 +168,18 @@
                         <span title="Global rating (rating count)">
                           <span class="me-1">&#127758;</span>
                           <span
-                            class="badge text-bg-success fs-7 fw-normal"
+                            class="badge px-2 fs-7 fw-normal text-bg-success"
                             :class="{'text-bg-danger': item.ratingBgg < 6.5, 'text-bg-warning': item.ratingBgg < 7.5}"
                             x-text="(item.ratingBgg || 0).toFixed(1)"
                           ></span>
-                          <span class="fs-7 opacity-75">(<span x-text="item.ratingBggCount"></span>)</span>
+                          <span class="fs-7 opacity-75"> (&#128221;<span x-text="item.ratingBggCount"></span>) </span>
                         </span>
                       </div>
                       <div class="col-6 mt-1">
                         <span title="Weight">
                           <span class="me-1">&#129504;</span>
                           <span
-                            class="badge text-bg-success fs-7 fw-normal"
+                            class="badge px-2 fs-7 fw-normal text-bg-success"
                             :class="{
                               'text-bg-danger': item.enriched.weight >= 4,
                               'text-bg-warning': item.enriched.weight >= 3
