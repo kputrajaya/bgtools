@@ -7,7 +7,7 @@ document.addEventListener('alpine:init', () => {
   });
   const xmlParser = new XMLParser({ ignoreAttributes: false });
 
-  const fetchBgg = async (path) => {
+  const _fetchBgg = async (path) => {
     const url = `https://boardgamegeek.com/xmlapi2/${path}`;
     const options = { 'Content-Type': 'application/xml' };
     let fetchRes;
@@ -19,9 +19,8 @@ document.addEventListener('alpine:init', () => {
     const collectionText = await fetchRes.text();
     return xmlParser.parse(collectionText);
   };
-
   const getGames = async (username) => {
-    const collectionObj = await fetchBgg(
+    const collectionObj = await _fetchBgg(
       `collection/?username=${username}&own=1&excludesubtype=boardgameexpansion&stats=1`
     );
     return collectionObj.items.item
@@ -50,9 +49,8 @@ document.addEventListener('alpine:init', () => {
   const _formatRatingCount = (count) => {
     return count.length > 3 ? Math.floor(Math.floor(count) / 1000) + 'k' : count;
   };
-
   const getExpansions = async (username) => {
-    const collectionObj = await fetchBgg(`collection/?username=${username}&own=1&subtype=boardgameexpansion`);
+    const collectionObj = await _fetchBgg(`collection/?username=${username}&own=1&subtype=boardgameexpansion`);
     return collectionObj.items.item
       .map((item) => ({
         id: item['@_objectid'],
@@ -62,12 +60,11 @@ document.addEventListener('alpine:init', () => {
       }))
       .sort((a, b) => a.name.localeCompare(b.name));
   };
-
   const getThings = async (thingIds) => {
     const chunkSize = 100;
     const results = [];
     for (let i = 0; i < thingIds.length; i += chunkSize) {
-      const thingObj = await fetchBgg(
+      const thingObj = await _fetchBgg(
         `thing?id=${thingIds.slice(i, i + chunkSize).join(',')}&stats=1&pagesize=${chunkSize}`
       );
       const things = thingObj.items.item.map((item) => ({
@@ -92,13 +89,14 @@ document.addEventListener('alpine:init', () => {
       })
       .map((result) => Math.floor(result['@_numplayers']));
   };
-
   const relayout = () => {
-    masonryWrapper.reloadItems();
-    masonryWrapper.layout();
+    setTimeout(() => {
+      masonryWrapper.reloadItems();
+      masonryWrapper.layout();
+    }, 50);
   };
 
-  setInterval(relayout, 500);
+  setInterval(relayout, 1000);
 
   Alpine.data('bgs', () => ({
     // Constants
@@ -207,21 +205,14 @@ document.addEventListener('alpine:init', () => {
       }
       return groups.join(', ');
     },
-    init() {
-      const params = new URLSearchParams(window.location.search);
-      this.username = params.get('u') || defaultUsername;
-      if (this.username) {
-        this.load();
-      }
-    },
     async load() {
       this.loading = true;
-
       this.items = await getGames(this.username);
-      setTimeout(relayout, 10);
-
+      relayout();
       this.loading = false;
-      this.enrich();
+
+      await this.enrich();
+      relayout();
     },
     async enrich() {
       // Get thing IDs
@@ -253,6 +244,16 @@ document.addEventListener('alpine:init', () => {
         item.enriched = itemMap[item.id] || {};
       });
       console.log(this.items);
+    },
+
+    // Initialization
+    init() {
+      const params = new URLSearchParams(window.location.search);
+      this.username = params.get('u') || defaultUsername;
+      if (this.username) {
+        this.load();
+      }
+      this.$watch('filter', relayout);
     },
   }));
 });

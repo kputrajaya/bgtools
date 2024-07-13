@@ -126,14 +126,14 @@
                             <span
                               class="fs-7 opacity-75"
                               :class="{
-                                'text-primary opacity-100': (
+                                'text-primary': (
                                   item.enriched.playersBest &&
                                   item.enriched.playersBest.includes(filter.player)
                                 )
                               }"
                               x-show="item.enriched.playersBest"
                             >
-                              (<span x-text="formatCounts(item.enriched.playersBest)"></span>)
+                              (&#128077;<span x-text="formatCounts(item.enriched.playersBest)"></span>)
                             </span>
                           </span>
                           <span x-show="!item.players.min">-</span>
