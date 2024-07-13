@@ -31,7 +31,7 @@
               x-model="username"
               @focus="$event.target.select()"
             />
-            <button class="btn btn-secondary" type="submit" id="submitBtn">Go</button>
+            <button class="btn btn-primary" type="submit" id="submitBtn">Go</button>
           </div>
         </div>
         <div class="flex-grow-1"></div>
@@ -57,7 +57,7 @@
           <div>
             <div class="input-group input-group-sm">
               <span class="input-group-text">&#128100;</span>
-              <select class="form-select" x-model="filter.player">
+              <select class="form-select" x-model.number="filter.player">
                 <option value="">All player count</option>
                 <template x-for="option in filterPlayerOptions()">
                   <option :value="option.value" x-text="option.text"></option>
@@ -68,7 +68,7 @@
           <div class="ms-3">
             <div class="input-group input-group-sm">
               <span class="input-group-text">&#128337;</span>
-              <select class="form-select" x-model="filter.playTime">
+              <select class="form-select" x-model.number="filter.playTime">
                 <option value="">All play time</option>
                 <template x-for="option in filterPlayTimeOptions()">
                   <option :value="option.value" x-text="option.text"></option>
@@ -79,7 +79,7 @@
           <div class="ms-3">
             <div class="input-group input-group-sm">
               <span class="input-group-text">&#129504;</span>
-              <select class="form-select" x-model="filter.weight">
+              <select class="form-select" x-model.number="filter.weight">
                 <option value="">All weight</option>
                 <template x-for="option in filterWeightOptions()">
                   <option :value="option.value" x-text="option.text"></option>
@@ -93,40 +93,57 @@
         <div id="wrapper" class="row">
           <template x-for="item in itemsSliced()">
             <div class="col-xxl-3 col-lg-4 col-md-6 col-12 mb-4">
-              <a
-                class="card"
-                :href="'https://boardgamegeek.com/boardgame/' + item.id"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <div class="bgs-image bg-secondary rounded">
+              <div class="card">
+                <a
+                  class="bgs-image bg-secondary rounded"
+                  :href="'https://boardgamegeek.com/boardgame/' + item.id"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
                   <img class="rounded" :src="item.image" :alt="item.name" loading="lazy" />
-                </div>
-                <div class="card-body">
+                </a>
+                <a
+                  class="card-body"
+                  :href="'https://boardgamegeek.com/boardgame/' + item.id"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
                   <h5 class="card-title mb-3 align-middle">
                     <span x-html="item.name"></span>
-                    <span class="fs-6 text-muted" x-show="item.year">(<span x-text="item.year"></span>)</span>
+                    <span class="fs-6 opacity-75" x-show="item.year">(<span x-text="item.year"></span>)</span>
                   </h5>
                   <div class="card-subtitle text-muted fw-normal">
                     <div class="row">
                       <div class="col-6 mt-1">
-                        <span title="Player count">
+                        <span title="Player count (best count)">
                           <span class="me-1">&#128100;</span>
                           <span x-show="item.players.min">
                             <span x-text="formatNumber(item.players.min)"></span
                             ><span x-show="item.players.max > item.players.min"
                               >&ndash;<span x-text="formatNumber(item.players.max)"></span
                             ></span>
+                            <span
+                              class="fs-7 opacity-75"
+                              :class="{
+                                'text-primary opacity-100': (
+                                  item.enriched.playersBest &&
+                                  item.enriched.playersBest.includes(filter.player)
+                                )
+                              }"
+                              x-show="item.enriched.playersBest"
+                            >
+                              (<span x-text="formatCounts(item.enriched.playersBest)"></span>)
+                            </span>
                           </span>
                           <span x-show="!item.players.min">-</span>
                         </span>
                       </div>
                       <div class="col-6 mt-1">
-                        <span title="My rating">
+                        <span title="User rating">
                           <span class="me-1">&#11088;</span>
                           <span
                             class="badge text-bg-success fs-7 fw-normal"
-                            :class="{ 'text-bg-danger': item.rating < 6.5, 'text-bg-warning': item.rating < 7.5 }"
+                            :class="{'text-bg-danger': item.rating < 6.5, 'text-bg-warning': item.rating < 7.5}"
                             x-text="item.rating"
                             x-show="item.rating"
                           ></span>
@@ -147,14 +164,14 @@
                         </span>
                       </div>
                       <div class="col-6 mt-1">
-                        <span title="BGG rating">
+                        <span title="Global rating (rating count)">
                           <span class="me-1">&#127758;</span>
                           <span
                             class="badge text-bg-success fs-7 fw-normal"
-                            :class="{ 'text-bg-danger': item.ratingBgg < 6.5, 'text-bg-warning': item.ratingBgg < 7.5 }"
+                            :class="{'text-bg-danger': item.ratingBgg < 6.5, 'text-bg-warning': item.ratingBgg < 7.5}"
                             x-text="(item.ratingBgg || 0).toFixed(1)"
                           ></span>
-                          (<span x-text="item.ratingBggCount"></span>)
+                          <span class="fs-7 opacity-75">(<span x-text="item.ratingBggCount"></span>)</span>
                         </span>
                       </div>
                       <div class="col-6 mt-1">
@@ -162,15 +179,18 @@
                           <span class="me-1">&#129504;</span>
                           <span
                             class="badge text-bg-success fs-7 fw-normal"
-                            :class="{ 'text-bg-danger': item.weight >= 4, 'text-bg-warning': item.weight >= 3 }"
-                            x-text="(item.weight || 0).toFixed(2)"
-                            x-show="item.weight"
+                            :class="{
+                              'text-bg-danger': item.enriched.weight >= 4,
+                              'text-bg-warning': item.enriched.weight >= 3
+                            }"
+                            x-text="(item.enriched.weight || 0).toFixed(2)"
+                            x-show="item.enriched.weight"
                           ></span>
-                          <span x-show="!item.weight">-</span>
+                          <span x-show="!item.enriched.weight">-</span>
                         </span>
                       </div>
                       <div class="col-6 mt-1">
-                        <span title="BGG rank">
+                        <span title="Global rank">
                           <span class="me-1">&#128081;</span>
                           <span x-text="formatNumber(item.rank)" x-show="item.rank"></span>
                           <span x-show="!item.rank">-</span>
@@ -178,11 +198,31 @@
                       </div>
                     </div>
                   </div>
+                </a>
+                <div
+                  class="card-body border-top fs-7 text-muted whitespace-pre-line"
+                  x-html="item.comment"
+                  x-show="item.comment"
+                ></div>
+                <div class="card-body border-top p-0 fs-7" x-show="item.enriched.expansions">
+                  <div class="list-group list-group-flush">
+                    <template x-for="expansion in item.enriched.expansions">
+                      <a
+                        class="bgs-expansion list-group-item text-muted bg-transparent d-flex align-items-center"
+                        :href="'https://boardgamegeek.com/boardgame/' + expansion.id"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                      >
+                        <img class="bg-secondary rounded flex-shrink-0" :src="expansion.image" />
+                        <div class="flex-grow-1 ms-3">
+                          <span x-text="expansion.name"></span>
+                          <span class="fs-8 opacity-75">(<span x-text="expansion.year"></span>)</span>
+                        </div>
+                      </a>
+                    </template>
+                  </div>
                 </div>
-                <div class="card-body border-top" x-show="item.comment">
-                  <div class="fs-7 text-muted whitespace-pre-line" x-html="item.comment"></div>
-                </div>
-              </a>
+              </div>
             </div>
           </template>
         </div>
