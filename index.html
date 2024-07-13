@@ -19,11 +19,12 @@
   </head>
   <body class="bg-light">
     <div class="container-xxl" x-data="bgs">
-      <form class="my-4 d-flex align-center" method="GET">
+      <form class="my-4 d-flex align-items-center" method="GET">
         <div>
           <div class="input-group input-group-sm">
-            <span class="input-group-text">BGG User</span>
+            <label class="input-group-text" for="username">BGG User</label>
             <input
+              id="username"
               name="u"
               type="text"
               class="form-control"
@@ -56,8 +57,8 @@
         <div class="mb-4 d-flex">
           <div>
             <div class="input-group input-group-sm">
-              <span class="input-group-text">&#128100;</span>
-              <select class="form-select" x-model.number="filter.player">
+              <label class="input-group-text" for="playerFilter">&#128100;</label>
+              <select id="playerFilter" class="form-select" x-model.number="filter.player">
                 <option value="">All player count</option>
                 <template x-for="option in filterPlayerOptions()">
                   <option :value="option.value" x-text="option.text"></option>
@@ -67,8 +68,8 @@
           </div>
           <div class="ms-3">
             <div class="input-group input-group-sm">
-              <span class="input-group-text">&#128337;</span>
-              <select class="form-select" x-model.number="filter.playTime">
+              <label class="input-group-text" for="playTimeFilter">&#128337;</label>
+              <select id="playTimeFilter" class="form-select" x-model.number="filter.playTime">
                 <option value="">All play time</option>
                 <template x-for="option in filterPlayTimeOptions()">
                   <option :value="option.value" x-text="option.text"></option>
@@ -78,8 +79,8 @@
           </div>
           <div class="ms-3">
             <div class="input-group input-group-sm">
-              <span class="input-group-text">&#129504;</span>
-              <select class="form-select" x-model.number="filter.weight">
+              <label class="input-group-text" for="weightFilter">&#129504;</label>
+              <select id="weightFilter" class="form-select" x-model.number="filter.weight">
                 <option value="">All weight</option>
                 <template x-for="option in filterWeightOptions()">
                   <option :value="option.value" x-text="option.text"></option>
@@ -213,7 +214,12 @@
                         target="_blank"
                         rel="noreferrer noopener"
                       >
-                        <img class="bg-secondary rounded flex-shrink-0" :src="expansion.image" />
+                        <img
+                          class="bg-secondary rounded flex-shrink-0"
+                          :src="expansion.image"
+                          :alt="expansion.name"
+                          loading="lazy"
+                        />
                         <div class="flex-grow-1 ms-3">
                           <span x-text="expansion.name"></span>
                           <span class="fs-8 opacity-75">(<span x-text="expansion.year"></span>)</span>

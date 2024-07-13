@@ -8,22 +8,23 @@ document.addEventListener('alpine:init', () => {
   const xmlParser = new XMLParser({ ignoreAttributes: false });
 
   const fetchBgg = async (path) => {
-    let fetchRes = null;
     const url = `https://boardgamegeek.com/xmlapi2/${path}`;
     const options = { 'Content-Type': 'application/xml' };
-    while (true) {
+    let fetchRes;
+    do {
       fetchRes = await fetch(url, options).catch(() => null);
       if (fetchRes && fetchRes.status === 200) break;
       await new Promise((resolve) => setTimeout(resolve, 3000));
-    }
+    } while (true);
     const collectionText = await fetchRes.text();
     return xmlParser.parse(collectionText);
   };
+
   const getGames = async (username) => {
     const collectionObj = await fetchBgg(
       `collection/?username=${username}&own=1&excludesubtype=boardgameexpansion&stats=1`
     );
-    const collection = collectionObj.items.item
+    return collectionObj.items.item
       .map((item) => ({
         id: item['@_objectid'],
         image: item.image.replace(/cf\.geekdo-images\.com/, 'ik.imagekit.io/kvn/bgg') + '?tr=w-800',
@@ -39,20 +40,21 @@ document.addEventListener('alpine:init', () => {
         },
         rating: Math.floor(item.stats.rating['@_value']) || null,
         ratingBgg: Math.round(parseFloat(item.stats.rating.average['@_value']) * 10) / 10,
-        ratingBggCount:
-          item.stats.rating.usersrated['@_value'].length > 3
-            ? Math.round(Math.floor(item.stats.rating.usersrated['@_value']) / 1000) + 'k'
-            : item.stats.rating.usersrated['@_value'],
+        ratingBggCount: _formatRatingCount(item.stats.rating.usersrated['@_value']),
         rank: Math.floor((item.stats.rating.ranks.rank[0] || item.stats.rating.ranks.rank)['@_value']),
         comment: item.comment,
         enriched: {},
       }))
       .sort((a, b) => b.rating - a.rating || a.rank - b.rank);
-    return collection;
   };
+
+  const _formatRatingCount = (count) => {
+    return count.length > 3 ? Math.round(Math.floor(count) / 1000) + 'k' : count;
+  };
+
   const getExpansions = async (username) => {
     const collectionObj = await fetchBgg(`collection/?username=${username}&own=1&subtype=boardgameexpansion`);
-    const collection = collectionObj.items.item
+    return collectionObj.items.item
       .map((item) => ({
         id: item['@_objectid'],
         image: item.thumbnail,
@@ -60,11 +62,11 @@ document.addEventListener('alpine:init', () => {
         year: item.yearpublished,
       }))
       .sort((a, b) => a.name.localeCompare(b.name));
-    return collection;
   };
+
   const getThings = async (thingIds) => {
-    let result = [];
     const chunkSize = 100;
+    const results = [];
     for (let i = 0; i < thingIds.length; i += chunkSize) {
       const thingObj = await fetchBgg(
         `thing?id=${thingIds.slice(i, i + chunkSize).join(',')}&stats=1&pagesize=${chunkSize}`
@@ -73,33 +75,26 @@ document.addEventListener('alpine:init', () => {
         id: item['@_id'],
         parentIds: item.link.filter((link) => link['@_type'] === 'boardgameexpansion').map((link) => link['@_id']),
         weight: parseFloat(item.statistics.ratings.averageweight['@_value']) || null,
-        playersBest: item.poll
-          .find((item) => item['@_name'] === 'suggested_numplayers')
-          .results.filter((result) => {
-            let voteBest = 0;
-            let voteReco = 0;
-            let voteNotReco = 0;
-            result.result.forEach((result) => {
-              switch (result['@_value']) {
-                case 'Best':
-                  voteBest = Math.floor(result['@_numvotes']);
-                  break;
-                case 'Recommended':
-                  voteReco = Math.floor(result['@_numvotes']);
-                  break;
-                case 'Not Recommended':
-                  voteNotReco = Math.floor(result['@_numvotes']);
-                  break;
-              }
-            });
-            return voteBest > voteReco && voteBest > voteNotReco;
-          })
-          .map((result) => Math.floor(result['@_numplayers'])),
+        playersBest: _getBestPlayerCount(item),
       }));
-      result = result.concat(things);
+      results.push(...things);
     }
-    return result;
+    return results;
   };
+
+  const _getBestPlayerCount = (item) => {
+    const playerPoll = item.poll.find((poll) => poll['@_name'] === 'suggested_numplayers');
+    return playerPoll.results
+      .filter((result) => {
+        const votes = result.result.reduce((acc, vote) => {
+          acc[vote['@_value']] = Math.floor(vote['@_numvotes']);
+          return acc;
+        }, {});
+        return votes['Best'] > votes['Recommended'] && votes['Best'] > votes['Not Recommended'];
+      })
+      .map((result) => Math.floor(result['@_numplayers']));
+  };
+
   const relayout = () => {
     masonryWrapper.reloadItems();
     masonryWrapper.layout();
@@ -146,16 +141,16 @@ document.addEventListener('alpine:init', () => {
 
       const counter = {};
       this.items.forEach((item) => {
-        for (let i = item.players.min; i <= item.players.max && i <= this.FILTER_PLAYER_MAX; i++) {
+        for (let i = item.players.min; i <= Math.min(item.players.max, this.FILTER_PLAYER_MAX); i++) {
           counter[i] = (counter[i] || 0) + 1;
         }
       });
-      return Object.keys(counter)
-        .sort((a, b) => a - b)
-        .map((count) => ({
-          value: count,
-          text: `${count < this.FILTER_PLAYER_MAX ? count : this.FILTER_PLAYER_MAX + '+'} player${count > 1 ? 's' : ''}
-            (${this.formatNumber(counter[count])})`,
+      return Object.entries(counter)
+        .sort(([a], [b]) => a - b)
+        .map(([player, count]) => ({
+          value: player,
+          text: `${player < this.FILTER_PLAYER_MAX ? player : this.FILTER_PLAYER_MAX + '+'}
+            (${this.formatNumber(count)})`,
         }));
     },
     filterPlayTimeOptions() {
@@ -163,15 +158,15 @@ document.addEventListener('alpine:init', () => {
 
       const counter = { 30: 0, 60: 0, 120: 0 };
       this.items.forEach((item) => {
-        for (let duration in counter) {
+        Object.keys(counter).forEach((duration) => {
           if (duration >= item.playTime.max) {
             counter[duration] += 1;
           }
-        }
+        });
       });
-      return Object.keys(counter).map((minutes) => ({
+      return Object.entries(counter).map(([minutes, count]) => ({
         value: minutes,
-        text: `${minutes} minutes (${this.formatNumber(counter[minutes])})`,
+        text: `${minutes} min (${this.formatNumber(count)})`,
       }));
     },
     filterWeightOptions() {
@@ -180,14 +175,15 @@ document.addEventListener('alpine:init', () => {
       const counter = {};
       this.items.forEach((item) => {
         const group = Math.floor(item.enriched.weight);
-        if (!group) return;
-        counter[group] = (counter[group] || 0) + 1;
+        if (group) {
+          counter[group] = (counter[group] || 0) + 1;
+        }
       });
-      return Object.keys(counter)
-        .sort((a, b) => a - b)
-        .map((group) => ({
+      return Object.entries(counter)
+        .sort(([a], [b]) => a - b)
+        .map(([group, count]) => ({
           value: group,
-          text: `${group}+ (${this.formatNumber(counter[group])})`,
+          text: `${group}+ (${this.formatNumber(count)})`,
         }));
     },
 
@@ -216,8 +212,9 @@ document.addEventListener('alpine:init', () => {
     init() {
       const params = new URLSearchParams(window.location.search);
       this.username = params.get('u') || defaultUsername;
-      if (!this.username) return;
-      this.load();
+      if (this.username) {
+        this.load();
+      }
     },
     async load() {
       this.loading = true;
@@ -245,9 +242,10 @@ document.addEventListener('alpine:init', () => {
           itemMap[thing.id].playersBest = thing.playersBest;
         } else if (expansionIds.has(thing.id)) {
           thing.parentIds.forEach((parentId) => {
-            if (!gameIds.has(parentId)) return;
-            itemMap[parentId] = itemMap[parentId] || {};
-            itemMap[parentId].expansions = [...(itemMap[parentId].expansions || []), expansionMap[thing.id]];
+            if (gameIds.has(parentId)) {
+              itemMap[parentId] = itemMap[parentId] || {};
+              itemMap[parentId].expansions = [...(itemMap[parentId].expansions || []), expansionMap[thing.id]];
+            }
           });
         }
       });
