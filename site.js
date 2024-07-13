@@ -47,9 +47,8 @@ document.addEventListener('alpine:init', () => {
       }))
       .sort((a, b) => b.rating - a.rating || a.rank - b.rank);
   };
-
   const _formatRatingCount = (count) => {
-    return count.length > 3 ? Math.round(Math.floor(count) / 1000) + 'k' : count;
+    return count.length > 3 ? Math.floor(Math.floor(count) / 1000) + 'k' : count;
   };
 
   const getExpansions = async (username) => {
@@ -81,7 +80,6 @@ document.addEventListener('alpine:init', () => {
     }
     return results;
   };
-
   const _getBestPlayerCount = (item) => {
     const playerPoll = item.poll.find((poll) => poll['@_name'] === 'suggested_numplayers');
     return playerPoll.results
@@ -100,7 +98,7 @@ document.addEventListener('alpine:init', () => {
     masonryWrapper.layout();
   };
 
-  setInterval(relayout, 750);
+  setInterval(relayout, 500);
 
   Alpine.data('bgs', () => ({
     // Constants
