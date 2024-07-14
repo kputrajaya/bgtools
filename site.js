@@ -85,7 +85,8 @@ document.addEventListener('alpine:init', () => {
           acc[vote['@_value']] = Math.floor(vote['@_numvotes']);
           return acc;
         }, {});
-        return votes['Best'] > votes['Recommended'] && votes['Best'] > votes['Not Recommended'];
+        const totalVotes = (votes.Best || 0) + (votes.Recommended || 0) + (votes['Not Recommended'] || 0);
+        return votes.Best > totalVotes / 2;
       })
       .map((result) => Math.floor(result['@_numplayers']));
   };
