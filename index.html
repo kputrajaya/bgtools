@@ -140,7 +140,7 @@
                             <span class="me-1">&#11088;</span>
                             <span
                               class="badge px-2 fs-7 fw-normal text-bg-success"
-                              :class="{'text-bg-danger': item.rating < 6.5, 'text-bg-warning': item.rating < 7.5}"
+                              :class="{'text-bg-danger': item.rating < 6, 'text-bg-warning': item.rating < 7.5}"
                               x-text="item.rating"
                               x-show="item.rating"
                             ></span>
@@ -165,7 +165,7 @@
                             <span class="me-1">&#127758;</span>
                             <span
                               class="badge px-2 fs-7 fw-normal text-bg-success"
-                              :class="{'text-bg-danger': item.ratingBgg < 6.5, 'text-bg-warning': item.ratingBgg < 7.5}"
+                              :class="{'text-bg-danger': item.ratingBgg < 6, 'text-bg-warning': item.ratingBgg < 7.5}"
                               x-text="(item.ratingBgg || 0).toFixed(1)"
                             ></span>
                             <small class="fs-7 opacity-75">
