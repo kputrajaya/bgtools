@@ -15,11 +15,16 @@ a:hover {
 }
 
 .fs-8 {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
 }
 
 .whitespace-pre-line {
   white-space: pre-line;
+}
+
+.bgs-game a:hover h5 > span,
+.bgs-game a:hover h6 > span {
+  text-decoration: underline;
 }
 
 .bgs-image {
