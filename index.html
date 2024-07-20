@@ -107,9 +107,9 @@
                   >
                     <h5 class="card-title mb-3 align-middle">
                       <span x-html="item.name"></span>
-                      <small class="fs-6 opacity-75" x-show="item.year">(<span x-text="item.year"></span>)</small>
+                      <span class="fs-6 opacity-75" x-show="item.year">(<span x-text="item.year"></span>)</span>
                     </h5>
-                    <div class="card-subtitle text-muted fw-normal">
+                    <div class="card-subtitle fs-7 text-muted fw-normal">
                       <div class="row">
                         <div class="col-6 mt-1">
                           <span title="Player count (best count)">
@@ -117,10 +117,10 @@
                             <span x-show="item.players.min">
                               <span x-text="formatNumber(item.players.min)"></span
                               ><span x-show="item.players.max > item.players.min"
-                                >&ndash;<span x-text="formatNumber(item.players.max)"></span
+                                >&minus;<span x-text="formatNumber(item.players.max)"></span
                               ></span>
-                              <small
-                                class="fs-7 opacity-75"
+                              <span
+                                class="opacity-75"
                                 :class="{
                                 'text-primary': (
                                   item.enriched.playersBest &&
@@ -130,7 +130,7 @@
                                 x-show="item.enriched.playersBest"
                               >
                                 (&#128077;<span x-text="formatCounts(item.enriched.playersBest)"></span>)
-                              </small>
+                              </span>
                             </span>
                             <span x-show="!item.players.min">-</span>
                           </span>
@@ -139,7 +139,7 @@
                           <span title="User rating">
                             <span class="me-1">&#11088;</span>
                             <span
-                              class="badge px-2 fs-7 fw-normal text-bg-success"
+                              class="badge px-2 fs-8 fw-normal text-bg-success"
                               :class="{'text-bg-danger': item.rating < 6, 'text-bg-warning': item.rating < 7.5}"
                               x-text="item.rating"
                               x-show="item.rating"
@@ -153,7 +153,7 @@
                             <span x-show="item.playTime.min">
                               <span x-text="formatNumber(item.playTime.min)"></span
                               ><span x-show="item.playTime.max > item.playTime.min"
-                                >&ndash;<span x-text="formatNumber(item.playTime.max)"></span
+                                >&minus;<span x-text="formatNumber(item.playTime.max)"></span
                               ></span>
                               min
                             </span>
@@ -164,20 +164,18 @@
                           <span title="Global rating (rating count)">
                             <span class="me-1">&#127758;</span>
                             <span
-                              class="badge px-2 fs-7 fw-normal text-bg-success"
+                              class="badge px-2 fs-8 fw-normal text-bg-success"
                               :class="{'text-bg-danger': item.ratingBgg < 6, 'text-bg-warning': item.ratingBgg < 7.5}"
                               x-text="(item.ratingBgg || 0).toFixed(1)"
                             ></span>
-                            <small class="fs-7 opacity-75">
-                              (&#128221;<span x-text="item.ratingBggCount"></span>)
-                            </small>
+                            <span class="opacity-75"> (&#128221;<span x-text="item.ratingBggCount"></span>) </span>
                           </span>
                         </div>
                         <div class="col-6 mt-1">
                           <span title="Weight">
                             <span class="me-1">&#129504;</span>
                             <span
-                              class="badge px-2 fs-7 fw-normal text-bg-success"
+                              class="badge px-2 fs-8 fw-normal text-bg-success"
                               :class="{
                               'text-bg-danger': item.enriched.weight >= 4,
                               'text-bg-warning': item.enriched.weight >= 3
@@ -204,7 +202,7 @@
                     x-show="item.comment"
                   ></div>
                 </a>
-                <div class="card-body border-top p-0" x-show="item.enriched.expansions">
+                <div class="card-body p-0 border-top" x-show="item.enriched.expansions">
                   <div class="list-group list-group-flush">
                     <template x-for="expansion in item.enriched.expansions">
                       <a
@@ -221,7 +219,7 @@
                         />
                         <h6 class="ms-3 mb-0 fs-7 flex-grow-1">
                           <span x-text="expansion.name"></span>
-                          <small class="fs-8 opacity-75">(<span x-text="expansion.year"></span>)</small>
+                          <span class="fs-8 opacity-75">(<span x-text="expansion.year"></span>)</span>
                         </h6>
                       </a>
                     </template>

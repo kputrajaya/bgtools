@@ -200,7 +200,7 @@ document.addEventListener('alpine:init', () => {
           continue;
         }
         if (currentStart) {
-          groups.push(currentStart === lastNum ? lastNum : `${currentStart}–${lastNum}`);
+          groups.push(currentStart === lastNum ? lastNum : `${currentStart}−${lastNum}`);
         }
         currentStart = lastNum = nums[i];
       }
