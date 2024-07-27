@@ -61,7 +61,7 @@ document.addEventListener('alpine:init', () => {
       .sort((a, b) => a.name.localeCompare(b.name));
   };
   const getThings = async (thingIds) => {
-    const chunkSize = 100;
+    const chunkSize = 20;
     const results = [];
     for (let i = 0; i < thingIds.length; i += chunkSize) {
       const thingObj = await _fetchBgg(
