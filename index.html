@@ -22,7 +22,7 @@
       <form class="my-4 d-flex align-items-center" method="GET">
         <div>
           <div class="input-group input-group-sm">
-            <label class="input-group-text" for="username">BGG User</label>
+            <label class="input-group-text" for="username" title="BoardGameGeek username">BGG User</label>
             <input
               id="username"
               name="u"
@@ -59,7 +59,7 @@
             <div class="input-group input-group-sm">
               <label class="input-group-text" for="playerFilter">&#128100;</label>
               <select id="playerFilter" class="form-select" x-model.number="filter.player">
-                <option value="">All player count</option>
+                <option value="">Player count</option>
                 <template x-for="option in filterPlayerOptions()">
                   <option :value="option.value" x-text="option.text"></option>
                 </template>
@@ -70,7 +70,7 @@
             <div class="input-group input-group-sm">
               <label class="input-group-text" for="playTimeFilter">&#128337;</label>
               <select id="playTimeFilter" class="form-select" x-model.number="filter.playTime">
-                <option value="">All play time</option>
+                <option value="">Play time</option>
                 <template x-for="option in filterPlayTimeOptions()">
                   <option :value="option.value" x-text="option.text"></option>
                 </template>
@@ -81,7 +81,7 @@
             <div class="input-group input-group-sm">
               <label class="input-group-text" for="weightFilter">&#129504;</label>
               <select id="weightFilter" class="form-select" x-model.number="filter.weight">
-                <option value="">All weight</option>
+                <option value="">Weight</option>
                 <template x-for="option in filterWeightOptions()">
                   <option :value="option.value" x-text="option.text"></option>
                 </template>
