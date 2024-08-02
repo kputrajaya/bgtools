@@ -4,43 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Board Game Shelf</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
-      integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+
+    <link rel="icon" href="favicon-16.png" sizes="16x16" />
+    <link rel="icon" href="favicon-32.png" sizes="32x32" />
+    <link rel="icon" href="favicon-96.png" sizes="96x96" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" />
     <link rel="stylesheet" href="site.css" />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/fast-xml-parser/4.0.12/fxparser.min.js"
-      integrity="sha512-HGrrIN/LyGNpsITQqS0Oz+0rCFt/+2/eymCPchz/Pvx8JofaxmLfoEJNIix9R1iHEnScT+HSt8WBifDINQu89g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-      defer
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"
-      integrity="sha512-JRlcvSZAXT8+5SQQAvklXGJuxXTouyq8oIMaYERZQasB8SBDHZaUbeASsJWpk0UUrf89DP3/aefPPrlMR1h1yQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-      defer
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.5/cdn.min.js"
-      integrity="sha512-y22y4rJ9d7NGoRLII5LVwUv0BfQKf6MpATy5ebVu/fbHdtJCxBpZRHZMHJv8VYl8scWjuwZcMPzwYk4sEoyL4A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-      defer
-    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fast-xml-parser/4.0.12/fxparser.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js" defer></script>
+    <script src="site.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.5/cdn.min.js" defer></script>
   </head>
   <body class="bg-light">
     <div class="container-xxl" x-data="bgs">
-      <form class="my-4 d-flex align-center" method="GET">
+      <form class="my-4 d-flex align-items-center" method="GET">
         <div>
           <div class="input-group input-group-sm">
-            <span class="input-group-text">BGG User</span>
+            <label class="input-group-text" for="username" title="BoardGameGeek username">BGG User</label>
             <input
+              id="username"
               name="u"
               type="text"
               class="form-control"
@@ -48,7 +32,7 @@
               x-model="username"
               @focus="$event.target.select()"
             />
-            <button class="btn btn-secondary" type="submit" id="submitBtn">&#128640;</button>
+            <button class="btn btn-primary" type="submit" id="submitBtn">Go</button>
           </div>
         </div>
         <div class="flex-grow-1"></div>
@@ -73,9 +57,9 @@
         <div class="mb-4 d-flex">
           <div>
             <div class="input-group input-group-sm">
-              <span class="input-group-text">&#128100;</span>
-              <select class="form-select" x-model="filter.player">
-                <option value="">All player count</option>
+              <label class="input-group-text" for="playerFilter">&#128100;</label>
+              <select id="playerFilter" class="form-select" x-model.number="filter.player">
+                <option value="">Player count</option>
                 <template x-for="option in filterPlayerOptions()">
                   <option :value="option.value" x-text="option.text"></option>
                 </template>
@@ -84,9 +68,20 @@
           </div>
           <div class="ms-3">
             <div class="input-group input-group-sm">
-              <span class="input-group-text">&#129504;</span>
-              <select class="form-select" x-model="filter.weight">
-                <option value="">All weight</option>
+              <label class="input-group-text" for="playTimeFilter">&#128337;</label>
+              <select id="playTimeFilter" class="form-select" x-model.number="filter.playTime">
+                <option value="">Play time</option>
+                <template x-for="option in filterPlayTimeOptions()">
+                  <option :value="option.value" x-text="option.text"></option>
+                </template>
+              </select>
+            </div>
+          </div>
+          <div class="ms-3">
+            <div class="input-group input-group-sm">
+              <label class="input-group-text" for="weightFilter">&#129504;</label>
+              <select id="weightFilter" class="form-select" x-model.number="filter.weight">
+                <option value="">Weight</option>
                 <template x-for="option in filterWeightOptions()">
                   <option :value="option.value" x-text="option.text"></option>
                 </template>
@@ -99,104 +94,145 @@
         <div id="wrapper" class="row">
           <template x-for="item in itemsSliced()">
             <div class="col-xxl-3 col-lg-4 col-md-6 col-12 mb-4">
-              <a
-                class="card"
-                :href="'https://boardgamegeek.com/boardgame/' + item.id"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <div class="bgs-image bg-secondary rounded">
-                  <img class="rounded" :src="item.image" :alt="item.name" loading="lazy" />
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title mb-3 align-middle">
-                    <span x-html="item.name"></span>
-                    <span class="fs-6 text-muted" x-show="item.year">(<span x-text="item.year"></span>)</span>
-                  </h5>
-                  <div class="card-subtitle text-muted fw-normal">
-                    <div class="row">
-                      <div class="col-6 mt-1">
-                        <span title="Player count">
-                          <span class="me-1">&#128100;</span>
-                          <span x-show="item.players.min">
-                            <span x-text="formatNumber(item.players.min)"></span
-                            ><span x-show="item.players.max > item.players.min"
-                              >&ndash;<span x-text="formatNumber(item.players.max)"></span
-                            ></span>
+              <div class="bgs-game card">
+                <a :href="'https://boardgamegeek.com/boardgame/' + item.id" target="_blank" rel="noreferrer noopener">
+                  <div class="bgs-image bg-secondary rounded">
+                    <img class="rounded" :src="item.image" :alt="item.name" loading="lazy" />
+                  </div>
+                  <div
+                    class="card-body"
+                    :href="'https://boardgamegeek.com/boardgame/' + item.id"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    <h5 class="card-title mb-3 align-middle">
+                      <span x-html="item.name"></span>
+                      <span class="fs-6 opacity-75" x-show="item.year">(<span x-text="item.year"></span>)</span>
+                    </h5>
+                    <div class="card-subtitle fs-7 text-muted fw-normal">
+                      <div class="row">
+                        <div class="col-6 mt-1">
+                          <span title="Player count (best count)">
+                            <span class="me-1">&#128100;</span>
+                            <span x-show="item.players.min">
+                              <span x-text="formatNumber(item.players.min)"></span
+                              ><span x-show="item.players.max > item.players.min"
+                                >&minus;<span x-text="formatNumber(item.players.max)"></span
+                              ></span>
+                              <span
+                                class="opacity-75"
+                                :class="{
+                                'text-primary': (
+                                  item.enriched.playersBest &&
+                                  item.enriched.playersBest.includes(filter.player)
+                                )
+                              }"
+                                x-show="item.enriched.playersBest"
+                              >
+                                (&#128077;<span x-text="formatCounts(item.enriched.playersBest)"></span>)
+                              </span>
+                            </span>
+                            <span x-show="!item.players.min">-</span>
                           </span>
-                          <span x-show="!item.players.min">-</span>
-                        </span>
-                      </div>
-                      <div class="col-6 mt-1">
-                        <span title="My rating">
-                          <span class="me-1">&#11088;</span>
-                          <span
-                            class="badge text-bg-success fs-7 fw-normal"
-                            :class="{ 'text-bg-danger': item.rating < 6.5, 'text-bg-warning': item.rating < 7.5 }"
-                            x-text="item.rating"
-                            x-show="item.rating"
-                          ></span>
-                          <span x-show="!item.rating">-</span>
-                        </span>
-                      </div>
-                      <div class="col-6 mt-1">
-                        <span title="Play time">
-                          <span class="me-1">&#128337;</span>
-                          <span x-show="item.playTime.min">
-                            <span x-text="formatNumber(item.playTime.min)"></span
-                            ><span x-show="item.playTime.max > item.playTime.min"
-                              >&ndash;<span x-text="formatNumber(item.playTime.max)"></span
+                        </div>
+                        <div class="col-6 mt-1">
+                          <span title="User rating">
+                            <span class="me-1">&#11088;</span>
+                            <span
+                              class="badge px-2 fs-8 fw-normal text-bg-success"
+                              :class="{'text-bg-danger': item.rating < 6, 'text-bg-warning': item.rating < 7.5}"
+                              x-text="item.rating"
+                              x-show="item.rating"
                             ></span>
-                            min
+                            <span x-show="!item.rating">-</span>
                           </span>
-                          <span x-show="!item.playTime.min">-</span>
-                        </span>
-                      </div>
-                      <div class="col-6 mt-1">
-                        <span title="BGG rating">
-                          <span class="me-1">&#127758;</span>
-                          <span
-                            class="badge text-bg-success fs-7 fw-normal"
-                            :class="{ 'text-bg-danger': item.ratingBgg < 6.5, 'text-bg-warning': item.ratingBgg < 7.5 }"
-                            x-text="(item.ratingBgg || 0).toFixed(1)"
-                          ></span>
-                          (<span x-text="item.ratingBggCount"></span>)
-                        </span>
-                      </div>
-                      <div class="col-6 mt-1">
-                        <span title="Weight">
-                          <span class="me-1">&#129504;</span>
-                          <span
-                            class="badge text-bg-success fs-7 fw-normal"
-                            :class="{ 'text-bg-danger': item.weight >= 4, 'text-bg-warning': item.weight >= 3 }"
-                            x-text="(item.weight || 0).toFixed(2)"
-                            x-show="item.weight"
-                          ></span>
-                          <span x-show="!item.weight">-</span>
-                        </span>
-                      </div>
-                      <div class="col-6 mt-1">
-                        <span title="BGG rank">
-                          <span class="me-1">&#128081;</span>
-                          <span x-text="formatNumber(item.rank)" x-show="item.rank"></span>
-                          <span x-show="!item.rank">-</span>
-                        </span>
+                        </div>
+                        <div class="col-6 mt-1">
+                          <span title="Play time">
+                            <span class="me-1">&#128337;</span>
+                            <span x-show="item.playTime.min">
+                              <span x-text="formatNumber(item.playTime.min)"></span
+                              ><span x-show="item.playTime.max > item.playTime.min"
+                                >&minus;<span x-text="formatNumber(item.playTime.max)"></span
+                              ></span>
+                              min
+                            </span>
+                            <span x-show="!item.playTime.min">-</span>
+                          </span>
+                        </div>
+                        <div class="col-6 mt-1">
+                          <span title="Global rating (rating count)">
+                            <span class="me-1">&#127758;</span>
+                            <span
+                              class="badge px-2 fs-8 fw-normal text-bg-success"
+                              :class="{'text-bg-danger': item.ratingBgg < 6, 'text-bg-warning': item.ratingBgg < 7.5}"
+                              x-text="(item.ratingBgg || 0).toFixed(1)"
+                            ></span>
+                            <span class="opacity-75"> (&#128221;<span x-text="item.ratingBggCount"></span>) </span>
+                          </span>
+                        </div>
+                        <div class="col-6 mt-1">
+                          <span title="Weight">
+                            <span class="me-1">&#129504;</span>
+                            <span
+                              class="badge px-2 fs-8 fw-normal text-bg-success"
+                              :class="{
+                              'text-bg-danger': item.enriched.weight >= 4,
+                              'text-bg-warning': item.enriched.weight >= 3
+                            }"
+                              x-text="(item.enriched.weight || 0).toFixed(2)"
+                              x-show="item.enriched.weight"
+                            ></span>
+                            <span x-show="!item.enriched.weight">-</span>
+                          </span>
+                        </div>
+                        <div class="col-6 mt-1">
+                          <span title="Global rank">
+                            <span class="me-1">&#128081;</span>
+                            <span x-text="formatNumber(item.rank)" x-show="item.rank"></span>
+                            <span x-show="!item.rank">-</span>
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <div
+                    class="card-body border-top fs-7 text-muted whitespace-pre-line"
+                    x-html="item.comment"
+                    x-show="item.comment"
+                  ></div>
+                </a>
+                <div class="card-body p-0 border-top" x-show="item.enriched.expansions">
+                  <div class="list-group list-group-flush">
+                    <template x-for="expansion in item.enriched.expansions">
+                      <a
+                        class="bgs-expansion list-group-item text-muted bg-transparent d-flex align-items-center"
+                        :href="'https://boardgamegeek.com/boardgame/' + expansion.id"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                      >
+                        <img
+                          class="bg-secondary rounded flex-shrink-0"
+                          :src="expansion.image"
+                          :alt="expansion.name"
+                          loading="lazy"
+                        />
+                        <h6 class="ms-3 mb-0 fs-7 flex-grow-1">
+                          <span x-text="expansion.name"></span>
+                          <span class="fs-8 opacity-75">(<span x-text="expansion.year"></span>)</span>
+                        </h6>
+                      </a>
+                    </template>
+                  </div>
                 </div>
-                <div class="card-body border-top" x-show="item.comment">
-                  <div class="fs-7 text-muted whitespace-pre-line" x-html="item.comment"></div>
-                </div>
-              </a>
+              </div>
             </div>
           </template>
         </div>
-        <div class="mb-4 fs-7 text-muted" x-show="itemsLength() > itemsLimit">
-          Showing top <span x-text="formatNumber(itemsLimit)"></span> items
+        <div class="mb-4 fs-7 text-muted" x-show="itemsLength() > ITEMS_LIMIT">
+          Showing top <span x-text="formatNumber(ITEMS_LIMIT)"></span> items
         </div>
       </div>
     </div>
-    <script src="site.js"></script>
   </body>
 </html>

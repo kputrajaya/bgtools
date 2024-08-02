@@ -18,16 +18,31 @@ a:hover {
   font-size: 0.875rem;
 }
 
+.fs-8 {
+  font-size: 0.725rem;
+}
+
 .whitespace-pre-line {
   white-space: pre-line;
 }
 
+.bgs-game a:hover h5 > span,
+.bgs-game a:hover h6 > span {
+  text-decoration: underline;
+}
+
 .bgs-image {
-  max-height: 320px;
+  max-height: 240px;
 }
 .bgs-image > img {
   width: 100%;
   height: 100%;
-  max-height: 320px;
+  max-height: 240px;
+  object-fit: contain;
+}
+
+.bgs-expansion img {
+  width: 40px;
+  height: 40px;
   object-fit: contain;
 }

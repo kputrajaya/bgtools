@@ -1,6 +1,6 @@
 # BGShelf
 
-A simple showcase of your Board Game Geek collection. 
+Showcase your BoardGameGeek collection.
 
 ## Built With
 
