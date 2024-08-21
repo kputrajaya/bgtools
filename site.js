@@ -19,11 +19,12 @@ document.addEventListener('alpine:init', () => {
     const collectionText = await fetchRes.text();
     return xmlParser.parse(collectionText);
   };
+  const ensureArray = (value) => (value ? (Array.isArray(value) ? value : [value]) : []);
   const getGames = async (username) => {
     const collectionObj = await _fetchBgg(
       `collection/?username=${username}&own=1&excludesubtype=boardgameexpansion&stats=1`
     );
-    return (collectionObj?.items?.item || [])
+    return ensureArray(collectionObj?.items?.item)
       .map((item) => ({
         id: item['@_objectid'],
         image: item.image.replace(/cf\.geekdo-images\.com/, 'ik.imagekit.io/kvn/bgg') + '?tr=w-800',
@@ -51,7 +52,7 @@ document.addEventListener('alpine:init', () => {
   };
   const getExpansions = async (username) => {
     const collectionObj = await _fetchBgg(`collection/?username=${username}&own=1&subtype=boardgameexpansion`);
-    return (collectionObj?.items?.item || [])
+    return ensureArray(collectionObj?.items?.item)
       .map((item) => ({
         id: item['@_objectid'],
         image: item.thumbnail,
@@ -67,7 +68,7 @@ document.addEventListener('alpine:init', () => {
       const thingObj = await _fetchBgg(
         `thing?id=${thingIds.slice(i, i + chunkSize).join(',')}&stats=1&pagesize=${chunkSize}`
       );
-      const things = (thingObj?.items?.item || []).map((item) => ({
+      const things = ensureArray(thingObj?.items?.item).map((item) => ({
         id: item['@_id'],
         parentIds: item.link.filter((link) => link['@_type'] === 'boardgameexpansion').map((link) => link['@_id']),
         weight: parseFloat(item.statistics.ratings.averageweight['@_value']) || null,
@@ -234,7 +235,7 @@ document.addEventListener('alpine:init', () => {
           thing.parentIds.forEach((parentId) => {
             if (gameIds.has(parentId)) {
               itemMap[parentId] = itemMap[parentId] || {};
-              itemMap[parentId].expansions = [...(itemMap[parentId].expansions || []), expansionMap[thing.id]];
+              itemMap[parentId].expansions = [...ensureArray(itemMap[parentId].expansions), expansionMap[thing.id]];
             }
           });
         }
