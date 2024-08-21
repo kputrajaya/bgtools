@@ -63,20 +63,22 @@ document.addEventListener('alpine:init', () => {
   };
   const getThings = async (thingIds) => {
     const chunkSize = 20;
-    const results = [];
+    const chunks = [];
     for (let i = 0; i < thingIds.length; i += chunkSize) {
-      const thingObj = await _fetchBgg(
-        `thing?id=${thingIds.slice(i, i + chunkSize).join(',')}&stats=1&pagesize=${chunkSize}`
-      );
-      const things = ensureArray(thingObj?.items?.item).map((item) => ({
-        id: item['@_id'],
-        parentIds: item.link.filter((link) => link['@_type'] === 'boardgameexpansion').map((link) => link['@_id']),
-        weight: parseFloat(item.statistics.ratings.averageweight['@_value']) || null,
-        playersBest: _getBestPlayerCount(item),
-      }));
-      results.push(...things);
+      chunks.push(thingIds.slice(i, i + chunkSize));
     }
-    return results;
+    const results = await Promise.all(
+      chunks.map(async (chunk) => {
+        const thingObj = await _fetchBgg(`thing?id=${chunk.join(',')}&stats=1&pagesize=${chunkSize}`);
+        return ensureArray(thingObj?.items?.item).map((item) => ({
+          id: item['@_id'],
+          parentIds: item.link.filter((link) => link['@_type'] === 'boardgameexpansion').map((link) => link['@_id']),
+          weight: parseFloat(item.statistics.ratings.averageweight['@_value']) || null,
+          playersBest: _getBestPlayerCount(item),
+        }));
+      })
+    );
+    return results.flat();
   };
   const _getBestPlayerCount = (item) => {
     const playerPoll = item.poll.find((poll) => poll['@_name'] === 'suggested_numplayers');
