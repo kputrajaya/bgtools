@@ -1,5 +1,6 @@
 document.addEventListener('alpine:init', () => {
   const defaultUsername = 'kputrajaya';
+  const pubsubHost = 'https://pubsub.h.kvn.pt';
   const masonryWrapper = new Masonry('#wrapper', {
     itemSelector: '.col-12',
     percentPosition: true,
@@ -69,13 +70,27 @@ document.addEventListener('alpine:init', () => {
     }
     const results = await Promise.all(
       chunks.map(async (chunk) => {
-        const thingObj = await _fetchBgg(`thing?id=${chunk.join(',')}&stats=1&pagesize=${chunkSize}`);
-        return ensureArray(thingObj?.items?.item).map((item) => ({
+        const chunkThingIds = chunk.join(',');
+        const cacheKey = `bgshelf:${chunkThingIds}`;
+
+        const cached = await fetch(`${pubsubHost}/get/${cacheKey}`)
+          .then((res) => res.json())
+          .catch(() => null);
+        if (cached) return cached;
+
+        const thingObj = await _fetchBgg(`thing?id=${chunkThingIds}&stats=1&pagesize=${chunkSize}`);
+        const chunkResult = ensureArray(thingObj?.items?.item).map((item) => ({
           id: item['@_id'],
           parentIds: item.link.filter((link) => link['@_type'] === 'boardgameexpansion').map((link) => link['@_id']),
           weight: parseFloat(item.statistics.ratings.averageweight['@_value']) || null,
           playersBest: _getBestPlayerCount(item),
         }));
+        fetch(`${pubsubHost}/set/${cacheKey}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(chunkResult),
+        }).catch(() => null);
+        return chunkResult;
       })
     );
     return results.flat();
