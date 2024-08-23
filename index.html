@@ -112,7 +112,7 @@
                     <div class="card-subtitle fs-7 text-muted fw-normal">
                       <div class="row">
                         <div class="col-6 mt-1">
-                          <span title="Player count (best count)">
+                          <span title="Player count (best at)">
                             <span class="me-1">&#128100;</span>
                             <span x-show="item.players.min">
                               <span x-text="formatNumber(item.players.min)"></span
@@ -122,11 +122,11 @@
                               <span
                                 class="opacity-75"
                                 :class="{
-                                'text-primary': (
-                                  item.enriched.playersBest &&
-                                  item.enriched.playersBest.includes(filter.player)
-                                )
-                              }"
+                                  'text-primary': (
+                                    item.enriched.playersBest &&
+                                    item.enriched.playersBest.includes(filter.player)
+                                  )
+                                }"
                                 x-show="item.enriched.playersBest"
                               >
                                 (&#128077;<span x-text="formatCounts(item.enriched.playersBest)"></span>)
@@ -177,9 +177,9 @@
                             <span
                               class="badge px-2 fs-8 fw-normal text-bg-success"
                               :class="{
-                              'text-bg-danger': item.enriched.weight >= 4,
-                              'text-bg-warning': item.enriched.weight >= 3
-                            }"
+                                'text-bg-danger': item.enriched.weight >= 4,
+                                'text-bg-warning': item.enriched.weight >= 3
+                              }"
                               x-text="(item.enriched.weight || 0).toFixed(2)"
                               x-show="item.enriched.weight"
                             ></span>
