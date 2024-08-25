@@ -15,7 +15,7 @@ document.addEventListener('alpine:init', () => {
     do {
       fetchRes = await fetch(url, options).catch(() => null);
       if (fetchRes && fetchRes.status === 200) break;
-      await new Promise((resolve) => setTimeout(resolve, 3000));
+      await new Promise((resolve) => setTimeout(resolve, 2500));
     } while (true);
     const collectionText = await fetchRes.text();
     return xmlParser.parse(collectionText);
@@ -81,7 +81,9 @@ document.addEventListener('alpine:init', () => {
         const thingObj = await _fetchBgg(`thing?id=${chunkThingIds}&stats=1&pagesize=${chunkSize}`);
         const chunkResult = ensureArray(thingObj?.items?.item).map((item) => ({
           id: item['@_id'],
-          parentIds: item.link.filter((link) => link['@_type'] === 'boardgameexpansion').map((link) => link['@_id']),
+          parentIds: ensureArray(item.link)
+            .filter((link) => link['@_type'] === 'boardgameexpansion')
+            .map((link) => link['@_id']),
           weight: parseFloat(item.statistics.ratings.averageweight['@_value']) || null,
           playersBest: _getBestPlayerCount(item),
         }));
@@ -97,14 +99,14 @@ document.addEventListener('alpine:init', () => {
   };
   const _getBestPlayerCount = (item) => {
     const playerPoll = item.poll.find((poll) => poll['@_name'] === 'suggested_numplayers');
-    return playerPoll.results
+    return ensureArray(playerPoll.results)
       .filter((result) => {
         const votes = result.result.reduce((acc, vote) => {
           acc[vote['@_value']] = Math.floor(vote['@_numvotes']);
           return acc;
         }, {});
         const totalVotes = (votes.Best || 0) + (votes.Recommended || 0) + (votes['Not Recommended'] || 0);
-        return votes.Best > totalVotes / 2;
+        return votes.Best >= totalVotes / 2;
       })
       .map((result) => Math.floor(result['@_numplayers']));
   };

@@ -127,7 +127,7 @@
                                     item.enriched.playersBest.includes(filter.player)
                                   )
                                 }"
-                                x-show="item.enriched.playersBest"
+                                x-show="item.enriched.playersBest && item.enriched.playersBest.length"
                               >
                                 (&#128077;<span x-text="formatCounts(item.enriched.playersBest)"></span>)
                               </span>
