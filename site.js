@@ -138,15 +138,17 @@ document.addEventListener('alpine:init', () => {
       if (!this.items) return [];
 
       let items = this.items;
-      if (this.filter.player) {
+      if (this.filter.player !== null) {
         items = items.filter(
-          (item) => item.players.min <= this.filter.player && item.players.max >= this.filter.player
+          (item) => item.players.max >= this.filter.player && item.players.min <= this.filter.player
         );
       }
-      if (this.filter.playTime) {
-        items = items.filter((item) => item.playTime.max <= this.filter.playTime);
+      if (this.filter.playTime !== null) {
+        items = items.filter(
+          (item) => item.playTime.max >= this.filter.playTime && item.playTime.max < this.filter.playTime + 60
+        );
       }
-      if (this.filter.weight) {
+      if (this.filter.weight !== null) {
         items = items.filter(
           (item) => item.enriched.weight >= this.filter.weight && item.enriched.weight < this.filter.weight + 1
         );
@@ -173,17 +175,20 @@ document.addEventListener('alpine:init', () => {
     filterPlayTimeOptions() {
       if (!this.items) return [];
 
-      const counter = { 30: 0, 60: 0, 120: 0 };
+      const durations = [180, 120, 60, 0];
+      const counter = Object.fromEntries(durations.map((duration) => [duration, 0]));
       this.items.forEach((item) => {
-        Object.keys(counter).forEach((duration) => {
-          if (duration >= item.playTime.max) {
+        durations.some((duration) => {
+          if (duration <= item.playTime.max) {
             counter[duration] += 1;
+            return true;
           }
+          return false;
         });
       });
       return Object.entries(counter).map(([minutes, count]) => ({
         value: minutes,
-        text: `${minutes} min (${this.formatNumber(count)})`,
+        text: `${minutes}+ min (${this.formatNumber(count)})`,
       }));
     },
     filterWeightOptions() {
