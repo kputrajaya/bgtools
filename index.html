@@ -44,7 +44,6 @@
             class="fs-7 text-primary text-decoration-underline"
             :href="'https://boardgamegeek.com/collection/user/' + username + '?own=1'"
             target="_blank"
-            rel="noreferrer noopener"
             x-show="!loading && items"
           >
             <span x-text="formatNumber(itemsLength())"></span>
@@ -95,16 +94,11 @@
           <template x-for="item in itemsSliced()">
             <div class="col-xxl-3 col-lg-4 col-md-6 col-12 mb-4">
               <div class="bgs-game card">
-                <a :href="'https://boardgamegeek.com/boardgame/' + item.id" target="_blank" rel="noreferrer noopener">
+                <a :href="'https://boardgamegeek.com/boardgame/' + item.id" target="_blank">
                   <div class="bgs-image bg-secondary rounded">
                     <img class="rounded" :src="item.image" :alt="item.name" loading="lazy" />
                   </div>
-                  <div
-                    class="card-body"
-                    :href="'https://boardgamegeek.com/boardgame/' + item.id"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
+                  <div class="card-body" :href="'https://boardgamegeek.com/boardgame/' + item.id" target="_blank">
                     <h5 class="card-title mb-3 align-middle">
                       <span x-html="item.name"></span>
                       <span class="fs-6 opacity-75" x-show="item.year">(<span x-text="item.year"></span>)</span>
@@ -209,7 +203,6 @@
                         class="bgs-expansion list-group-item text-muted bg-transparent d-flex align-items-center"
                         :href="'https://boardgamegeek.com/boardgame/' + expansion.id"
                         target="_blank"
-                        rel="noreferrer noopener"
                       >
                         <img
                           class="bg-secondary rounded flex-shrink-0"
