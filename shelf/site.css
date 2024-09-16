@@ -2,6 +2,8 @@
   font-family: Arial, sans-serif;
 }
 
+
+/* Attributes */
 a {
   color: inherit;
   text-decoration: inherit;
@@ -14,6 +16,8 @@ a:hover {
   display: none;
 }
 
+
+/* Utils */
 .fs-7 {
   font-size: 0.875rem;
 }
@@ -26,6 +30,8 @@ a:hover {
   white-space: pre-line;
 }
 
+
+/* Components */
 .bgs-game a:hover h5 > span,
 .bgs-game a:hover h6 > span {
   text-decoration: underline;
