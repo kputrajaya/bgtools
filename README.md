@@ -1,6 +1,10 @@
 # BGTools
 
-Collection of board game tools.
+A collection of board game tools:
+
+- Shelf: showcase BoardGameGeek (owned) game collection
+- Dials: track health and other values without dials
+- Score: calculate board game score without score pads
 
 ## Built With
 
