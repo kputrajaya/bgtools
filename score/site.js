@@ -1,17 +1,18 @@
 (() => {
   const gameData = {
     'A Feast for Odin': [
-      'Boats and Ships',
-      'Emigrated Ships',
-      'Sheeps and Cattles',
+      'Ships',
+      'Emigration',
+      'Animals',
       'English Crown',
-      'Exploration Boards',
-      'Sheds and Houses',
+      'Houses',
+      'Exploration',
       'Final Income',
       'Silver',
       'Occupations',
       'Negative Points',
-      'Thing Penalties',
+      'VP Tokens',
+      'Penalty Tokens',
     ],
     Agricola: [
       'Fields',
@@ -31,15 +32,15 @@
       'Begging Tokens',
     ],
     Earth: [
-      'Base Point',
-      'Event',
+      'Card Points',
+      'Events',
       'Compost',
-      'Sprout',
-      'Growth',
+      'Sprouts',
+      'Growths',
       'Terrain Bonus',
       'Shared Ecosystem',
       'Personal Ecosystem',
-      'Fauna',
+      'Fauna Bonus',
       'First to Complete',
     ],
     Evacuation: [
@@ -53,9 +54,9 @@
       'Missing Stadiums',
       'Penalty Chips',
     ],
-    'Gaia Project': ['VP Track', 'Research Track', 'Final Scoring', 'Resources'],
-    Keyflower: ['Fixed Points Tiles', 'Autumn Tiles', 'Winter Tiles', 'Boat Tiles', 'Turn Order Tiles', 'Gold'],
-    Nusfjord: ['Boats', 'Buildings', 'Unused Spaces', 'Shares', 'Unissued Shares', 'Golds'],
+    'Gaia Project': ['VP Track', 'Research Track Bonus', 'Final Scoring Tiles', 'Resources'],
+    Keyflower: ['Tile Points', 'Autumn Tiles', 'Winter Tiles', 'Boat Tiles', 'Turn Order Tiles', 'Golds'],
+    Nusfjord: ['Boats', 'Buildings', 'Unused Spaces', 'Owned Shares', 'Unissued Shares', 'Golds'],
     'Rising Sun': ['VP Track', 'Province Tokens', 'Province Set Bonus', 'Winter Upgrades'],
   };
 
