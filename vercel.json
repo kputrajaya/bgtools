@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/:path(dials|score)",
+      "destination": "/:path*/",
+      "permanent": false
+    }
+  ]
+}
