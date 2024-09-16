@@ -1,0 +1,26 @@
+* {
+  font-family: Arial, sans-serif;
+}
+
+
+/* Attributes */
+input {
+  width: 100%;
+  border: none;
+}
+input:focus {
+  outline: none;
+}
+
+
+/* Overrides */
+.table {
+  border: 1px solid #dee2e6;
+}
+.table th,
+.table td {
+  border: 1px solid #dee2e6;
+}
+.table th {
+  background: #f2f2f2;
+}
