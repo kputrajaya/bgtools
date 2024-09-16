@@ -1,5 +1,6 @@
 (() => {
   const gameData = {
+    '': ['Placeholder 1', 'Placeholder 2', 'Placeholder 3'],
     'A Feast for Odin': [
       'Ships',
       'Emigration',
@@ -76,7 +77,7 @@
   }
 
   function createScoreRow(numPlayers, categoryName = '') {
-    const row = document.createElement('tr');
+    const row = createElm('tr');
     row
       .appendChild(createElm('td'))
       .appendChild(createInput('text', 'p-2 text-start', categoryName, (e) => e.target.select()));
@@ -89,7 +90,7 @@
   }
 
   function createTotalRow(numPlayers) {
-    const row = document.createElement('tr');
+    const row = createElm('tr');
     row.appendChild(createElm('th', 'p-2 text-start')).innerText = 'Total';
     for (let i = 1; i <= numPlayers; i++) {
       row.appendChild(createElm('th', 'p-2 text-end')).innerText = '0';
@@ -99,18 +100,34 @@
 
   function generateTable() {
     table = createElm('table', 'table');
-    const headerRow = document.createElement('tr');
+    const headerRow = createElm('tr');
     headerRow.appendChild(createElm('th', 'p-2')).innerText = 'Category';
     for (let i = 1; i <= numPlayers; i++) {
       headerRow.appendChild(createElm('th', 'p-2 text-end')).innerText = `P${i}`;
     }
     table.appendChild(headerRow);
-    for (let i = 0; i < 3; i++) {
-      table.appendChild(createScoreRow(numPlayers, `Category ${i + 1}`));
-    }
     table.appendChild(createTotalRow(numPlayers));
     tableContainer.innerHTML = '';
     tableContainer.appendChild(table);
+    loadCategories('');
+  }
+
+  function populateGameDropdown() {
+    const gameSelect = document.getElementById('gameSelect');
+    Object.keys(gameData).forEach((game) => {
+      if (!game) return;
+      const option = createElm('option');
+      option.value = game;
+      option.textContent = game;
+      gameSelect.appendChild(option);
+    });
+  }
+
+  function loadCategories(selectedGame) {
+    const categories = gameData[selectedGame];
+    while (table.rows.length > 2) table.deleteRow(1);
+    categories.forEach((category) => table.insertBefore(createScoreRow(numPlayers, category), table.lastChild));
+    updateTotals();
   }
 
   function updateTotals() {
@@ -125,18 +142,6 @@
           return acc + value;
         }, 0);
       table.rows[numRows - 1].cells[player].innerText = sum;
-    }
-  }
-
-  function loadCategories() {
-    const gameList = Object.keys(gameData);
-    const promptOptions = gameList.map((game, index) => `${index + 1}. ${game}`).join('\n');
-    const selectedGameIndex = Math.floor(prompt(`Load categories for a game:\n${promptOptions}`));
-    if (selectedGameIndex && selectedGameIndex > 0 && selectedGameIndex <= gameList.length) {
-      const categories = gameData[gameList[selectedGameIndex - 1]];
-      while (table.rows.length > 2) table.deleteRow(1);
-      categories.forEach((category) => table.insertBefore(createScoreRow(numPlayers, category), table.lastChild));
-      updateTotals();
     }
   }
 
@@ -160,7 +165,8 @@
   }
 
   generateTable();
-  document.getElementById('loadBtn').addEventListener('click', loadCategories);
+  populateGameDropdown();
+  document.getElementById('gameSelect').addEventListener('change', (e) => loadCategories(e.target.value));
   document.getElementById('addRowBtn').addEventListener('click', addRow);
   document.getElementById('addColumnBtn').addEventListener('click', addColumn);
 })();

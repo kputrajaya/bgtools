@@ -20,9 +20,11 @@
       Calculate end-game scores of predefined or custom board games without score pads.
     </div>
     <div class="mb-3">
-      <button id="loadBtn" class="btn btn-primary">Load</button>
-      <button id="addColumnBtn" class="btn btn-secondary">Add Player</button>
-      <button id="addRowBtn" class="btn btn-secondary">Add Category</button>
+      <select id="gameSelect" class="form-select form-select-sm w-auto d-inline-block">
+        <option value="">-- Choose Game --</option>
+      </select>
+      <button id="addColumnBtn" class="btn btn-sm btn-secondary">Add Player</button>
+      <button id="addRowBtn" class="btn btn-sm btn-secondary">Add Category</button>
     </div>
     <div id="scoreTable" class="table-responsive"></div>
   </body>
