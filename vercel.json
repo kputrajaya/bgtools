@@ -1,7 +1,12 @@
 {
   "redirects": [
     {
-      "source": "/:path(dials|score)",
+      "source": "/",
+      "destination": "/shelf/",
+      "permanent": false
+    },
+    {
+      "source": "/:path(dials|score|shelf)",
       "destination": "/:path*/",
       "permanent": false
     }

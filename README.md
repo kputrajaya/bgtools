@@ -1,6 +1,6 @@
-# BGShelf
+# BGTools
 
-Showcase your BoardGameGeek collection.
+Collection of board game tools.
 
 ## Built With
 
