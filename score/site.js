@@ -1,5 +1,35 @@
 (() => {
   const gameData = {
+    'A Feast for Odin': [
+      'Boats and Ships',
+      'Emigrated Ships',
+      'Sheeps and Cattles',
+      'English Crown',
+      'Exploration Boards',
+      'Sheds and Houses',
+      'Final Income',
+      'Silver',
+      'Occupations',
+      'Negative Points',
+      'Thing Penalties',
+    ],
+    Agricola: [
+      'Fields',
+      'Pastures',
+      'Fenced Stables',
+      'Unused Spaces',
+      'Grain',
+      'Vegetables',
+      'Sheeps',
+      'Wild Boars',
+      'Cattles',
+      'Clay Rooms',
+      'Stone Rooms',
+      'Family Members',
+      'Card Points',
+      'Bonus Points',
+      'Begging Tokens',
+    ],
     Earth: [
       'Base Point',
       'Event',
@@ -12,11 +42,26 @@
       'Fauna',
       'First to Complete',
     ],
+    Evacuation: [
+      'Lowest Production',
+      'Goal Card 1',
+      'Goal Card 2',
+      'Goal Card 3',
+      'Happy Face Bonus',
+      'Old World Sites',
+      'Old World Populations',
+      'Missing Stadiums',
+      'Penalty Chips',
+    ],
+    'Gaia Project': ['VP Track', 'Research Track', 'Final Scoring', 'Resources'],
+    Keyflower: ['Fixed Points Tiles', 'Autumn Tiles', 'Winter Tiles', 'Boat Tiles', 'Turn Order Tiles', 'Gold'],
+    Nusfjord: ['Boats', 'Buildings', 'Unused Spaces', 'Shares', 'Unissued Shares', 'Golds'],
+    'Rising Sun': ['VP Track', 'Province Tokens', 'Province Set Bonus', 'Winter Upgrades'],
   };
 
   const tableContainer = document.getElementById('scoreTable');
-  let table,
-    numPlayers = 1;
+  let table;
+  let numPlayers = 1;
 
   function createElm(tag, className, attributes = {}) {
     const element = document.createElement(tag);
