@@ -16,6 +16,12 @@ a:hover {
   display: none;
 }
 
+/* Overrides */
+.input-group > .form-select {
+  padding-right: 1.5rem;
+  background-position: right .3rem center;
+}
+
 
 /* Utils */
 .fs-7 {
