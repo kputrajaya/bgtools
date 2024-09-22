@@ -58,7 +58,7 @@
             <div class="input-group input-group-sm">
               <label class="input-group-text" for="playerFilter">&#128100;</label>
               <select id="playerFilter" class="form-select" x-model.number="filter.player">
-                <option value="">Player count</option>
+                <option value="">Player</option>
                 <template x-for="option in filterPlayerOptions()">
                   <option :value="option.value" x-text="option.text"></option>
                 </template>
@@ -69,7 +69,7 @@
             <div class="input-group input-group-sm">
               <label class="input-group-text" for="playTimeFilter">&#128337;</label>
               <select id="playTimeFilter" class="form-select" x-model.number="filter.playTime">
-                <option value="">Play time</option>
+                <option value="">Time</option>
                 <template x-for="option in filterPlayTimeOptions()">
                   <option :value="option.value" x-text="option.text"></option>
                 </template>
