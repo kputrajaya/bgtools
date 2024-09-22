@@ -176,7 +176,7 @@ document.addEventListener('alpine:init', () => {
       });
       return Object.entries(counter).map(([minutes, count]) => ({
         value: minutes,
-        text: `${minutes}+ min (${this.formatNumber(count)})`,
+        text: `${minutes}m+ (${this.formatNumber(count)})`,
       }));
     },
     filterWeightOptions() {
