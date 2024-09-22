@@ -51,8 +51,9 @@ document.addEventListener('alpine:init', () => {
     return count.length > 3 ? Math.floor(Math.floor(count) / 1000) + 'k' : count;
   };
   const getExpansions = async (username) => {
-    const collectionObj = await _fetchBgg(`collection/?username=${username}&own=1&subtype=boardgameexpansion`);
+    const collectionObj = await _fetchBgg(`collection/?username=${username}&subtype=boardgameexpansion`);
     return ensureArray(collectionObj?.items?.item)
+      .filter((item) => item.status['@_own'] == '1') // Filtering "own" on the API somehow results in stale data
       .map((item) => ({
         id: item['@_objectid'],
         image: item.thumbnail,
