@@ -2,8 +2,6 @@
   font-family: Arial, sans-serif;
 }
 
-
-/* Attributes */
 a {
   color: inherit;
   text-decoration: inherit;
@@ -12,18 +10,29 @@ a:hover {
   color: inherit;
 }
 
+input {
+  width: 100%;
+  border: none;
+}
+input:focus {
+  outline: none;
+}
+
 [x-cloak] {
   display: none;
+}
+
+[\@click] {
+  cursor: pointer;
 }
 
 
 /* Utils */
 .fs-7 {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
 }
-
 .fs-8 {
-  font-size: 0.725rem;
+  font-size: 0.7rem;
 }
 
 .whitespace-pre-line {
@@ -32,6 +41,21 @@ a:hover {
 
 
 /* Overrides */
+.container {
+  max-width: 992px;
+}
+
+.table {
+  border: 1px solid #dee2e6;
+}
+.table th,
+.table td {
+  border: 1px solid #dee2e6;
+}
+.table th {
+  background: #f2f2f2;
+}
+
 .input-group > .form-select {
   padding-right: 1.5rem;
   background-position: right .3rem center;
@@ -58,4 +82,12 @@ a:hover {
   width: 40px;
   height: 40px;
   object-fit: contain;
+}
+
+
+/* Media Queries */
+@media (min-width: 992px) {
+  html {
+    font-size: 18px;
+  }
 }

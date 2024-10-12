@@ -1,6 +1,6 @@
 (() => {
   const gameData = {
-    '': ['Placeholder 1', 'Placeholder 2', 'Placeholder 3'],
+    '': ['Category 1', 'Category 2', 'Category 3'],
     'A Feast for Odin': [
       'Ships',
       'Emigrations',
@@ -63,16 +63,16 @@
 
   const tableContainer = document.getElementById('scoreTable');
   let table;
-  let numPlayers = 1;
+  let numPlayers = 2;
 
-  function createElm(tag, className, attributes = {}) {
+  function createElm(tag, className = '', attributes = {}) {
     const element = document.createElement(tag);
     element.className = className;
     Object.entries(attributes).forEach(([key, value]) => (element[key] = value));
     return element;
   }
 
-  function createInput(type, className, value, onfocus, onblur) {
+  function createInput(type, className, value, onfocus = null, onblur = null) {
     return createElm('input', className, { type, value, onfocus, onblur });
   }
 
@@ -80,7 +80,7 @@
     const row = createElm('tr');
     row
       .appendChild(createElm('td'))
-      .appendChild(createInput('text', 'p-2 text-start', categoryName, (e) => e.target.select()));
+      .appendChild(createInput('text', 'p-2 fs-7 text-start', categoryName, (e) => e.target.select()));
     for (let i = 1; i <= numPlayers; i++) {
       row
         .appendChild(createElm('td'))
@@ -91,7 +91,7 @@
 
   function createTotalRow(numPlayers) {
     const row = createElm('tr');
-    row.appendChild(createElm('th', 'p-2 text-start')).innerText = 'Total';
+    row.appendChild(createElm('th', 'p-2 fs-7 text-start')).innerText = 'Total';
     for (let i = 1; i <= numPlayers; i++) {
       row.appendChild(createElm('th', 'p-2 text-end')).innerText = '0';
     }
@@ -100,7 +100,7 @@
 
   function generateTable() {
     table = createElm('table', 'table');
-    const headerRow = createElm('tr');
+    const headerRow = createElm('tr', 'fs-7');
     headerRow.appendChild(createElm('th', 'p-2')).innerText = 'Category';
     for (let i = 1; i <= numPlayers; i++) {
       headerRow.appendChild(createElm('th', 'p-2 text-end')).innerText = `P${i}`;
