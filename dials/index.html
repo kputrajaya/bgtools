@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>Dials Replacement</title>
+    <title>Digital Dials</title>
 
     <link rel="icon" href="/favicon-16.png" sizes="16x16" />
     <link rel="icon" href="/favicon-32.png" sizes="32x32" />
@@ -22,10 +22,8 @@
     <div class="container p-3" x-data="dials" x-cloak>
       <!-- Before Init -->
       <div x-show="!categories.length">
-        <h1 class="mb-2 fs-5 fw-bold">Dials Replacement</h1>
-        <div class="mb-3 text-secondary">
-          Track points, health, and other parameters in tabletop games without physical dials.
-        </div>
+        <h1 class="mb-2 fs-5 fw-bold">Digital Dials</h1>
+        <div class="mb-3 text-secondary">Track health or other values in board games without physical dials.</div>
         <div class="mb-2 fw-semibold">First off, which preset?</div>
         <template x-for="preset in presetKeys">
           <div class="d-grid mb-2">
