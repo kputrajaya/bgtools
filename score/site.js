@@ -56,7 +56,7 @@
       'Penalty Chips',
     ],
     'Gaia Project': ['VP Track', 'Research Track Bonus', 'Final Scoring Tiles', 'Resources'],
-    Keyflower: ['Tile Points', 'Autumn Tiles', 'Winter Tiles', 'Boat Tiles', 'Turn Order Tiles', 'Golds'],
+    Keyflower: ['Boat Tiles', 'Turn Order Tiles', 'Autumn Tiles', 'Winter Tiles', 'Tile Points', 'Golds'],
     Nusfjord: ['Boats', 'Buildings', 'Unused Spaces', 'Owned Shares', 'Unissued Shares', 'Golds'],
     'Rising Sun': ['VP Track', 'Province Tokens', 'Province Set Bonus', 'Winter Upgrades'],
   };
