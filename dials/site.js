@@ -12,7 +12,7 @@ document.addEventListener('alpine:init', () => {
       ...[...Array(6).keys()].map((i) => ({
         name: `Monster ${i + 1}`,
         open: false,
-        items: [...Array(6).keys()].map((j) => ({ name: `${j + 1}`, metrics: [{ value: 0 }] })),
+        items: [...Array(10).keys()].map((j) => ({ name: `${j + 1}`, metrics: [{ value: 0 }] })),
       })),
     ],
     'Star Realms': [
@@ -132,11 +132,17 @@ document.addEventListener('alpine:init', () => {
       lastJson: null,
 
       // Method
-      itemActive(item) {
-        return item.metrics.some((metric) => metric.value > 0);
-      },
       loadPreset(presetKey) {
         this.categories = deepCopy(PRESETS[presetKey]);
+      },
+      itemActive(item) {
+        return item.note || item.metrics.some((metric) => metric.value > 0);
+      },
+      itemDisplay(item) {
+        return item.name + (item.note ? `: ${item.note}` : '');
+      },
+      editNote(item) {
+        item.note = prompt('Enter note, or cancel to clear:', item.note || '') || '';
       },
       metricDecrease(metric) {
         if (metric.value > 0) {

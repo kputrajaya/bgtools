@@ -57,7 +57,11 @@
                         }"
                       >
                         <div class="card border-0 rounded overflow-hidden" :class="{'opacity-50': !itemActive(item)}">
-                          <div class="card-header p-0 px-2 fs-7 text-bg-secondary" x-text="item.name"></div>
+                          <div
+                            class="card-header p-0 px-2 fs-7 text-bg-secondary"
+                            x-text="itemDisplay(item)"
+                            @click="editNote(item)"
+                          ></div>
                           <ul class="list-group list-group-flush bg-light user-select-none">
                             <template x-for="metric in item.metrics">
                               <div class="input-group">
