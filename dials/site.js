@@ -7,12 +7,13 @@ document.addEventListener('alpine:init', () => {
         items: [...Array(4).keys()].map((i) => ({
           name: `P${i + 1}`,
           metrics: [{ value: 10 }, { value: 0, context: 'info' }],
+          size: 1,
         })),
       },
       ...[...Array(6).keys()].map((i) => ({
         name: `Monster ${i + 1}`,
         open: false,
-        items: [...Array(10).keys()].map((j) => ({ name: `${j + 1}`, metrics: [{ value: 0 }] })),
+        items: [...Array(10).keys()].map((j) => ({ name: `${j + 1}`, metrics: [{ value: 0 }], size: 1 })),
       })),
     ],
     'Star Realms': [
@@ -22,7 +23,7 @@ document.addEventListener('alpine:init', () => {
         items: [...Array(2).keys()].map((i) => ({
           name: `P${i + 1}`,
           metrics: [{ value: 50 }],
-          size: 2,
+          size: 4,
         })),
       },
       {
@@ -31,60 +32,64 @@ document.addEventListener('alpine:init', () => {
         items: [...Array(2).keys()].map((i) => ({
           name: `P${i + 3}`,
           metrics: [{ value: 50 }],
+          size: 4,
+        })),
+      },
+    ],
+    'Generic: 1 Value': [
+      {
+        name: 'Players',
+        open: true,
+        items: [...Array(4).keys()].map((i) => ({ name: `P${i + 1}`, metrics: [{ value: 0 }], size: 4 })),
+      },
+      {
+        name: 'Players',
+        open: false,
+        items: [...Array(4).keys()].map((i) => ({ name: `P${i + 5}`, metrics: [{ value: 0 }], size: 4 })),
+      },
+      {
+        name: 'Players',
+        open: false,
+        items: [...Array(4).keys()].map((i) => ({ name: `P${i + 9}`, metrics: [{ value: 0 }], size: 4 })),
+      },
+    ],
+    'Generic: 2 Values': [
+      {
+        name: 'Players',
+        open: true,
+        items: [...Array(4).keys()].map((i) => ({
+          name: `P${i + 1}`,
+          metrics: [{ value: 0 }, { value: 0, context: 'info' }],
+          size: 2,
+        })),
+      },
+      {
+        name: 'Players',
+        open: false,
+        items: [...Array(4).keys()].map((i) => ({
+          name: `P${i + 5}`,
+          metrics: [{ value: 0 }, { value: 0, context: 'info' }],
+          size: 2,
+        })),
+      },
+      {
+        name: 'Players',
+        open: false,
+        items: [...Array(4).keys()].map((i) => ({
+          name: `P${i + 9}`,
+          metrics: [{ value: 0 }, { value: 0, context: 'info' }],
           size: 2,
         })),
       },
     ],
-    'Generic - 1 Value': [
-      {
-        name: 'Players',
-        open: true,
-        items: [...Array(4).keys()].map((i) => ({ name: `P${i + 1}`, metrics: [{ value: 0 }] })),
-      },
-      {
-        name: 'Players',
-        open: false,
-        items: [...Array(4).keys()].map((i) => ({ name: `P${i + 5}`, metrics: [{ value: 0 }] })),
-      },
-      {
-        name: 'Players',
-        open: false,
-        items: [...Array(4).keys()].map((i) => ({ name: `P${i + 9}`, metrics: [{ value: 0 }] })),
-      },
-    ],
-    'Generic - 2 Values': [
-      {
-        name: 'Players',
-        open: true,
-        items: [...Array(4).keys()].map((i) => ({
-          name: `P${i + 1}`,
-          metrics: [{ value: 0 }, { value: 0, context: 'info' }],
-        })),
-      },
-      {
-        name: 'Players',
-        open: false,
-        items: [...Array(4).keys()].map((i) => ({
-          name: `P${i + 5}`,
-          metrics: [{ value: 0 }, { value: 0, context: 'info' }],
-        })),
-      },
-      {
-        name: 'Players',
-        open: false,
-        items: [...Array(4).keys()].map((i) => ({
-          name: `P${i + 9}`,
-          metrics: [{ value: 0 }, { value: 0, context: 'info' }],
-        })),
-      },
-    ],
-    'Generic - 3 Values': [
+    'Generic: 3 Values': [
       {
         name: 'Players',
         open: true,
         items: [...Array(4).keys()].map((i) => ({
           name: `P${i + 1}`,
           metrics: [{ value: 0 }, { value: 0, context: 'warning' }, { value: 0, context: 'info' }],
+          size: 2,
         })),
       },
       {
@@ -93,6 +98,7 @@ document.addEventListener('alpine:init', () => {
         items: [...Array(4).keys()].map((i) => ({
           name: `P${i + 5}`,
           metrics: [{ value: 0 }, { value: 0, context: 'warning' }, { value: 0, context: 'info' }],
+          size: 2,
         })),
       },
       {
@@ -101,6 +107,7 @@ document.addEventListener('alpine:init', () => {
         items: [...Array(4).keys()].map((i) => ({
           name: `P${i + 9}`,
           metrics: [{ value: 0 }, { value: 0, context: 'warning' }, { value: 0, context: 'info' }],
+          size: 2,
         })),
       },
     ],
@@ -138,11 +145,11 @@ document.addEventListener('alpine:init', () => {
       itemActive(item) {
         return item.note || item.metrics.some((metric) => metric.value > 0);
       },
-      itemDisplay(item) {
-        return item.name + (item.note ? `: ${item.note}` : '');
-      },
       editNote(item) {
-        item.note = prompt('Enter note, or cancel to clear:', item.note || '') || '';
+        const newNote = prompt(`Enter note for ${item.name}:`, item.note || '');
+        if (newNote !== null) {
+          item.note = newNote.trim();
+        }
       },
       metricDecrease(metric) {
         if (metric.value > 0) {

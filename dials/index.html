@@ -52,22 +52,22 @@
                     <template x-for="item in category.items">
                       <div
                         :class="{
+                          'col-12': item.size === 4,
                           'col-12 col-sm-6': item.size === 2,
-                          'col-6 col-sm-4 col-md-3': item.size !== 2,
+                          'col-6 col-sm-4 col-md-3': (item.size || 1) === 1,
                         }"
                       >
                         <div class="card border-0 rounded overflow-hidden" :class="{'opacity-50': !itemActive(item)}">
-                          <div
-                            class="card-header p-0 px-2 fs-7 text-bg-secondary"
-                            x-text="itemDisplay(item)"
-                            @click="editNote(item)"
-                          ></div>
+                          <div class="card-header p-1 px-2 fs-7 text-bg-secondary" @click="editNote(item)">
+                            <span x-text="item.name"></span>
+                            <span class="float-end" x-text="item.note || '&hellip;'"></span>
+                          </div>
                           <ul class="list-group list-group-flush bg-light user-select-none">
                             <template x-for="metric in item.metrics">
-                              <div class="input-group">
+                              <div class="bgd-input-group input-group">
                                 <button
                                   class="btn px-4 border-top-0 rounded-0"
-                                  :class="`p-${item.size === 2 ? '2' : '1'} btn-${metric.context || 'danger'}`"
+                                  :class="`p-${item.size > 1 ? '2' : '1'} btn-${metric.context || 'danger'}`"
                                   type="button"
                                   @click="metricDecrease(metric)"
                                 >
@@ -75,14 +75,14 @@
                                 </button>
                                 <input
                                   class="form-control px-1 text-center border-top-0 bg-opacity-10"
-                                  :class="`p-${item.size === 2 ? '2' : '1'} bg-${metric.context || 'danger'}`"
+                                  :class="`p-${item.size > 1 ? '2' : '1'} bg-${metric.context || 'danger'}`"
                                   type="phone"
                                   x-model.number="metric.value"
                                   @blur="metricBlur(metric)"
                                 />
                                 <button
                                   class="btn px-4 border-top-0 rounded-0"
-                                  :class="`p-${item.size === 2 ? '2' : '1'} btn-${metric.context || 'danger'}`"
+                                  :class="`p-${item.size > 1 ? '2' : '1'} btn-${metric.context || 'danger'}`"
                                   type="button"
                                   @click="metricIncrease(metric)"
                                 >
