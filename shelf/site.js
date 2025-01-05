@@ -108,166 +108,168 @@ document.addEventListener('alpine:init', () => {
 
   setInterval(relayout, 1000);
 
-  Alpine.data('bgs', () => ({
-    // Constants
-    ITEMS_LIMIT: 1000,
-    FILTER_PLAYER_MAX: 10,
+  Alpine.data('bgs', function () {
+    return {
+      // Constants
+      ITEMS_LIMIT: 1000,
+      FILTER_PLAYER_MAX: 10,
 
-    // Data
-    username: '',
-    items: null,
-    filter: { player: null, playTime: null, weight: null },
-    loading: false,
+      // Data
+      username: '',
+      items: null,
+      filter: { player: null, playTime: null, weight: null },
+      loading: false,
 
-    // Computed
-    itemsLength() {
-      return this.items ? this.items.length : 0;
-    },
-    itemsSliced() {
-      if (!this.items) return [];
+      // Computed
+      itemsLength() {
+        return this.items ? this.items.length : 0;
+      },
+      itemsSliced() {
+        if (!this.items) return [];
 
-      let items = this.items;
-      if (this.filter.player !== null) {
-        items = items.filter(
-          (item) => item.players.max >= this.filter.player && item.players.min <= this.filter.player
-        );
-      }
-      if (this.filter.playTime !== null) {
-        items = items.filter(
-          (item) => item.playTime.max >= this.filter.playTime && item.playTime.max < this.filter.playTime + 60
-        );
-      }
-      if (this.filter.weight !== null) {
-        items = items.filter(
-          (item) => item.enriched.weight >= this.filter.weight && item.enriched.weight < this.filter.weight + 1
-        );
-      }
-      return items.slice(0, this.ITEMS_LIMIT);
-    },
-    filterPlayerOptions() {
-      if (!this.items) return [];
-
-      const counter = {};
-      this.items.forEach((item) => {
-        for (let i = item.players.min; i <= Math.min(item.players.max, this.FILTER_PLAYER_MAX); i++) {
-          counter[i] = (counter[i] || 0) + 1;
+        let items = this.items;
+        if (this.filter.player !== null) {
+          items = items.filter(
+            (item) => item.players.max >= this.filter.player && item.players.min <= this.filter.player
+          );
         }
-      });
-      return Object.entries(counter)
-        .sort(([a], [b]) => a - b)
-        .map(([player, count]) => ({
-          value: player,
-          text: `${player < this.FILTER_PLAYER_MAX ? player : this.FILTER_PLAYER_MAX + '+'}
-            (${this.formatNumber(count)})`,
-        }));
-    },
-    filterPlayTimeOptions() {
-      if (!this.items) return [];
+        if (this.filter.playTime !== null) {
+          items = items.filter(
+            (item) => item.playTime.max >= this.filter.playTime && item.playTime.max < this.filter.playTime + 60
+          );
+        }
+        if (this.filter.weight !== null) {
+          items = items.filter(
+            (item) => item.enriched.weight >= this.filter.weight && item.enriched.weight < this.filter.weight + 1
+          );
+        }
+        return items.slice(0, this.ITEMS_LIMIT);
+      },
+      filterPlayerOptions() {
+        if (!this.items) return [];
 
-      const durations = [180, 120, 60, 0];
-      const counter = Object.fromEntries(durations.map((duration) => [duration, 0]));
-      this.items.forEach((item) => {
-        durations.some((duration) => {
-          if (duration <= item.playTime.max) {
-            counter[duration] += 1;
-            return true;
+        const counter = {};
+        this.items.forEach((item) => {
+          for (let i = item.players.min; i <= Math.min(item.players.max, this.FILTER_PLAYER_MAX); i++) {
+            counter[i] = (counter[i] || 0) + 1;
           }
-          return false;
         });
-      });
-      return Object.entries(counter).map(([minutes, count]) => ({
-        value: minutes,
-        text: `${minutes}m+ (${this.formatNumber(count)})`,
-      }));
-    },
-    filterWeightOptions() {
-      if (!this.items) return [];
+        return Object.entries(counter)
+          .sort(([a], [b]) => a - b)
+          .map(([player, count]) => ({
+            value: player,
+            text: `${player < this.FILTER_PLAYER_MAX ? player : this.FILTER_PLAYER_MAX + '+'}
+              (${this.formatNumber(count)})`,
+          }));
+      },
+      filterPlayTimeOptions() {
+        if (!this.items) return [];
 
-      const counter = {};
-      this.items.forEach((item) => {
-        const group = Math.floor(item.enriched.weight);
-        if (group) {
-          counter[group] = (counter[group] || 0) + 1;
-        }
-      });
-      return Object.entries(counter)
-        .sort(([a], [b]) => a - b)
-        .map(([group, count]) => ({
-          value: group,
-          text: `${group}+ (${this.formatNumber(count)})`,
-        }));
-    },
-
-    // Method
-    formatNumber(num) {
-      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    },
-    formatCounts(nums) {
-      if (!nums) return '';
-
-      const groups = [];
-      let currentStart = null;
-      let lastNum = null;
-      for (let i = 0; i <= nums.length; i++) {
-        if (lastNum && nums[i] === lastNum + 1) {
-          lastNum = nums[i];
-          continue;
-        }
-        if (currentStart) {
-          groups.push(currentStart === lastNum ? lastNum : `${currentStart}−${lastNum}`);
-        }
-        currentStart = lastNum = nums[i];
-      }
-      return groups.join(', ');
-    },
-    async load() {
-      this.loading = true;
-      this.items = await getGames(this.username);
-      relayout();
-      this.loading = false;
-
-      await this.enrich();
-      relayout();
-    },
-    async enrich() {
-      // Get thing IDs
-      const gameIds = new Set(this.items.map((item) => item.id));
-      const expansions = await getExpansions(this.username);
-      const expansionIds = new Set(expansions.map((expansion) => expansion.id));
-      const expansionMap = Object.fromEntries(expansions.map((expansion) => [expansion.id, expansion]));
-
-      // Get things and store data in a map
-      const things = await getThings([...expansionIds, ...gameIds]);
-      const itemMap = {};
-      things.forEach((thing) => {
-        if (gameIds.has(thing.id)) {
-          itemMap[thing.id] = itemMap[thing.id] || {};
-          itemMap[thing.id].weight = thing.weight;
-          itemMap[thing.id].playersBest = thing.playersBest;
-        } else if (expansionIds.has(thing.id)) {
-          thing.parentIds.forEach((parentId) => {
-            if (gameIds.has(parentId)) {
-              itemMap[parentId] = itemMap[parentId] || {};
-              itemMap[parentId].expansions = [...ensureArray(itemMap[parentId].expansions), expansionMap[thing.id]];
+        const durations = [180, 120, 60, 0];
+        const counter = Object.fromEntries(durations.map((duration) => [duration, 0]));
+        this.items.forEach((item) => {
+          durations.some((duration) => {
+            if (duration <= item.playTime.max) {
+              counter[duration] += 1;
+              return true;
             }
+            return false;
           });
+        });
+        return Object.entries(counter).map(([minutes, count]) => ({
+          value: minutes,
+          text: `${minutes}m+ (${this.formatNumber(count)})`,
+        }));
+      },
+      filterWeightOptions() {
+        if (!this.items) return [];
+
+        const counter = {};
+        this.items.forEach((item) => {
+          const group = Math.floor(item.enriched.weight);
+          if (group) {
+            counter[group] = (counter[group] || 0) + 1;
+          }
+        });
+        return Object.entries(counter)
+          .sort(([a], [b]) => a - b)
+          .map(([group, count]) => ({
+            value: group,
+            text: `${group}+ (${this.formatNumber(count)})`,
+          }));
+      },
+
+      // Method
+      formatNumber(num) {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      },
+      formatCounts(nums) {
+        if (!nums) return '';
+
+        const groups = [];
+        let currentStart = null;
+        let lastNum = null;
+        for (let i = 0; i <= nums.length; i++) {
+          if (lastNum && nums[i] === lastNum + 1) {
+            lastNum = nums[i];
+            continue;
+          }
+          if (currentStart) {
+            groups.push(currentStart === lastNum ? lastNum : `${currentStart}−${lastNum}`);
+          }
+          currentStart = lastNum = nums[i];
         }
-      });
+        return groups.join(', ');
+      },
+      async load() {
+        this.loading = true;
+        this.items = await getGames(this.username);
+        relayout();
+        this.loading = false;
 
-      // Enrich item data
-      this.items.forEach((item) => {
-        item.enriched = itemMap[item.id] || {};
-      });
-    },
+        await this.enrich();
+        relayout();
+      },
+      async enrich() {
+        // Get thing IDs
+        const gameIds = new Set(this.items.map((item) => item.id));
+        const expansions = await getExpansions(this.username);
+        const expansionIds = new Set(expansions.map((expansion) => expansion.id));
+        const expansionMap = Object.fromEntries(expansions.map((expansion) => [expansion.id, expansion]));
 
-    // Initialization
-    init() {
-      const params = new URLSearchParams(window.location.search);
-      this.username = params.get('u') || DEFAULT_USER;
-      if (this.username) {
-        this.load();
-      }
-      this.$watch('filter', relayout);
-    },
-  }));
+        // Get things and store data in a map
+        const things = await getThings([...expansionIds, ...gameIds]);
+        const itemMap = {};
+        things.forEach((thing) => {
+          if (gameIds.has(thing.id)) {
+            itemMap[thing.id] = itemMap[thing.id] || {};
+            itemMap[thing.id].weight = thing.weight;
+            itemMap[thing.id].playersBest = thing.playersBest;
+          } else if (expansionIds.has(thing.id)) {
+            thing.parentIds.forEach((parentId) => {
+              if (gameIds.has(parentId)) {
+                itemMap[parentId] = itemMap[parentId] || {};
+                itemMap[parentId].expansions = [...ensureArray(itemMap[parentId].expansions), expansionMap[thing.id]];
+              }
+            });
+          }
+        });
+
+        // Enrich item data
+        this.items.forEach((item) => {
+          item.enriched = itemMap[item.id] || {};
+        });
+      },
+
+      // Initialization
+      init() {
+        const params = new URLSearchParams(window.location.search);
+        this.username = params.get('u') || DEFAULT_USER;
+        if (this.username) {
+          this.load();
+        }
+        this.$watch('filter', relayout);
+      },
+    };
+  });
 });
