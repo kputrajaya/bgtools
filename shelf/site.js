@@ -1,5 +1,6 @@
+const DEFAULT_USER = 'kputrajaya';
+
 document.addEventListener('alpine:init', () => {
-  const defaultUsername = 'kputrajaya';
   const masonryWrapper = new Masonry('#wrapper', {
     itemSelector: '.col-12',
     percentPosition: true,
@@ -7,7 +8,8 @@ document.addEventListener('alpine:init', () => {
   });
   const xmlParser = new XMLParser({ ignoreAttributes: false });
 
-  const _fetchBgg = async (path) => {
+  const ensureArray = (value) => (value ? (Array.isArray(value) ? value : [value]) : []);
+  const fetchBgg = async (path) => {
     const url = `https://boardgamegeek.com/xmlapi2/${path}`;
     const options = { 'Content-Type': 'application/xml' };
     let fetchRes;
@@ -19,9 +21,24 @@ document.addEventListener('alpine:init', () => {
     const collectionText = await fetchRes.text();
     return xmlParser.parse(collectionText);
   };
-  const ensureArray = (value) => (value ? (Array.isArray(value) ? value : [value]) : []);
+  const formatRatingCount = (count) => {
+    return count.length > 3 ? Math.floor(Math.floor(count) / 1000) + 'k' : count;
+  };
+  const calculateBestPlayerCount = (item) => {
+    const playerPoll = item.poll.find((poll) => poll['@_name'] === 'suggested_numplayers');
+    return ensureArray(playerPoll.results)
+      .filter((result) => {
+        const votes = result.result.reduce((acc, vote) => {
+          acc[vote['@_value']] = Math.floor(vote['@_numvotes']);
+          return acc;
+        }, {});
+        const totalVotes = (votes.Best || 0) + (votes.Recommended || 0) + (votes['Not Recommended'] || 0);
+        return votes.Best >= totalVotes / 2;
+      })
+      .map((result) => Math.floor(result['@_numplayers']));
+  };
   const getGames = async (username) => {
-    const collectionObj = await _fetchBgg(
+    const collectionObj = await fetchBgg(
       `collection/?username=${username}&own=1&excludesubtype=boardgameexpansion&stats=1`
     );
     return ensureArray(collectionObj?.items?.item)
@@ -40,18 +57,15 @@ document.addEventListener('alpine:init', () => {
         },
         rating: Math.floor(item.stats.rating['@_value']) || null,
         ratingBgg: Math.round(parseFloat(item.stats.rating.average['@_value']) * 10) / 10,
-        ratingBggCount: _formatRatingCount(item.stats.rating.usersrated['@_value']),
+        ratingBggCount: formatRatingCount(item.stats.rating.usersrated['@_value']),
         rank: Math.floor((item.stats.rating.ranks.rank[0] || item.stats.rating.ranks.rank)['@_value']),
         comment: item.comment,
         enriched: {},
       }))
       .sort((a, b) => (b.rating || 0) - (a.rating || 0) || (a.rank || 999999) - (b.rank || 999999));
   };
-  const _formatRatingCount = (count) => {
-    return count.length > 3 ? Math.floor(Math.floor(count) / 1000) + 'k' : count;
-  };
   const getExpansions = async (username) => {
-    const collectionObj = await _fetchBgg(`collection/?username=${username}&subtype=boardgameexpansion`);
+    const collectionObj = await fetchBgg(`collection/?username=${username}&subtype=boardgameexpansion`);
     return ensureArray(collectionObj?.items?.item)
       .filter((item) => item.status['@_own'] == '1') // Filtering "own" on the API somehow results in stale data
       .map((item) => ({
@@ -71,32 +85,19 @@ document.addEventListener('alpine:init', () => {
     const results = await Promise.all(
       chunks.map(async (chunk) => {
         const chunkThingIds = chunk.join(',');
-        const thingObj = await _fetchBgg(`thing?id=${chunkThingIds}&stats=1&pagesize=${chunkSize}`);
+        const thingObj = await fetchBgg(`thing?id=${chunkThingIds}&stats=1&pagesize=${chunkSize}`);
         const chunkResult = ensureArray(thingObj?.items?.item).map((item) => ({
           id: item['@_id'],
           parentIds: ensureArray(item.link)
             .filter((link) => link['@_type'] === 'boardgameexpansion')
             .map((link) => link['@_id']),
           weight: parseFloat(item.statistics.ratings.averageweight['@_value']) || null,
-          playersBest: _getBestPlayerCount(item),
+          playersBest: calculateBestPlayerCount(item),
         }));
         return chunkResult;
       })
     );
     return results.flat();
-  };
-  const _getBestPlayerCount = (item) => {
-    const playerPoll = item.poll.find((poll) => poll['@_name'] === 'suggested_numplayers');
-    return ensureArray(playerPoll.results)
-      .filter((result) => {
-        const votes = result.result.reduce((acc, vote) => {
-          acc[vote['@_value']] = Math.floor(vote['@_numvotes']);
-          return acc;
-        }, {});
-        const totalVotes = (votes.Best || 0) + (votes.Recommended || 0) + (votes['Not Recommended'] || 0);
-        return votes.Best >= totalVotes / 2;
-      })
-      .map((result) => Math.floor(result['@_numplayers']));
   };
   const relayout = () => {
     setTimeout(() => {
@@ -262,7 +263,7 @@ document.addEventListener('alpine:init', () => {
     // Initialization
     init() {
       const params = new URLSearchParams(window.location.search);
-      this.username = params.get('u') || defaultUsername;
+      this.username = params.get('u') || DEFAULT_USER;
       if (this.username) {
         this.load();
       }

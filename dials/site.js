@@ -1,118 +1,118 @@
-document.addEventListener('alpine:init', () => {
-  const PRESETS = {
-    Gloomhaven: [
-      {
-        name: 'Players',
-        open: true,
-        items: [...Array(4).keys()].map((i) => ({
-          name: `P${i + 1}`,
-          metrics: [{ value: 10 }, { value: 0, context: 'info' }],
-          size: 1,
-        })),
-      },
-      ...[...Array(6).keys()].map((i) => ({
-        name: `Monster ${i + 1}`,
-        open: false,
-        items: [...Array(10).keys()].map((j) => ({ name: `${j + 1}`, metrics: [{ value: 0 }], size: 1 })),
+const PRESETS = {
+  Gloomhaven: [
+    {
+      name: 'Players',
+      open: true,
+      items: [...Array(4).keys()].map((i) => ({
+        name: `P${i + 1}`,
+        metrics: [{ value: 10 }, { value: 0, context: 'info' }],
+        size: 1,
       })),
-    ],
-    'Star Realms': [
-      {
-        name: 'Players',
-        open: true,
-        items: [...Array(2).keys()].map((i) => ({
-          name: `P${i + 1}`,
-          metrics: [{ value: 50 }],
-          size: 4,
-        })),
-      },
-      {
-        name: 'Players',
-        open: false,
-        items: [...Array(2).keys()].map((i) => ({
-          name: `P${i + 3}`,
-          metrics: [{ value: 50 }],
-          size: 4,
-        })),
-      },
-    ],
-    'Generic: 1 Value': [
-      {
-        name: 'Players',
-        open: true,
-        items: [...Array(4).keys()].map((i) => ({ name: `P${i + 1}`, metrics: [{ value: 0 }], size: 4 })),
-      },
-      {
-        name: 'Players',
-        open: false,
-        items: [...Array(4).keys()].map((i) => ({ name: `P${i + 5}`, metrics: [{ value: 0 }], size: 4 })),
-      },
-      {
-        name: 'Players',
-        open: false,
-        items: [...Array(4).keys()].map((i) => ({ name: `P${i + 9}`, metrics: [{ value: 0 }], size: 4 })),
-      },
-    ],
-    'Generic: 2 Values': [
-      {
-        name: 'Players',
-        open: true,
-        items: [...Array(4).keys()].map((i) => ({
-          name: `P${i + 1}`,
-          metrics: [{ value: 0 }, { value: 0, context: 'info' }],
-          size: 2,
-        })),
-      },
-      {
-        name: 'Players',
-        open: false,
-        items: [...Array(4).keys()].map((i) => ({
-          name: `P${i + 5}`,
-          metrics: [{ value: 0 }, { value: 0, context: 'info' }],
-          size: 2,
-        })),
-      },
-      {
-        name: 'Players',
-        open: false,
-        items: [...Array(4).keys()].map((i) => ({
-          name: `P${i + 9}`,
-          metrics: [{ value: 0 }, { value: 0, context: 'info' }],
-          size: 2,
-        })),
-      },
-    ],
-    'Generic: 3 Values': [
-      {
-        name: 'Players',
-        open: true,
-        items: [...Array(4).keys()].map((i) => ({
-          name: `P${i + 1}`,
-          metrics: [{ value: 0 }, { value: 0, context: 'warning' }, { value: 0, context: 'info' }],
-          size: 2,
-        })),
-      },
-      {
-        name: 'Players',
-        open: false,
-        items: [...Array(4).keys()].map((i) => ({
-          name: `P${i + 5}`,
-          metrics: [{ value: 0 }, { value: 0, context: 'warning' }, { value: 0, context: 'info' }],
-          size: 2,
-        })),
-      },
-      {
-        name: 'Players',
-        open: false,
-        items: [...Array(4).keys()].map((i) => ({
-          name: `P${i + 9}`,
-          metrics: [{ value: 0 }, { value: 0, context: 'warning' }, { value: 0, context: 'info' }],
-          size: 2,
-        })),
-      },
-    ],
-  };
+    },
+    ...[...Array(6).keys()].map((i) => ({
+      name: `Monster ${i + 1}`,
+      open: false,
+      items: [...Array(10).keys()].map((j) => ({ name: `${j + 1}`, metrics: [{ value: 0 }], size: 1 })),
+    })),
+  ],
+  'Star Realms': [
+    {
+      name: 'Players',
+      open: true,
+      items: [...Array(2).keys()].map((i) => ({
+        name: `P${i + 1}`,
+        metrics: [{ value: 50 }],
+        size: 4,
+      })),
+    },
+    {
+      name: 'Players',
+      open: false,
+      items: [...Array(2).keys()].map((i) => ({
+        name: `P${i + 3}`,
+        metrics: [{ value: 50 }],
+        size: 4,
+      })),
+    },
+  ],
+  'Generic: 1 Value': [
+    {
+      name: 'Players',
+      open: true,
+      items: [...Array(4).keys()].map((i) => ({ name: `P${i + 1}`, metrics: [{ value: 0 }], size: 4 })),
+    },
+    {
+      name: 'Players',
+      open: false,
+      items: [...Array(4).keys()].map((i) => ({ name: `P${i + 5}`, metrics: [{ value: 0 }], size: 4 })),
+    },
+    {
+      name: 'Players',
+      open: false,
+      items: [...Array(4).keys()].map((i) => ({ name: `P${i + 9}`, metrics: [{ value: 0 }], size: 4 })),
+    },
+  ],
+  'Generic: 2 Values': [
+    {
+      name: 'Players',
+      open: true,
+      items: [...Array(4).keys()].map((i) => ({
+        name: `P${i + 1}`,
+        metrics: [{ value: 0 }, { value: 0, context: 'info' }],
+        size: 2,
+      })),
+    },
+    {
+      name: 'Players',
+      open: false,
+      items: [...Array(4).keys()].map((i) => ({
+        name: `P${i + 5}`,
+        metrics: [{ value: 0 }, { value: 0, context: 'info' }],
+        size: 2,
+      })),
+    },
+    {
+      name: 'Players',
+      open: false,
+      items: [...Array(4).keys()].map((i) => ({
+        name: `P${i + 9}`,
+        metrics: [{ value: 0 }, { value: 0, context: 'info' }],
+        size: 2,
+      })),
+    },
+  ],
+  'Generic: 3 Values': [
+    {
+      name: 'Players',
+      open: true,
+      items: [...Array(4).keys()].map((i) => ({
+        name: `P${i + 1}`,
+        metrics: [{ value: 0 }, { value: 0, context: 'warning' }, { value: 0, context: 'info' }],
+        size: 2,
+      })),
+    },
+    {
+      name: 'Players',
+      open: false,
+      items: [...Array(4).keys()].map((i) => ({
+        name: `P${i + 5}`,
+        metrics: [{ value: 0 }, { value: 0, context: 'warning' }, { value: 0, context: 'info' }],
+        size: 2,
+      })),
+    },
+    {
+      name: 'Players',
+      open: false,
+      items: [...Array(4).keys()].map((i) => ({
+        name: `P${i + 9}`,
+        metrics: [{ value: 0 }, { value: 0, context: 'warning' }, { value: 0, context: 'info' }],
+        size: 2,
+      })),
+    },
+  ],
+};
 
+document.addEventListener('alpine:init', () => {
   const deepCopy = (obj) => JSON.parse(JSON.stringify(obj));
   const getParams = () => {
     const params = {};
