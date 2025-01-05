@@ -165,7 +165,7 @@ document.addEventListener('alpine:init', () => {
       filterPlayTimeOptions() {
         if (!this.items) return [];
 
-        const durations = [180, 120, 60, 0];
+        const durations = [180, 120, 60, 5];
         const counter = Object.fromEntries(durations.map((duration) => [duration, 0]));
         this.items.forEach((item) => {
           durations.some((duration) => {
