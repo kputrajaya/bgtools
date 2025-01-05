@@ -87,7 +87,7 @@
       const response = await fetch(
         'https://gist.githubusercontent.com/kputrajaya/1e0d9e787c7716a05199659fb42d3ba5/raw/bgtools-score.json'
       );
-      global.gameData = Object.assign(global.gameData, await response.json());
+      Object.assign(global.gameData, await response.json());
     } catch (error) {
       alert('Failed to load game presets!');
     }
