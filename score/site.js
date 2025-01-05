@@ -89,7 +89,7 @@
       );
       global.gameData = Object.assign(global.gameData, await response.json());
     } catch (error) {
-      alert('Failed to load game data');
+      alert('Failed to load game presets!');
     }
 
     // Create dropdown
