@@ -114,20 +114,6 @@ const PRESETS = {
 
 document.addEventListener('alpine:init', () => {
   const deepCopy = (obj) => JSON.parse(JSON.stringify(obj));
-  const getParams = () => {
-    const params = {};
-    const search = window.location.search;
-    if (search) {
-      search
-        .substring(1)
-        .split('&')
-        .forEach((param) => {
-          const [key, value] = param.split('=');
-          params[key] = decodeURIComponent(value).replace(/\+/g, ' ').replace(/\|/g, '\n');
-        });
-    }
-    return params;
-  };
 
   Alpine.data('dials', function () {
     return {
@@ -174,43 +160,13 @@ document.addEventListener('alpine:init', () => {
 
       // Initialization
       init() {
-        const connect = (subKey) => {
-          const ws = new WebSocket('wss://pubsub.h.kvn.pt/');
-          ws.onopen = () => {
-            console.log('Subscribing to:', subKey);
-            ws.send(JSON.stringify({ action: 'sub', key: subKey }));
-          };
-          ws.onmessage = (event) => {
-            console.log('Received data');
-            this.lastJson = event.data;
-            this.categories = JSON.parse(event.data);
-          };
-          this.$watch('categories', (value) => {
-            const currentJson = JSON.stringify(value);
-            if (currentJson === this.lastJson) return;
-            this.lastJson = currentJson;
-            console.log('Sending data');
-            ws.send(JSON.stringify({ action: 'pub', key: subKey, data: value }));
-          });
-          const interval = setInterval(() => {
-            console.log('Sending data (interval)');
-            ws.send(JSON.stringify({ action: 'pub', key: subKey, data: this.categories }));
-          }, 60000);
-          ws.onerror = function (err) {
-            console.error('Socket error:', err.message);
-            ws.close();
-          };
-          ws.onclose = (e) => {
-            console.log('Socket closed:', e.reason);
-            setTimeout(() => connect(subKey), 1000);
-            clearInterval(interval);
-          };
-        };
-
-        const params = getParams();
-        if (params.k) {
-          connect('dials:' + params.k);
-        }
+        const ps = new PubSub({
+          host: 'pubsub.h.kvn.pt',
+          appKey: 'dials',
+          getData: () => this.categories,
+          setData: (data) => (this.categories = data),
+        });
+        this.$watch('categories', ps.pub);
       },
     };
   });
