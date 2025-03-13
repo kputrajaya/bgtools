@@ -1,145 +1,56 @@
-(async () => {
-  const MAX_CATEGORIES = 20;
-  const MAX_PLAYERS = 20;
-  const global = {
-    tableContainer: document.getElementById('scoreTable'),
-    gameData: { '': ['Category 1', 'Category 2', 'Category 3'] },
-    table: null,
-    numPlayers: 2,
-    debounceTimeout: null,
-  };
+const MAX_CATEGORIES = 20;
+const MAX_PLAYERS = 10;
 
-  function createElm(tag, className = '', attributes = {}) {
-    const element = document.createElement(tag);
-    element.className = className;
-    Object.entries(attributes).forEach(([key, value]) => (element[key] = value));
-    return element;
-  }
+document.addEventListener('alpine:init', () => {
+  Alpine.data('score', () => ({
+    gameData: { '': ['Category 1', 'Category 2'] },
+    selectedGame: '',
+    categories: ['Category 1', 'Category 2'],
+    players: [
+      { name: 'P1', scores: [0, 0] },
+      { name: 'P2', scores: [0, 0] },
+    ],
 
-  function createInput(type, className, value, handler = null) {
-    const attributes = {
-      type,
-      value,
-      onfocus: (e) => e.target.select(),
-    };
-    if (handler) {
-      attributes.onblur = () => {
-        clearTimeout(global.debounceTimeout);
-        handler();
-      };
-      attributes.onkeyup = () => {
-        clearTimeout(global.debounceTimeout);
-        global.debounceTimeout = setTimeout(() => handler(), 1000);
-      };
-    }
-    return createElm('input', className, attributes);
-  }
+    async init() {
+      try {
+        const response = await fetch(
+          'https://gist.githubusercontent.com/kputrajaya/1e0d9e787c7716a05199659fb42d3ba5/raw/bgtools-score.json'
+        );
+        const gameData = await response.json();
+        Object.assign(this.gameData, gameData);
+      } catch (error) {
+        alert('Failed to load game presets!');
+      }
+    },
 
-  function createHeaderRow() {
-    const row = createElm('tr');
-    row.appendChild(createElm('th', 'p-2')).innerText = 'Category';
-    for (let i = 1; i <= global.numPlayers; i++) {
-      row.appendChild(createElm('th')).appendChild(createInput('text', 'p-2 text-end', `P${i}`));
-    }
-    return row;
-  }
-
-  function createScoreRow(categoryName = '') {
-    const row = createElm('tr');
-    row.appendChild(createElm('td')).appendChild(createInput('text', 'p-2 fw-bold text-start', categoryName));
-    for (let i = 1; i <= global.numPlayers; i++) {
-      row.appendChild(createElm('td')).appendChild(createInput('tel', 'p-2 text-end', '0', updateTotals));
-    }
-    return row;
-  }
-
-  function createTotalRow() {
-    const row = createElm('tr');
-    row.appendChild(createElm('th', 'p-2 text-start')).innerText = 'Total';
-    for (let i = 1; i <= global.numPlayers; i++) {
-      row.appendChild(createElm('th', 'p-2 text-end')).innerText = '0';
-    }
-    return row;
-  }
-
-  function addRow() {
-    const numCategories = global.table.rows.length - 2;
-    if (numCategories >= MAX_CATEGORIES) return;
-
-    global.table.insertBefore(createScoreRow(`Category ${numCategories + 1}`), global.table.lastChild);
-  }
-
-  function addColumn() {
-    if (global.numPlayers >= MAX_PLAYERS) return;
-
-    global.numPlayers++;
-    global.table.rows[0]
-      .appendChild(createElm('th'))
-      .appendChild(createInput('text', 'p-2 text-end', `P${global.numPlayers}`));
-    for (let i = 1; i < global.table.rows.length - 1; i++) {
-      global.table.rows[i]
-        .appendChild(createElm('td'))
-        .appendChild(createInput('tel', 'p-2 text-end', '0', updateTotals));
-    }
-    global.table.rows[global.table.rows.length - 1].appendChild(createElm('th', 'total p-2 text-end')).innerText = '0';
-    updateTotals();
-  }
-
-  function loadPreset(selectedGame) {
-    const categories = global.gameData[selectedGame];
-    while (global.table.rows.length > 2) global.table.deleteRow(1);
-    categories.forEach((category) => global.table.insertBefore(createScoreRow(category), global.table.lastChild));
-    updateTotals();
-  }
-
-  function updateTotals() {
-    const numRows = global.table.rows.length;
-    for (let player = 1; player <= global.numPlayers; player++) {
-      const sum = Array.from(global.table.rows)
-        .slice(1, -1)
-        .reduce((acc, row) => {
-          const input = row.cells[player].firstChild;
-          const value = parseInt(input.value) || 0;
-          input.value = value;
-          return acc + value;
-        }, 0);
-      global.table.rows[numRows - 1].cells[player].innerText = sum;
-    }
-  }
-
-  async function initialize() {
-    // Create table
-    global.table = createElm('table', 'table fs-7 text-secondary');
-    global.table.appendChild(createHeaderRow());
-    global.table.appendChild(createTotalRow());
-    global.tableContainer.innerHTML = '';
-    global.tableContainer.appendChild(global.table);
-    loadPreset('');
-
-    // Load presets from remote JSON
-    try {
-      const response = await fetch(
-        'https://gist.githubusercontent.com/kputrajaya/1e0d9e787c7716a05199659fb42d3ba5/raw/bgtools-score.json'
-      );
-      const gameData = await response.json();
-      Object.assign(global.gameData, gameData);
-    } catch (error) {
-      alert('Failed to load game presets!');
-    }
-
-    // Create dropdown
-    const presetSelect = document.getElementById('presetSelect');
-    Object.keys(global.gameData).forEach((game) => {
-      if (!game) return;
-      const option = createElm('option');
-      option.value = game;
-      option.textContent = game;
-      presetSelect.appendChild(option);
-    });
-  }
-
-  initialize();
-  document.getElementById('presetSelect').addEventListener('change', (e) => loadPreset(e.target.value));
-  document.getElementById('addRowBtn').addEventListener('click', addRow);
-  document.getElementById('addColumnBtn').addEventListener('click', addColumn);
-})();
+    addCategory() {
+      if (this.categories.length >= MAX_CATEGORIES) return;
+      this.categories.push(`Category ${this.categories.length + 1}`);
+      this.players.forEach((p) => {
+        p.scores.push(0);
+      });
+    },
+    addPlayer() {
+      if (this.players.length >= MAX_PLAYERS) return;
+      this.players.push({
+        name: `P${this.players.length + 1}`,
+        scores: Array(this.categories.length).fill(0),
+      });
+    },
+    loadPreset() {
+      this.categories = JSON.parse(JSON.stringify(this.gameData[this.selectedGame]));
+      this.players.forEach((p) => {
+        p.scores = Array(this.categories.length).fill(0);
+      });
+    },
+    cleanScores(player) {
+      player.scores = player.scores.map((s) => parseInt(s) || 0);
+    },
+    countTotal(player) {
+      return player.scores.reduce((sum, s) => sum + (parseInt(s) || 0), 0);
+    },
+    select() {
+      this.$el.select();
+    },
+  }));
+});
