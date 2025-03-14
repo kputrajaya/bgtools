@@ -161,7 +161,7 @@ document.addEventListener('alpine:init', () => {
       // Initialization
       init() {
         const ps = new PubSub({
-          host: 'pubsub.h.kvn.pt',
+          host: 'wss://pubsub.h.kvn.pt',
           appKey: 'dials',
           getData: () => this.categories,
           setData: (data) => (this.categories = data),
