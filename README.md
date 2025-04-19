@@ -5,6 +5,7 @@ A collection of board game tools:
 - Shelf: showcase BoardGameGeek (owned) game collection
 - Dials: track health and other values without dials
 - Score: calculate board game score without score pads
+- Played: personal record of played games with data from BGG
 
 ## Built With
 
