@@ -33,16 +33,15 @@ def fetch_game_data(thing_ids):
 
 def main():
     with open(FILENAME, 'r+', encoding='utf-8') as f:
-        games = list(csv.DictReader(f.readlines(), fieldnames=FIELDS))
+        game_map = {game['id']: game for game in csv.DictReader(f.readlines(), fieldnames=FIELDS)}
+        games = list(game_map.values())
+        thing_ids = list(game_map.keys())
 
-        # Fetch game data
-        thing_ids = [game['id'] for game in games]
+        # Fetch, update, and sort games
         game_data = fetch_game_data(thing_ids)
-
-        # Update and sort games
         for game in games:
             game.update(game_data.get(game['id'], {}))
-        games.sort(key=lambda game: game['name'])
+        games.sort(key=lambda game: game['name'].casefold())
 
         # Write updated games
         f.seek(0)
