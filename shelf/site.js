@@ -74,7 +74,7 @@ document.addEventListener('alpine:init', () => {
         name: String(item.name['#text']),
         year: item.yearpublished,
       }))
-      .sort((a, b) => a.name.localeCompare(b.name));
+      .sort((a, b) => a.id - b.id);
   };
   const getThings = async (thingIds) => {
     const chunkSize = 20;
