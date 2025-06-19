@@ -12,7 +12,7 @@ document.addEventListener('alpine:init', () => {
   const fetchBgg = async (path) => {
     const BACKOFF = 2000;
 
-    const url = `/api/bgg?path=${path}`;
+    const url = `https://boardgamegeek.com/xmlapi2/${path}`;
     const options = { 'Content-Type': 'application/xml' };
     let fetchRes;
     do {
