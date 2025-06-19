@@ -10,7 +10,7 @@ document.addEventListener('alpine:init', () => {
 
   const ensureArray = (value) => (value ? (Array.isArray(value) ? value : [value]) : []);
   const fetchBgg = async (path) => {
-    const BACKOFF = 2000;
+    const BACKOFF = 3000;
 
     const url = `https://boardgamegeek.com/xmlapi2/${path}`;
     const options = { 'Content-Type': 'application/xml' };
