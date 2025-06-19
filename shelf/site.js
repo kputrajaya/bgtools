@@ -92,16 +92,12 @@ document.addEventListener('alpine:init', () => {
       chunks.map(async (chunk) => {
         const chunkThingIds = chunk.join(',');
         const thingObj = await fetchBgg(`thing?id=${chunkThingIds}&stats=1&pagesize=${CHUNK_SIZE}`);
-        if (!thingObj?.items?.item) {
-          console.warn('Incomplete or broken thingObj for chunk:', chunkThingIds, thingObj);
-          return []; // Return empty array for malformed chunk
-        }
-        const chunkResult = ensureArray(thingObj.items.item).map((item) => ({
-          id: item?.['@_id'],
-          parentIds: ensureArray(item?.link)
+        const chunkResult = ensureArray(thingObj?.items?.item).map((item) => ({
+          id: item['@_id'],
+          parentIds: ensureArray(item.link)
             .filter((link) => link['@_type'] === 'boardgameexpansion')
             .map((link) => link['@_id']),
-          weight: parseFloat(item?.statistics?.ratings?.averageweight?.['@_value']) || null,
+          weight: parseFloat(item.statistics.ratings.averageweight['@_value']) || null,
           playersBest: item ? calculateBestPlayerCount(item) : [],
         }));
         return chunkResult;
@@ -132,7 +128,7 @@ document.addEventListener('alpine:init', () => {
 
       // Computed
       itemsLength() {
-        return this.items ? this.items.length : 0;
+        return this.items?.length || 0;
       },
       itemsSliced() {
         if (!this.items) return [];
