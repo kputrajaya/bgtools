@@ -10,13 +10,15 @@ document.addEventListener('alpine:init', () => {
 
   const ensureArray = (value) => (value ? (Array.isArray(value) ? value : [value]) : []);
   const fetchBgg = async (path) => {
+    const BACKOFF = 2500;
+
     const url = `/api/bgg?path=${path}`;
     const options = { 'Content-Type': 'application/xml' };
     let fetchRes;
     do {
       fetchRes = await fetch(url, options).catch(() => null);
       if (fetchRes && fetchRes.status === 200) break;
-      await new Promise((resolve) => setTimeout(resolve, 2500));
+      await new Promise((res) => setTimeout(res, BACKOFF));
     } while (true);
     const collectionText = await fetchRes.text();
     return xmlParser.parse(collectionText);
@@ -59,7 +61,7 @@ document.addEventListener('alpine:init', () => {
         ratingBgg: Math.round(parseFloat(item.stats.rating.average['@_value']) * 10) / 10,
         ratingBggCount: formatRatingCount(item.stats.rating.usersrated['@_value']),
         rank: item.stats.rating.ranks
-          ? Math.floor((item.stats.rating.ranks.rank[0] || item.stats.rating.ranks.rank)['@_value'])
+          ? Math.floor((item.stats.rating.ranks.rank[0] || item.stats.rating.ranks.rank)['@_value']) || null
           : null,
         comment: item.comment,
         enriched: {},
@@ -79,21 +81,23 @@ document.addEventListener('alpine:init', () => {
       .sort((a, b) => a.id - b.id);
   };
   const getThings = async (thingIds) => {
-    const chunkSize = 20;
+    const CHUNK_SIZE = 20;
+    const CHUNK_DELAY = 250;
+
     const result = [];
-    for (let i = 0; i < thingIds.length; i += chunkSize) {
+    for (let i = 0; i < thingIds.length; i += CHUNK_SIZE) {
       if (i > 0) {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((res) => setTimeout(res, CHUNK_DELAY));
       }
-      const chunk = thingIds.slice(i, i + chunkSize);
+      const chunk = thingIds.slice(i, i + CHUNK_SIZE);
       const chunkThingIds = chunk.join(',');
-      const thingObj = await fetchBgg(`thing?id=${chunkThingIds}&stats=1&pagesize=${chunkSize}`);
+      const thingObj = await fetchBgg(`thing?id=${chunkThingIds}&stats=1&pagesize=${CHUNK_SIZE}`);
       const chunkResult = ensureArray(thingObj?.items?.item).map((item) => ({
         id: item['@_id'],
         parentIds: ensureArray(item.link)
           .filter((link) => link['@_type'] === 'boardgameexpansion')
           .map((link) => link['@_id']),
-        weight: parseFloat(item.statistics.ratings.averageweight['@_value']) || null,
+        weight: item.statistics ? parseFloat(item.statistics.ratings.averageweight['@_value']) || null : null,
         playersBest: calculateBestPlayerCount(item),
       }));
       result.push(...chunkResult);
