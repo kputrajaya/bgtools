@@ -10,5 +10,11 @@
       "destination": "/:path*/",
       "permanent": false
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/bgg/(.*)",
+      "destination": "/api/bgg?path=$1"
+    }
   ]
 }

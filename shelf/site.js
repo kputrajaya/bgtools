@@ -10,7 +10,7 @@ document.addEventListener('alpine:init', () => {
 
   const ensureArray = (value) => (value ? (Array.isArray(value) ? value : [value]) : []);
   const fetchBgg = async (path) => {
-    const url = `https://boardgamegeek.com/xmlapi2/${path}`;
+    const url = `/api/bgg/${path}`;
     const options = { 'Content-Type': 'application/xml' };
     let fetchRes;
     do {
@@ -77,7 +77,7 @@ document.addEventListener('alpine:init', () => {
       .sort((a, b) => a.id - b.id);
   };
   const getThings = async (thingIds) => {
-    const chunkSize = 20;
+    const chunkSize = 100;
     const chunks = [];
     for (let i = 0; i < thingIds.length; i += chunkSize) {
       chunks.push(thingIds.slice(i, i + chunkSize));
