@@ -28,7 +28,7 @@ document.addEventListener('alpine:init', () => {
   };
   const calculateBestPlayerCount = (item) => {
     const playerPoll = item.poll.find((poll) => poll['@_name'] === 'suggested_numplayers');
-    return ensureArray(playerPoll.results)
+    return ensureArray(playerPoll?.results)
       .filter((result) => {
         const votes = result.result.reduce((acc, vote) => {
           acc[vote['@_value']] = Math.floor(vote['@_numvotes']);
@@ -98,7 +98,7 @@ document.addEventListener('alpine:init', () => {
             .filter((link) => link['@_type'] === 'boardgameexpansion')
             .map((link) => link['@_id']),
           weight: parseFloat(item.statistics.ratings.averageweight['@_value']) || null,
-          playersBest: item ? calculateBestPlayerCount(item) : [],
+          playersBest: calculateBestPlayerCount(item),
         }));
         return chunkResult;
       })
