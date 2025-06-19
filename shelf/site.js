@@ -58,7 +58,9 @@ document.addEventListener('alpine:init', () => {
         rating: Math.floor(item.stats.rating['@_value']) || null,
         ratingBgg: Math.round(parseFloat(item.stats.rating.average['@_value']) * 10) / 10,
         ratingBggCount: formatRatingCount(item.stats.rating.usersrated['@_value']),
-        rank: Math.floor((item.stats.rating.ranks.rank[0] || item.stats.rating.ranks.rank)['@_value']),
+        rank: item.stats.rating.ranks
+          ? Math.floor((item.stats.rating.ranks.rank[0] || item.stats.rating.ranks.rank)['@_value'])
+          : null,
         comment: item.comment,
         enriched: {},
       }))
