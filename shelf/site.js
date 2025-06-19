@@ -44,7 +44,7 @@ document.addEventListener('alpine:init', () => {
     return ensureArray(collectionObj?.items?.item)
       .map((item) => ({
         id: item['@_objectid'],
-        image: item.image.replace(/cf\.geekdo-images\.com/, 'ik.imagekit.io/kvn/bgg') + '?tr=w-800',
+        image: item.image ? item.image.replace(/cf\.geekdo-images\.com/, 'ik.imagekit.io/kvn/bgg') + '?tr=w-800' : null,
         name: String(item.name['#text']),
         year: item.yearpublished,
         players: {

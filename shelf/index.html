@@ -95,7 +95,7 @@
             <div class="col-xxl-3 col-lg-4 col-md-6 col-12 mb-4">
               <div class="bgs-game card">
                 <a :href="'https://boardgamegeek.com/boardgame/' + item.id" target="_blank">
-                  <div class="bgs-image bg-secondary rounded">
+                  <div class="bgs-image bg-secondary rounded" x-show="item.image">
                     <img class="rounded" :src="item.image" :alt="item.name" loading="lazy" />
                   </div>
                   <div class="card-body" :href="'https://boardgamegeek.com/boardgame/' + item.id" target="_blank">
