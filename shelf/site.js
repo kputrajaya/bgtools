@@ -203,7 +203,7 @@ document.addEventListener('alpine:init', () => {
 
       // Method
       formatNumber(num) {
-        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        return (num || '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
       },
       formatCounts(nums) {
         if (!nums) return '';
