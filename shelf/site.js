@@ -10,7 +10,7 @@ document.addEventListener('alpine:init', () => {
 
   const ensureArray = (value) => (value ? (Array.isArray(value) ? value : [value]) : []);
   const fetchBgg = async (path) => {
-    const BACKOFF = 2500;
+    const BACKOFF = 2000;
 
     const url = `/api/bgg?path=${path}`;
     const options = { 'Content-Type': 'application/xml' };
@@ -82,27 +82,32 @@ document.addEventListener('alpine:init', () => {
   };
   const getThings = async (thingIds) => {
     const CHUNK_SIZE = 20;
-    const CHUNK_DELAY = 250;
 
-    const result = [];
+    const chunks = [];
     for (let i = 0; i < thingIds.length; i += CHUNK_SIZE) {
-      if (i > 0) {
-        await new Promise((res) => setTimeout(res, CHUNK_DELAY));
-      }
-      const chunk = thingIds.slice(i, i + CHUNK_SIZE);
-      const chunkThingIds = chunk.join(',');
-      const thingObj = await fetchBgg(`thing?id=${chunkThingIds}&stats=1&pagesize=${CHUNK_SIZE}`);
-      const chunkResult = ensureArray(thingObj?.items?.item).map((item) => ({
-        id: item['@_id'],
-        parentIds: ensureArray(item.link)
-          .filter((link) => link['@_type'] === 'boardgameexpansion')
-          .map((link) => link['@_id']),
-        weight: item.statistics ? parseFloat(item.statistics.ratings.averageweight['@_value']) || null : null,
-        playersBest: calculateBestPlayerCount(item),
-      }));
-      result.push(...chunkResult);
+      chunks.push(thingIds.slice(i, i + CHUNK_SIZE));
     }
-    return result;
+
+    const results = await Promise.all(
+      chunks.map(async (chunk) => {
+        const chunkThingIds = chunk.join(',');
+        const thingObj = await fetchBgg(`thing?id=${chunkThingIds}&stats=1&pagesize=${CHUNK_SIZE}`);
+        if (!thingObj?.items?.item) {
+          console.warn('Incomplete or broken thingObj for chunk:', chunkThingIds, thingObj);
+          return []; // Return empty array for malformed chunk
+        }
+        const chunkResult = ensureArray(thingObj.items.item).map((item) => ({
+          id: item?.['@_id'],
+          parentIds: ensureArray(item?.link)
+            .filter((link) => link['@_type'] === 'boardgameexpansion')
+            .map((link) => link['@_id']),
+          weight: parseFloat(item?.statistics?.ratings?.averageweight?.['@_value']) || null,
+          playersBest: item ? calculateBestPlayerCount(item) : [],
+        }));
+        return chunkResult;
+      })
+    );
+    return results.flat();
   };
   const relayout = () => {
     setTimeout(() => {
