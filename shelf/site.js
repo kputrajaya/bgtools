@@ -10,7 +10,7 @@ document.addEventListener('alpine:init', () => {
 
   const ensureArray = (value) => (value ? (Array.isArray(value) ? value : [value]) : []);
   const fetchBgg = async (path) => {
-    const url = `/api/bgg/${path}`;
+    const url = `/api/bgg?path=${path}`;
     const options = { 'Content-Type': 'application/xml' };
     let fetchRes;
     do {
