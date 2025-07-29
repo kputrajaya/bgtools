@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Roll Once</title>
+
+    <link rel="icon" href="/favicon-16.png" sizes="16x16" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" />
+    <link rel="icon" href="/favicon-96.png" sizes="96x96" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../shared/site.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" defer></script>
+    <script src="https://kputrajaya.github.io/pubsub/sdk.js" defer></script>
+    <script src="site.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
+  </head>
+  <body class="container p-3" x-data="roll" x-cloak>
+    <h1 class="mb-2 fs-5 fw-bold">Roll Once!</h1>
+
+    <div class="mb-3">
+      <div class="card card-body bg-light-subtle border mb-2" x-show="!hasRolled">
+        <div class="input-group mb-2">
+          <span class="input-group-text">Dice</span>
+          <input class="form-control" type="text" placeholder="Example: 2d8 + 4" x-model="dice" />
+          <button class="btn btn-danger" type="button" @click="clearDice()">Clear</button>
+        </div>
+        <div class="d-flex flex-wrap gap-2">
+          <button class="btn btn-warning btn-sm" type="button" @click="addDice('d4')">D4</button>
+          <button class="btn btn-warning btn-sm" type="button" @click="addDice('d6')">D6</button>
+          <button class="btn btn-warning btn-sm" type="button" @click="addDice('d8')">D8</button>
+          <button class="btn btn-warning btn-sm" type="button" @click="addDice('d10')">D10</button>
+          <button class="btn btn-warning btn-sm" type="button" @click="addDice('d12')">D12</button>
+          <button class="btn btn-warning btn-sm" type="button" @click="addDice('d20')">D20</button>
+          <div class="btn-group">
+            <button
+              type="button"
+              class="btn btn-warning btn-sm dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Constant
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" @click.prevent="addDice('1')">1</a></li>
+              <li><a class="dropdown-item" href="#" @click.prevent="addDice('2')">2</a></li>
+              <li><a class="dropdown-item" href="#" @click.prevent="addDice('3')">3</a></li>
+              <li><a class="dropdown-item" href="#" @click.prevent="addDice('4')">4</a></li>
+              <li><a class="dropdown-item" href="#" @click.prevent="addDice('5')">5</a></li>
+              <li><a class="dropdown-item" href="#" @click.prevent="addDice('6')">6</a></li>
+              <li><a class="dropdown-item" href="#" @click.prevent="addDice('7')">7</a></li>
+              <li><a class="dropdown-item" href="#" @click.prevent="addDice('8')">8</a></li>
+              <li><a class="dropdown-item" href="#" @click.prevent="addDice('9')">9</a></li>
+              <li><a class="dropdown-item" href="#" @click.prevent="addDice('10')">10</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="table table-bordered" x-show="details.length">
+      <tr>
+        <th>Die</th>
+        <th>Result</th>
+      </tr>
+      <template x-for="die in details">
+        <tr>
+          <td x-text="die.side ? 'D' + die.side : die.result"></td>
+          <td x-text="die.result || '?'"></td>
+        </tr>
+      </template>
+      <tr x-show="hasRolled">
+        <th>Total</th>
+        <th x-text="total"></th>
+      </tr>
+    </table>
+
+    <div class="d-grid">
+      <button
+        class="btn mb-2"
+        :class="hasRolled ? 'btn-secondary' : 'btn-primary'"
+        :disabled="hasRolled"
+        @click="roll()"
+        x-text="hasRolled ? 'You have rolled' : 'Roll'"
+      ></button>
+      <button class="btn btn-link" type="button" @click="share()" x-show="!hasRolled">Share</button>
+      <button class="btn btn-link link-danger" type="button" @click="restart()" x-show="hasRolled">Restart</button>
+    </div>
+  </body>
+</html>
