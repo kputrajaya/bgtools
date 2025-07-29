@@ -52,9 +52,11 @@ const toast = (message) => {
 document.addEventListener('alpine:init', () => {
   Alpine.data('roll', function () {
     return {
+      // Data
       dice: getParam('d') || '',
       result: null,
 
+      // Computed
       get hasRolled() {
         return this.result !== null;
       },
@@ -64,9 +66,9 @@ document.addEventListener('alpine:init', () => {
           .split(/[\s\+]+/)
           .filter((part) => part)
           .flatMap((part) => {
-            // If a constant
-            const isDigits = /^\d+$/.test(part);
-            if (isDigits) {
+            // If a modifier
+            const isMod = /^\-?\d+$/.test(part);
+            if (isMod) {
               const value = parseInt(part, 10);
               return [{ side: null, result: value }];
             }
@@ -91,6 +93,7 @@ document.addEventListener('alpine:init', () => {
         return this.details.reduce((sum, die) => sum + (die.result || 0), 0);
       },
 
+      // Method
       addDice(part) {
         this.dice = (this.dice.trim() + ' ' + part).trim();
       },
