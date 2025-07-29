@@ -6,7 +6,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(dials|score|shelf)",
+      "source": "/:path(dials|roll|score|shelf)",
       "destination": "/:path*/",
       "permanent": false
     }
