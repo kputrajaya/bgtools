@@ -14,8 +14,10 @@ document.addEventListener('alpine:init', () => {
 
     const url = `https://boardgamegeek.com/xmlapi2/${path}`;
     const options = {
-      Authorization: 'Bearer ee438cf1-1707-4142-a7a5-b9235a0dbd79',
-      'Content-Type': 'application/xml',
+      headers: {
+        Authorization: 'Bearer ee438cf1-1707-4142-a7a5-b9235a0dbd79',
+        'Content-Type': 'application/xml',
+      },
     };
     let fetchRes;
     do {
