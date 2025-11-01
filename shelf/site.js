@@ -12,7 +12,7 @@ document.addEventListener('alpine:init', () => {
   const fetchBgg = async (path) => {
     const BACKOFF = 3000;
 
-    const url = `/api/bgg?path=${path}`;
+    const url = `/api/bgg?path=${encodeURIComponent(path)}`;
     let fetchRes;
     do {
       fetchRes = await fetch(url).catch(() => null);
