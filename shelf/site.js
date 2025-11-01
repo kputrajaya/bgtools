@@ -12,16 +12,10 @@ document.addEventListener('alpine:init', () => {
   const fetchBgg = async (path) => {
     const BACKOFF = 3000;
 
-    const url = `https://boardgamegeek.com/xmlapi2/${path}`;
-    const options = {
-      headers: {
-        Authorization: 'Bearer ee438cf1-1707-4142-a7a5-b9235a0dbd79',
-        'Content-Type': 'application/xml',
-      },
-    };
+    const url = `/api/bgg?path=${path}`;
     let fetchRes;
     do {
-      fetchRes = await fetch(url, options).catch(() => null);
+      fetchRes = await fetch(url).catch(() => null);
       if (fetchRes && fetchRes.status === 200) break;
       await new Promise((res) => setTimeout(res, BACKOFF));
     } while (true);
