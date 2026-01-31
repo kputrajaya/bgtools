@@ -53,62 +53,78 @@ document.addEventListener('alpine:init', () => {
   Alpine.data('roll', function () {
     return {
       // Data
-      dice: getParam('d') || '',
+      input: getParam('d') || '',
       result: null,
 
       // Computed
       get hasRolled() {
         return this.result !== null;
       },
-      get details() {
-        if (this.result) return this.result;
-        const allDice = (this.dice || '')
+      get dice() {
+        const dice = {};
+        (this.input || '')
           .split(/[\s\+]+/)
           .filter((part) => part)
-          .flatMap((part) => {
-            // If a modifier
+          .forEach((part) => {
             const isMod = /^\-?\d+$/.test(part);
             if (isMod) {
-              const value = parseInt(part, 10);
-              return [{ side: null, result: value }];
+              dice[0] = (dice[0] || 0) + parseInt(part, 10);
+              return
             }
-
-            // If a die
             const match = part.match(/^(\d*)d(\d+)$/);
             if (match) {
               const numDice = match[1] ? parseInt(match[1], 10) : 1;
               const numSides = parseInt(match[2], 10);
-              return Array(numDice).fill({
-                side: numSides,
-                result: null,
-              });
+              dice[numSides] = (dice[numSides] || 0) + numDice;
             }
-
-            // Invalid
-            return [null];
           });
-        return allDice.every((die) => die) ? allDice : [];
+        if (dice[0] === 0) {
+          delete dice[0];
+        }
+        return Object.entries(dice)
+          .sort((a, b) => b[0] - a[0])
+          .flatMap(([side, count]) =>
+            side > 0 ?
+              Array.from({length: count}, () => ({side, result: null})) :
+              [{side: 0, result: count}]
+          );
+      },
+      get details() {
+        return this.result || this.dice;
       },
       get total() {
         return this.details.reduce((sum, die) => sum + (die.result || 0), 0);
       },
 
       // Method
-      addDice(part) {
-        this.dice = (this.dice.trim() + ' ' + part).trim();
+      add(part) {
+        this.input += ' ' + part;
+        this.cleanInput();
       },
-      clearDice() {
-        this.dice = '';
+      clear() {
+        this.input = '';
+      },
+      cleanInput() {
+        const parts = [];
+        this.dice.forEach(({side, result}) => {
+          const text = side > 0 ? `d${side}` : (result > 0 ? `+${result}` : result);
+          const lastPart = parts.length ? parts[parts.length - 1] : null;
+          if (side > 0 && lastPart?.text === text) {
+            lastPart.count += 1;
+          } else {
+            parts.push({text, count: 1});
+          }
+        });
+        this.input = parts.map(({text, count}) => count > 1 ? `${count}${text}` : text).join(' ');
       },
       roll() {
-        if (this.hasRolled || !this.details.length) return;
-        this.result = this.details.map((die) =>
-          die.side ? { ...die, result: Math.floor(Math.random() * die.side) + 1 } : die
+        if (this.hasRolled) return;
+        this.result = this.dice.map(({side, result}) =>
+          side > 0 ? ({side, result: Math.floor(Math.random() * side) + 1}) : ({side, result})
         );
       },
       share() {
-        const copied = copyText(window.location.href);
-        if (copied) {
+        if (copyText(window.location.href)) {
           toast('URL copied to clipboard!');
         }
       },
@@ -131,7 +147,7 @@ document.addEventListener('alpine:init', () => {
           setData: (data) => (this.result = data),
         });
         this.$watch('result', ps.pub);
-        this.$watch('dice', (value) => {
+        this.$watch('input', (value) => {
           setParam('d', value);
         });
       },
