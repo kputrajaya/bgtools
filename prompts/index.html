@@ -13,19 +13,15 @@
     </div>
 
     <div class="modal fade" id="promptModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div
-            id="promptText"
-            class="modal-body p-4 fs-4 bg-secondary-subtle"
-            style="
-              border-top-left-radius: var(--bs-modal-border-radius);
-              border-top-right-radius: var(--bs-modal-border-radius);
-            "
-          >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content bg-secondary-subtle">
+          <div class="modal-header border-0 pb-0">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div id="promptText" class="modal-body p-4 fs-3 d-flex justify-content-center align-items-center">
             <!-- Prompt Text -->
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer bg-white">
             <button id="promptNextBtn" type="button" class="btn btn-lg btn-primary">Next</button>
           </div>
         </div>
