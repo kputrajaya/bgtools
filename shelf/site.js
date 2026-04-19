@@ -13,13 +13,18 @@ document.addEventListener('alpine:init', () => {
     const BACKOFF = 3000;
 
     const url = `/api/bgg?path=${encodeURIComponent(path)}`;
-    let fetchRes;
+    let collectionText;
     do {
-      fetchRes = await fetch(url).catch(() => null);
-      if (fetchRes && fetchRes.status === 200) break;
+      const fetchRes = await fetch(url).catch(() => null);
+      if (fetchRes && fetchRes.status === 200) {
+        const text = await fetchRes.text();
+        if (!text.includes('<message>')) {
+          collectionText = text;
+          break;
+        }
+      }
       await new Promise((res) => setTimeout(res, BACKOFF));
     } while (true);
-    const collectionText = await fetchRes.text();
     return xmlParser.parse(collectionText);
   };
   const formatRatingCount = (count) => {
