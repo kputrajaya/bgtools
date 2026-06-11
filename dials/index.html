@@ -26,11 +26,13 @@
         <h1 class="mb-2 fs-5 fw-bold">Digital Dials</h1>
         <div class="mb-3 text-secondary">Track health or other values in board games without physical dials.</div>
         <div class="mb-2 fw-semibold">First off, which preset?</div>
-        <template x-for="preset in presetKeys">
-          <div class="d-grid mb-2">
-            <button class="btn btn-primary" type="button" @click="loadPreset(preset)" x-text="preset"></button>
-          </div>
-        </template>
+        <div class="row g-2">
+          <template x-for="preset in presetKeys">
+            <div class="col-6">
+              <button class="btn btn-primary w-100" type="button" @click="loadPreset(preset)" x-text="preset"></button>
+            </div>
+          </template>
+        </div>
       </div>
 
       <!-- After Init -->
@@ -68,22 +70,22 @@
                               <div class="bgd-input-group input-group">
                                 <button
                                   class="btn px-4 border-top-0 rounded-0"
-                                  :class="`p-${item.size > 1 ? '2' : '1'} btn-${metric.context || 'danger'}`"
+                                  :class="`p-${item.size > 2 ? '3' : '2'} btn-${metric.context || 'danger'}`"
                                   type="button"
                                   @click="metricDecrease(metric)"
                                 >
                                   &minus;
                                 </button>
                                 <input
-                                  class="form-control px-1 text-center border-top-0 bg-opacity-10"
-                                  :class="`p-${item.size > 1 ? '2' : '1'} bg-${metric.context || 'danger'}`"
+                                  class="form-control px-1 text-center border-0 bg-opacity-25"
+                                  :class="`p-${item.size > 2 ? '3' : '2'} bg-${metric.context || 'danger'}`"
                                   type="phone"
                                   x-model.number="metric.value"
                                   @blur="metricBlur(metric)"
                                 />
                                 <button
                                   class="btn px-4 border-top-0 rounded-0"
-                                  :class="`p-${item.size > 1 ? '2' : '1'} btn-${metric.context || 'danger'}`"
+                                  :class="`p-${item.size > 2 ? '3' : '2'} btn-${metric.context || 'danger'}`"
                                   type="button"
                                   @click="metricIncrease(metric)"
                                 >
