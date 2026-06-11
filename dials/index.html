@@ -26,13 +26,11 @@
         <h1 class="mb-2 fs-5 fw-bold">Digital Dials</h1>
         <div class="mb-3 text-secondary">Track health or other values in board games without physical dials.</div>
         <div class="mb-2 fw-semibold">First off, which preset?</div>
-        <div class="row g-2">
-          <template x-for="preset in presetKeys">
-            <div class="col-6">
-              <button class="btn btn-primary w-100" type="button" @click="loadPreset(preset)" x-text="preset"></button>
-            </div>
-          </template>
-        </div>
+        <template x-for="preset in presetKeys">
+          <div class="d-grid mb-2">
+            <button class="btn btn-primary" type="button" @click="loadPreset(preset)" x-text="preset"></button>
+          </div>
+        </template>
       </div>
 
       <!-- After Init -->
