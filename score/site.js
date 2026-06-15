@@ -45,7 +45,7 @@ document.addEventListener('alpine:init', () => {
     async init() {
       try {
         const response = await fetch(
-          'https://gist.githubusercontent.com/kputrajaya/1e0d9e787c7716a05199659fb42d3ba5/raw/bgtools-score.json'
+          `https://gist.githubusercontent.com/kputrajaya/1e0d9e787c7716a05199659fb42d3ba5/raw/bgtools-score.json?t=${Date.now()}`
         );
         const gameData = await response.json();
         Object.assign(this.gameData, gameData);
