@@ -101,6 +101,9 @@ document.addEventListener('alpine:init', () => {
           parentIds: ensureArray(item.link)
             .filter((link) => link['@_type'] === 'boardgameexpansion')
             .map((link) => link['@_id']),
+          reimplementsIds: ensureArray(item.link)
+            .filter((link) => link['@_type'] === 'boardgameimplementation' && link['@_inbound'] === 'true')
+            .map((link) => link['@_id']),
           weight: parseFloat(item.statistics.ratings.averageweight['@_value']) || null,
           playersBest: calculateBestPlayerCount(item),
         }));
@@ -241,34 +244,54 @@ document.addEventListener('alpine:init', () => {
         relayout();
       },
       async enrich() {
-        // Get thing IDs
-        const gameIds = new Set(this.items.map((item) => item.id));
+        const gameLookup = Object.fromEntries(this.items.map((item) => [item.id, item]));
+
         const expansions = await getExpansions(this.username);
         const expansionIds = new Set(expansions.map((expansion) => expansion.id));
         const expansionMap = Object.fromEntries(expansions.map((expansion) => [expansion.id, expansion]));
 
-        // Get things and store data in a map
-        const things = await getThings([...expansionIds, ...gameIds]);
-        const itemMap = {};
+        const things = await getThings([...expansionIds, ...Object.keys(gameLookup)]);
+
+        const expansionsByParentId = {};
         things.forEach((thing) => {
-          if (gameIds.has(thing.id)) {
-            itemMap[thing.id] = itemMap[thing.id] || {};
-            itemMap[thing.id].weight = thing.weight;
-            itemMap[thing.id].playersBest = thing.playersBest;
-          } else if (expansionIds.has(thing.id)) {
-            thing.parentIds.forEach((parentId) => {
-              if (gameIds.has(parentId)) {
-                itemMap[parentId] = itemMap[parentId] || {};
-                itemMap[parentId].expansions = [...ensureArray(itemMap[parentId].expansions), expansionMap[thing.id]];
-              }
-            });
-          }
+          if (!expansionIds.has(thing.id)) return;
+          ensureArray(thing.parentIds).forEach((parentId) => {
+            if (!expansionsByParentId[parentId]) expansionsByParentId[parentId] = [];
+            expansionsByParentId[parentId].push(expansionMap[thing.id]);
+          });
         });
 
-        // Enrich item data
+        const itemMap = {};
+        const reimplementedToRemove = new Set();
+
+        things.forEach((thing) => {
+          if (!gameLookup[thing.id]) return;
+          const entry = itemMap[thing.id] || (itemMap[thing.id] = {});
+          entry.weight = thing.weight;
+          entry.playersBest = thing.playersBest;
+          entry.expansions = [...(expansionsByParentId[thing.id] || [])];
+
+          ensureArray(thing.reimplementsIds).forEach((originalId) => {
+            const originalGame = gameLookup[originalId];
+            if (!originalGame) return;
+
+            entry.expansions.push({
+              id: originalGame.id,
+              image: originalGame.image,
+              name: originalGame.name,
+              year: originalGame.year,
+            });
+            reimplementedToRemove.add(originalId);
+
+            const originalExpansions = expansionsByParentId[originalId];
+            if (originalExpansions) entry.expansions.push(...originalExpansions);
+          });
+        });
+
         this.items.forEach((item) => {
           item.enriched = itemMap[item.id] || {};
         });
+        this.items = this.items.filter((item) => !reimplementedToRemove.has(item.id));
       },
 
       // Initialization
