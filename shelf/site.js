@@ -288,10 +288,9 @@ document.addEventListener('alpine:init', () => {
           });
         });
 
-        this.items.forEach((item) => {
-          item.enriched = itemMap[item.id] || {};
-        });
-        this.items = this.items.filter((item) => !reimplementedToRemove.has(item.id));
+        this.items = this.items
+          .map((item) => ({ ...item, enriched: itemMap[item.id] || {} }))
+          .filter((item) => !reimplementedToRemove.has(item.id));
       },
 
       // Initialization
