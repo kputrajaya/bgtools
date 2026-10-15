@@ -1,6 +1,6 @@
 # BGTools
 
-A collection of board game tools:
+A collection of board game tools.
 
 - Shelf: showcase BoardGameGeek (owned) game collection
 - Dials: track health and other values without dials
