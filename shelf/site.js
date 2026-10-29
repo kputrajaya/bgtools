@@ -226,20 +226,20 @@ document.addEventListener('alpine:init', () => {
       async load() {
         this.loading = true;
         try {
-          this.items = await getGames(this.username);
+          const [games, expansions] = await Promise.all([getGames(this.username), getExpansions(this.username)]);
+          this.items = games;
           relayout();
           this.loading = false;
 
-          await this.enrich();
+          await this.enrich(expansions);
           relayout();
         } finally {
           this.loading = false;
         }
       },
-      async enrich() {
+      async enrich(expansions) {
         const gameLookup = Object.fromEntries(this.items.map((item) => [item.id, item]));
 
-        const expansions = await getExpansions(this.username);
         const expansionIds = new Set(expansions.map((expansion) => expansion.id));
         const expansionMap = Object.fromEntries(expansions.map((expansion) => [expansion.id, expansion]));
 
