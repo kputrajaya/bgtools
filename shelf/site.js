@@ -6,26 +6,17 @@ document.addEventListener('alpine:init', () => {
     percentPosition: true,
     transitionDuration: 0,
   });
-  const xmlParser = new XMLParser({ ignoreAttributes: false });
-
   const ensureArray = (value) => (value ? (Array.isArray(value) ? value : [value]) : []);
-  const fetchBgg = async (path) => {
-    const BACKOFF = 3000;
+  const fetchBgg = async (endpoint, params) => {
+    const query = new URLSearchParams(params);
+    const response = await fetch(`/api/${endpoint}?${query}`);
 
-    const url = `/api/bgg?path=${encodeURIComponent(path)}`;
-    let collectionText;
-    do {
-      const fetchRes = await fetch(url).catch(() => null);
-      if (fetchRes && fetchRes.status === 200) {
-        const text = await fetchRes.text();
-        if (!text.includes('<message>')) {
-          collectionText = text;
-          break;
-        }
-      }
-      await new Promise((res) => setTimeout(res, BACKOFF));
-    } while (true);
-    return xmlParser.parse(collectionText);
+    if (!response.ok) {
+      const error = await response.json().catch(() => null);
+      throw new Error(error?.error || `BGG request failed (${response.status})`);
+    }
+
+    return response.json();
   };
   const formatRatingCount = (count) => {
     return count.length > 3 ? Math.floor(Math.floor(count) / 1000) + 'k' : count;
@@ -44,9 +35,7 @@ document.addEventListener('alpine:init', () => {
       .map((result) => Math.floor(result['@_numplayers']));
   };
   const getGames = async (username) => {
-    const collectionObj = await fetchBgg(
-      `collection/?username=${username}&own=1&excludesubtype=boardgameexpansion&stats=1`
-    );
+    const collectionObj = await fetchBgg('games', { username });
     return ensureArray(collectionObj?.items?.item)
       .map((item) => ({
         id: item['@_objectid'],
@@ -73,7 +62,7 @@ document.addEventListener('alpine:init', () => {
       .sort((a, b) => (b.rating || 0) - (a.rating || 0) || (a.rank || 999999) - (b.rank || 999999));
   };
   const getExpansions = async (username) => {
-    const collectionObj = await fetchBgg(`collection/?username=${username}&subtype=boardgameexpansion`);
+    const collectionObj = await fetchBgg('expansions', { username });
     return ensureArray(collectionObj?.items?.item)
       .filter((item) => item.status['@_own'] == '1') // Filtering "own" on the API somehow results in stale data
       .map((item) => ({
@@ -95,7 +84,7 @@ document.addEventListener('alpine:init', () => {
     const results = await Promise.all(
       chunks.map(async (chunk) => {
         const chunkThingIds = chunk.join(',');
-        const thingObj = await fetchBgg(`thing?id=${chunkThingIds}&stats=1&pagesize=${CHUNK_SIZE}`);
+        const thingObj = await fetchBgg('details', { ids: chunkThingIds });
         const chunkResult = ensureArray(thingObj?.items?.item).map((item) => ({
           id: item['@_id'],
           parentIds: ensureArray(item.link)
@@ -236,12 +225,16 @@ document.addEventListener('alpine:init', () => {
       },
       async load() {
         this.loading = true;
-        this.items = await getGames(this.username);
-        relayout();
-        this.loading = false;
+        try {
+          this.items = await getGames(this.username);
+          relayout();
+          this.loading = false;
 
-        await this.enrich();
-        relayout();
+          await this.enrich();
+          relayout();
+        } finally {
+          this.loading = false;
+        }
       },
       async enrich() {
         const gameLookup = Object.fromEntries(this.items.map((item) => [item.id, item]));
