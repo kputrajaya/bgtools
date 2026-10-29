@@ -1,11 +1,8 @@
 const DEFAULT_USER = 'kputrajaya';
 
 document.addEventListener('alpine:init', () => {
-  const masonryWrapper = new Masonry('#wrapper', {
-    itemSelector: '.col-12',
-    percentPosition: true,
-    transitionDuration: 0,
-  });
+  let masonryWrapper;
+  let layoutFrame = null;
   const ensureArray = (value) => (value ? (Array.isArray(value) ? value : [value]) : []);
   const fetchBgg = async (endpoint, params) => {
     const query = new URLSearchParams(params);
@@ -102,13 +99,31 @@ document.addEventListener('alpine:init', () => {
     return results.flat();
   };
   const relayout = () => {
-    setTimeout(() => {
+    if (layoutFrame !== null) return;
+
+    layoutFrame = requestAnimationFrame(() => {
+      layoutFrame = null;
+      if (!masonryWrapper) {
+        masonryWrapper = new Masonry('#wrapper', {
+          itemSelector: '.col-12',
+          percentPosition: true,
+          transitionDuration: 0,
+        });
+        return;
+      }
+
       masonryWrapper.reloadItems();
       masonryWrapper.layout();
-    }, 50);
+    });
   };
 
-  setInterval(relayout, 1000);
+  document.querySelector('#wrapper').addEventListener(
+    'load',
+    (event) => {
+      if (event.target instanceof HTMLImageElement) relayout();
+    },
+    true
+  );
 
   Alpine.data('bgs', function () {
     return {
@@ -228,10 +243,12 @@ document.addEventListener('alpine:init', () => {
         try {
           const [games, expansions] = await Promise.all([getGames(this.username), getExpansions(this.username)]);
           this.items = games;
+          await this.$nextTick();
           relayout();
           this.loading = false;
 
           await this.enrich(expansions);
+          await this.$nextTick();
           relayout();
         } finally {
           this.loading = false;
@@ -293,7 +310,7 @@ document.addEventListener('alpine:init', () => {
         if (this.username) {
           this.load();
         }
-        this.$watch('filter', relayout);
+        this.$watch('filter', () => this.$nextTick(relayout));
       },
     };
   });
