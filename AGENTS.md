@@ -27,7 +27,7 @@ Each app is a pair of `index.html` + `site.js`. `/_shared/site.css` applies glob
 
 **Stack:** Alpine.js (reactive UI), Bootstrap 5 (CSS), Vanilla JS.
 
-**API:** `/api/{games,expansions,details}.js` validate their own parameters and build fixed BGG URLs. They share `lib/bgg.js` for fetching, up to 4 retries, and XML-to-JSON conversion. Shelf is the only app that calls them.
+**API:** `/api/{games,expansions,details}.js` validate their own parameters and build fixed BGG URLs. They share `api/_shared/bgg.js` for fetching, up to 4 retries, and XML-to-JSON conversion. Shelf is the only app that calls them.
 
 **Persistence:** Alpine.js state + `localStorage` for user data. Score presets load from a GitHub Gist URL.
 
@@ -41,6 +41,14 @@ Each app is a pair of `index.html` + `site.js`. `/_shared/site.css` applies glob
 4. Rewrites image URLs through imagekit.io CDN for optimization
 5. Renders filtered grid with Masonry layout
 
+## Dials App
+
+Presets and their categories, items, and metrics are defined in `dials/site.js`. Alpine Persist stores the active sheet in local storage, and the PubSub SDK synchronizes changes between clients.
+
+## Score App
+
+`score/site.js` manages editable players, categories, and scores. Game presets load from a GitHub Gist; selecting one updates categories and clears player scores.
+
 ## Prompts App
 
-Game prompts are hardcoded in a large `CATEGORIES` object in `site.js`. Adding a new game = adding a new key with an array of prompt strings.
+Game prompts live one per line in `prompts/data/*.txt`. `prompts/site.js` maps game names to files and fetches a game's prompts when selected.
