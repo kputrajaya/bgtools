@@ -1,36 +1,7 @@
 Are you a cat person or a dog person?
 Are you a mountain person or a beach person?
-How many alarms do you set?
-How many cups of coffee is too many?
-How many cups of water do you drink a day?
-How many hours of sleep is ideal?
-How many minutes late is acceptable?
-How many pets is too many?
-How many photos do you take at an event?
 How many pillows are too many for a bed?
-How many plants is too many for an apartment?
 How many slices of pizza is the normal amount to eat?
-How many streaming services is too many?
-How many tabs do you have open right now?
-How many times do you hit snooze?
-How many unread emails is too many?
-If you could delete one celebrity, which one?
-If you could delete one city, which one?
-If you could delete one continent, which one?
-If you could delete one country, which one?
-If you could delete one social media platform, which one?
-If you could delete one website, which one?
-If you could only eat at one restaurant forever, which one?
-If you could only eat one cuisine forever, which one?
-If you could only listen to one artist forever, who?
-If you could only listen to one song forever, what would it be?
-If you could only play one game forever, which one?
-If you could only read one book forever, which one?
-If you could only use one app forever, which one?
-If you could only watch one movie forever, what would it be?
-If you could only watch one show forever, which one?
-If you could only wear one color forever, which one?
-If you could rename yourself, what name would you pick?
 If you could swap lives with a friend for a day, who?
 If you had to choose only one pizza topping, what would it be?
 If you had to describe the color "Blue" to a blind person, what word would you use?
@@ -55,7 +26,6 @@ Name a championship everyone knows.
 Name a childhood game everyone played.
 Name a chore everyone has done.
 Name a chore you always put off until the last minute.
-Name a chore you can't stand.
 Name a city you'd visit for a romantic getaway.
 Name a clothing brand everyone has an opinion on.
 Name a coffee shop everyone has an opinion on.
@@ -66,7 +36,6 @@ Name a common office snack.
 Name a common password people use (but shouldn't).
 Name a condiment you cannot live without.
 Name a condiment you keep in the fridge.
-Name a country you'd love to live in for a year.
 Name a director everyone knows.
 Name a dream job for a 15-year-old.
 Name a dream job for a 5-year-old.
@@ -86,12 +55,10 @@ Name a good habit.
 Name a habit that is hard to break.
 Name a hairstyle that was popular but is now cringe.
 Name a hobby that makes someone look intellectual.
-Name a hobby you can't stand.
 Name a holiday everyone argues about.
 Name a holiday tradition everyone knows.
 Name a job that is harder than it looks.
 Name a job that requires wearing a uniform.
-Name a job you can't stand.
 Name a kitchen appliance you use almost every day.
 Name a language everyone should learn.
 Name a laptop brand everyone has an opinion on.
@@ -122,27 +89,22 @@ Name a retro piece of tech you miss.
 Name a room everyone has been in.
 Name a singer everyone knows.
 Name a smell that belongs in a kitchen.
-Name a smell that reminds you of home.
 Name a sneaker brand everyone has an opinion on.
 Name a social media app everyone has an opinion on.
 Name a social media app that is "dying."
 Name a song everyone has an opinion on.
 Name a song that everyone knows the lyrics to.
 Name a sound that is universally annoying.
-Name a sound that makes you nostalgic.
 Name a sound that makes you sleepy.
 Name a sport everyone has an opinion on.
 Name a sport that is more fun to play than watch.
 Name a sport that is more fun to watch than play.
-Name a sport you can't stand.
 Name a streaming service everyone has an opinion on.
 Name a street everyone has walked on.
-Name a subject you can't stand.
 Name a superhero everyone knows.
 Name a team everyone knows.
 Name a tech brand everyone has an opinion on.
 Name a tech brand that people are "loyal" to.
-Name a thing you would never throw away.
 Name a tournament everyone knows.
 Name a toy that will never go out of style.
 Name a trophy everyone knows.
@@ -177,23 +139,40 @@ What is the best "Friday feeling" activity?
 What is the best actor?
 What is the best age to be?
 What is the best age to retire?
+What is the best animal?
+What is the best beer?
 What is the best board game of all time?
+What is the best board game?
 What is the best boat type?
 What is the best book?
+What is the best bread?
 What is the best breakfast routine?
+What is the best breakfast?
+What is the best burger?
+What is the best cake flavor?
 What is the best camping food?
+What is the best candy?
 What is the best car brand?
+What is the best cheese?
+What is the best chip flavor?
+What is the best cocktail?
 What is the best coffee shop drink?
+What is the best coffee?
 What is the best color for a car?
 What is the best color for a dress?
 What is the best color for a pair of shoes?
+What is the best color?
 What is the best commute routine?
 What is the best condiment?
+What is the best condiment?
+What is the best cookie?
 What is the best cool down?
+What is the best day of the week?
 What is the best day to go grocery shopping?
 What is the best day to work from home?
 What is the best deep question?
 What is the best deodorant type?
+What is the best dessert?
 What is the best dip for chips?
 What is the best drink?
 What is the best ethical dilemma?
@@ -205,14 +184,17 @@ What is the best flavor of potato chip?
 What is the best float?
 What is the best hat type?
 What is the best highlighter color?
+What is the best hobby?
+What is the best holiday?
 What is the best horror movie?
 What is the best hotel room feature?
+What is the best ice cream flavor?
 What is the best invention of the last 100 years?
 What is the best jewelry type?
 What is the best late night host?
 What is the best map app?
 What is the best meme format?
-What is the best mocktail?
+What is the best month?
 What is the best movie snack that isn't popcorn?
 What is the best movie?
 What is the best nail polish color?
@@ -220,27 +202,40 @@ What is the best news anchor?
 What is the best newspaper?
 What is the best nocturnal animal?
 What is the best outdoor activity for a first date?
+What is the best pasta?
+What is the best pie?
+What is the best pizza topping?
 What is the best plant type?
 What is the best prize to win in a competition?
 What is the best protein source?
 What is the best reaction gif?
 What is the best referee type?
+What is the best salad?
+What is the best sandwich?
 What is the best saying?
 What is the best scent for a candle?
 What is the best season of the year?
+What is the best season?
 What is the best seat on a plane: window or aisle?
 What is the best shape for pasta?
 What is the best ship type?
 What is the best singer?
 What is the best sitcom of all time?
 What is the best smart home device?
+What is the best smell?
+What is the best snack?
 What is the best song?
+What is the best sound?
 What is the best soup?
 What is the best spice?
 What is the best sport to watch?
+What is the best sport?
 What is the best sports team?
 What is the best spot in a line?
 What is the best superpower?
+What is the best taco?
+What is the best taste?
+What is the best tea?
 What is the best theme park?
 What is the best thing to put on a piece of toast?
 What is the best time to have dinner?
@@ -278,6 +273,7 @@ What is the best type of wine?
 What is the best vampire type?
 What is the best video call type?
 What is the best video game console?
+What is the best video game?
 What is the best vinegar?
 What is the best wake up routine?
 What is the best warm up?
@@ -288,6 +284,7 @@ What is the best way to spend a rainy day?
 What is the best way to take notes: pen and paper, phone, or laptop?
 What is the best way to travel: car, train, or plane?
 What is the best way to travel?
+What is the best wine?
 What is the best workout routine?
 What is the best zoo animal?
 What is the cutest baby animal?
@@ -309,51 +306,87 @@ What is the most used app on your phone?
 What is the most versatile color for a t-shirt?
 What is the scariest type of weather?
 What is the ultimate "movie night" candy or dessert?
+What is the worst animal?
 What is the worst arcade game?
 What is the worst bedtime routine?
+What is the worst beer?
+What is the worst board game?
+What is the worst book?
+What is the worst bread?
+What is the worst breakfast?
 What is the worst budgeting app?
+What is the worst burger?
+What is the worst cake flavor?
+What is the worst candy?
 What is the worst car type?
 What is the worst cheese?
+What is the worst chip flavor?
 What is the worst clothing brand?
+What is the worst cocktail?
+What is the worst coffee?
+What is the worst color?
+What is the worst cookie?
 What is the worst dating app?
 What is the worst day of the week?
+What is the worst dessert?
 What is the worst director?
 What is the worst dog breed?
+What is the worst drink?
 What is the worst extinct animal?
 What is the worst eyebrow style?
 What is the worst eyeshadow color?
 What is the worst floss type?
 What is the worst gaming headset?
 What is the worst gif type?
+What is the worst hobby?
+What is the worst holiday?
+What is the worst ice cream flavor?
 What is the worst IoT device?
 What is the worst kitchen gadget?
 What is the worst lane on a highway?
 What is the worst laptop brand?
 What is the worst meeting type?
 What is the worst messaging app?
+What is the worst month?
 What is the worst mouthwash flavor?
+What is the worst movie?
 What is the worst mythical creature?
 What is the worst newspaper?
 What is the worst nocturnal animal?
 What is the worst noodle dish?
 What is the worst nut?
+What is the worst pasta?
 What is the worst perfume scent?
 What is the worst photo filter?
+What is the worst pie?
+What is the worst pizza topping?
 What is the worst podcast?
 What is the worst proverb?
 What is the worst quote?
 What is the worst reaction gif?
 What is the worst referee type?
 What is the worst ride share app?
+What is the worst salad?
+What is the worst sandwich?
 What is the worst saying?
+What is the worst season?
 What is the worst shoe type?
 What is the worst sitcom?
 What is the worst sleep routine?
 What is the worst smartwatch brand?
+What is the worst smell?
+What is the worst snack?
 What is the worst soda brand?
+What is the worst song?
+What is the worst sound?
+What is the worst soup?
 What is the worst sport to watch?
+What is the worst sport?
 What is the worst sports event?
 What is the worst suitcase type?
+What is the worst taco?
+What is the worst taste?
+What is the worst tea?
 What is the worst toothbrush type?
 What is the worst TV show?
 What is the worst type of beer?
@@ -385,8 +418,10 @@ What is the worst type of tea?
 What is the worst type of wine?
 What is the worst umpire call?
 What is the worst vacation routine?
+What is the worst video game?
 What is the worst vlog?
 What is the worst way to spend a rainy day?
+What is the worst wine?
 What is the worst wizard type?
 What is the worst workout routine?
 What time is too early to wake up?
@@ -394,8 +429,9 @@ What was the coolest subject in school?
 What was the worst subject in school?
 Who is the best superhero?
 Who is the best villain?
-Would you rather 3D or 2D?
 Would you rather always be hot or always be cold?
+Would you rather always be overdressed or underdressed?
+Would you rather always be too early or too late?
 Would you rather be a big fish in a small pond or a small fish in a big pond?
 Would you rather be a doctor or a teacher?
 Would you rather be a leader or a follower?
@@ -407,94 +443,58 @@ Would you rather be a writer or a painter?
 Would you rather be able to breathe underwater or fly?
 Would you rather be able to talk to animals or speak all languages?
 Would you rather be able to teleport or time travel?
+Would you rather be an early bird or a night owl?
 Would you rather be an introvert or an extrovert?
-Would you rather be bitter or sweet?
 Would you rather be brave or smart?
-Would you rather be bright or dark?
 Would you rather be busy or free?
-Would you rather be butter or margarine?
 Would you rather be calm or energetic?
-Would you rather be cheese or no cheese?
 Would you rather be connected or alone?
-Would you rather be crunchy or soft?
 Would you rather be digital or analog?
 Would you rather be familiar or novel?
 Would you rather be famous or rich?
-Would you rather be fast or slow?
-Would you rather be hot or iced?
 Would you rather be invisible or able to fly?
-Would you rather be ketchup or mustard?
 Would you rather be kind or honest?
 Would you rather be logical or emotional?
 Would you rather be loud or quiet?
-Would you rather be mayo or ketchup?
 Would you rather be minimalist or maximalist?
 Would you rather be online or offline?
 Would you rather be organized or creative?
 Would you rather be patient or ambitious?
-Would you rather be pineapple on pizza or no pineapple?
-Would you rather be plain or flavored?
 Would you rather be planned or spontaneous?
 Would you rather be practical or imaginative?
-Would you rather be ranch or blue cheese?
 Would you rather be safe or adventurous?
-Would you rather be salsa or guac?
-Would you rather be salty or sweet?
 Would you rather be serious or funny?
 Would you rather be simple or complex?
-Would you rather be smooth or rough?
-Would you rather be soft or hard?
-Would you rather be still or sparkling?
 Would you rather be structured or flexible?
 Would you rather be stuck on a desert island with your worst enemy or alone?
-Would you rather be sweet or sour?
 Would you rather be the funniest person or the smartest person?
+Would you rather be too hot or too cold?
 Would you rather be traditional or modern?
 Would you rather be urban or rural?
-Would you rather be warm or cool?
-Would you rather be whole or skim?
-Would you rather bedroom or office?
 Would you rather control fire or water?
-Would you rather delivery or pickup?
 Would you rather espresso or americano?
 Would you rather give up coffee or give up alcohol?
-Would you rather green tea or black tea?
 Would you rather have a clone or an identical twin?
 Would you rather have a personal chef or a personal driver?
 Would you rather have a photographic memory or be able to forget anything?
 Would you rather have a rewind button or a pause button for life?
 Would you rather have more time or more money?
 Would you rather have super strength or super speed?
+Would you rather have too many pillows or too few?
 Would you rather have x-ray vision or invisibility?
-Would you rather iced coffee or hot coffee?
-Would you rather kitchen or living room?
 Would you rather know the date of your death or the cause?
 Would you rather lake or ocean?
 Would you rather lead or follow?
-Would you rather lemon or no lemon?
 Would you rather live in a castle or a penthouse?
 Would you rather live in the past or the future?
 Would you rather lose all your money or all your memories?
-Would you rather Mac or PC?
-Would you rather mountains or beaches?
 Would you rather never age or never get sick?
 Would you rather never eat pizza again or never eat tacos again?
 Would you rather never sleep again or never eat again?
 Would you rather never use the internet again or never watch TV again?
 Would you rather never watch TV again or never listen to music again?
-Would you rather open floor plan or rooms?
-Would you rather park or mall?
-Would you rather phones off or phones on?
-Would you rather quiet night or party?
 Would you rather read minds or predict the future?
-Would you rather remote or office?
-Would you rather roommate or alone?
 Would you rather slow cooked or pressure cooked?
-Would you rather solo or group?
-Would you rather spiced or plain?
-Would you rather sweetened or unsweetened?
 Would you rather talk or listen?
-Would you rather thin crust or thick crust?
 Would you rather travel the world for free or eat free food forever?
 Would you rather win the lottery but lose all friends or keep friends but stay broke?
-Would you rather Xbox or PlayStation?
