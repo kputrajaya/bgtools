@@ -1,4 +1,4 @@
-const { constructBggHandler } = require('../lib/bgg');
+const { constructBggHandler } = require('./_shared/bgg');
 
 module.exports = (req, res) =>
   constructBggHandler(req, res, (query) => {

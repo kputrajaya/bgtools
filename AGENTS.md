@@ -21,10 +21,9 @@ Five single-page apps sharing a common CSS file, each in its own directory:
 | `/shelf` | Browse BoardGameGeek collection with filtering |
 | `/dials` | Track numeric values (health, resources) |
 | `/score` | Score calculator with editable players/categories |
-| `/roll` | Dice roller supporting expressions like `2d8+4` |
 | `/prompts` | Prompt generator for party games |
 
-Each app is a pair of `index.html` + `site.js`. `/shared/site.css` applies globally.
+Each app is a pair of `index.html` + `site.js`. `/_shared/site.css` applies globally.
 
 **Stack:** Alpine.js (reactive UI), Bootstrap 5 (CSS), Vanilla JS.
 

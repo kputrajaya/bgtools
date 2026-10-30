@@ -1,4 +1,4 @@
-const { constructBggHandler } = require('../lib/bgg');
+const { constructBggHandler } = require('./_shared/bgg');
 
 const MAX_DETAIL_IDS = 20;
 

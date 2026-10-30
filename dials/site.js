@@ -74,35 +74,6 @@ const PRESETS = {
       })),
     },
   ],
-  'Generic: 4 Values': [
-    {
-      name: 'Players',
-      open: true,
-      items: [...Array(4).keys()].map((i) => ({
-        name: `P${i + 1}`,
-        metrics: [{ value: 0 }, { value: 0, context: 'warning' }, { value: 0, context: 'success' }, { value: 0, context: 'info' }],
-        size: 2,
-      })),
-    },
-    {
-      name: 'Players',
-      open: false,
-      items: [...Array(4).keys()].map((i) => ({
-        name: `P${i + 5}`,
-        metrics: [{ value: 0 }, { value: 0, context: 'warning' }, { value: 0, context: 'success' }, { value: 0, context: 'info' }],
-        size: 2,
-      })),
-    },
-    {
-      name: 'Players',
-      open: false,
-      items: [...Array(4).keys()].map((i) => ({
-        name: `P${i + 9}`,
-        metrics: [{ value: 0 }, { value: 0, context: 'warning' }, { value: 0, context: 'success' }, { value: 0, context: 'info' }],
-        size: 2,
-      })),
-    },
-  ],
   Gloomhaven: [
     {
       name: 'Players',

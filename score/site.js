@@ -3,12 +3,12 @@ const MAX_PLAYERS = 10;
 
 document.addEventListener('alpine:init', () => {
   Alpine.data('score', () => ({
-    gameData: { '': ['Category 1', 'Category 2'] },
+    gameData: { '': ['Category 1', 'Category 2', 'Category 3'] },
     selectedGame: '',
-    categories: ['Category 1', 'Category 2'],
+    categories: ['Category 1', 'Category 2', 'Category 3'],
     players: [
-      { name: 'P1', scores: [0, 0] },
-      { name: 'P2', scores: [0, 0] },
+      { name: 'P1', scores: [0, 0, 0] },
+      { name: 'P2', scores: [0, 0, 0] },
     ],
 
     addCategory() {
@@ -24,6 +24,9 @@ document.addEventListener('alpine:init', () => {
         name: `P${this.players.length + 1}`,
         scores: Array(this.categories.length).fill(0),
       });
+    },
+    reset() {
+      if (confirm('Reset the sheet?')) location.reload();
     },
     loadPreset() {
       this.categories = JSON.parse(JSON.stringify(this.gameData[this.selectedGame]));
