@@ -6,11 +6,11 @@ How many slices of pizza is the normal amount to eat?
 If you had to choose only one pizza topping, what would it be?
 Is a burger a sandwich?
 Is a hot dog a sandwich?
-Name a bad habit.
+Name a bad habit people have while driving.
 Name a band everyone has an opinion on.
 Name a band people of different ages can sing along to.
 Name a beverage you drink hot.
-Name a book everyone has an opinion on.
+Name a book people argue about after reading.
 Name a brand of luxury car.
 Name a bug that isn't scary.
 Name a car brand everyone has an opinion on.
@@ -18,7 +18,7 @@ Name a card game most people recognize.
 Name a card game people argue about the rules of.
 Name a cartoon character that is very annoying.
 Name a celebrity people either love or hate.
-Name a celebrity everyone knows.
+Name a celebrity people of different ages can recognize.
 Name a childhood game everyone played.
 Name a chore everyone has done.
 Name a chore you always put off until the last minute.
@@ -43,14 +43,14 @@ Name a famous wizard.
 Name a fashion trend everyone has an opinion on.
 Name a fast food chain everyone has an opinion on.
 Name a flower that smells amazing.
-Name a food everyone has an opinion on.
+Name a food people disagree about eating for breakfast.
 Name a food that is better as a leftover.
 Name a food that is impossible to eat gracefully.
 Name a food that is impossible to eat quietly.
 Name a fruit that doesn't belong in a fruit salad.
 Name a fruit that tastes better when it's cold.
 Name a game that can turn a friendly group competitive.
-Name a good habit.
+Name a small habit that makes mornings easier.
 Name a habit that is hard to break.
 Name a hairstyle that was popular but is now cringe.
 Name a hobby that makes someone look intellectual.
@@ -63,11 +63,11 @@ Name a kitchen appliance you use almost every day.
 Name a laptop brand everyone has an opinion on.
 Name a prize people would get excited to win at a party.
 Name a member of the Beatles.
-Name a movie everyone has an opinion on.
+Name a movie people argue about after the credits.
 Name a musical instrument that is hard to play.
 Name a musical instrument with strings.
 Name a musician everyone knows.
-Name a mythical creature you wish was real.
+Which mythical creature would you rather meet: a dragon, a unicorn, or a mermaid?
 Name a nightmare everyone has had.
 Name a party game everyone knows.
 Name a personality trait that is contagious.
@@ -91,9 +91,9 @@ Name a smell that belongs in a kitchen.
 Name a sneaker brand everyone has an opinion on.
 Name a social media app everyone has an opinion on.
 Name a social media app people say they are quitting but keep using.
-Name a song everyone has an opinion on.
-Name a song that everyone knows the lyrics to.
-Name a sound that is universally annoying.
+Name a song people argue about at karaoke.
+Name a song people sing along to at a party.
+Name a sound that is especially annoying in a quiet room.
 Name a sound that makes you sleepy.
 Name a sport everyone has an opinion on.
 Name a sport that is more fun to play than watch.
@@ -127,7 +127,7 @@ Name an ice cream brand everyone has an opinion on.
 Name an item you'd find in a hotel room.
 Name something people lie about on their resumes.
 Name something people most look forward to doing on a snowy winter day.
-Name something that is sticky.
+Name a snack that leaves your fingers sticky.
 Name something you always forget to pack for vacation.
 Name something you'd find on a teacher's desk.
 Name something you'd find under a sofa cushion.
@@ -154,8 +154,8 @@ What hobby can anyone try with a friend?
 What hobby looks relaxing but is actually hard work?
 What ice cream flavor makes the best root beer float?
 What is a common pizza topping?
-What is the best "Friday feeling" activity?
-What is the best beer?
+What is the best way to spend the first hour after work on Friday?
+What beer is best to bring to a barbecue?
 What is the most fun thing to do on a boat?
 What is the best bread?
 What is the best breakfast routine?
@@ -166,24 +166,24 @@ What is the best candy?
 What is the best car brand?
 What is the best cheese?
 What is the best chip flavor?
-What is the best cocktail?
+What cocktail is the safest order at a new bar?
 What is the best coffee shop drink?
-What is the best coffee?
+What coffee drink is best for a cold morning?
 What is the best cookie?
 What is the best way to cool down on a hot day?
 What is the best day of the week?
 What is the best day to go grocery shopping?
 What is the best day to work from home?
 What should you always bring to the beach?
-What is the best dessert?
+What dessert is the safest crowd-pleaser at a family dinner?
 What is the best dip for chips?
-What is the best drink?
+What drink is the best choice for a summer cookout?
 What is the best farm animal?
 What is the best fast-food burger chain?
 What is the best fast-food fried chicken chain?
 What is the best flavor of ice cream?
 What is the best flavor of potato chip?
-What is the best hat type?
+What hat is easiest to wear on a bad-hair day?
 What color makes the best notebook cover?
 What is the best holiday?
 What is the best horror movie?
@@ -192,7 +192,7 @@ Which celebrity would make the most entertaining talk-show host?
 What is the easiest way to get around an unfamiliar city?
 What is the best month?
 What is the best movie snack that isn't popcorn?
-What is the best movie?
+What movie is the safest pick for a group movie night?
 What is the best nail polish color?
 What do you check first when you see a surprising news story?
 What is a low-pressure first date idea?
@@ -201,29 +201,29 @@ What is the best pie?
 What is the best pizza topping?
 What plant is hardest to kill?
 What is the best salad?
-What is the best sandwich?
+What sandwich is best for a packed lunch?
 What is the best scent for a candle?
 What is the best seat on a plane: window or aisle?
 What is the best shape for pasta?
-What is the best sitcom of all time?
+Which sitcom has the most rewatchable episodes?
 What household chore should be automated first?
-What is the best snack?
-What is the best song?
+What snack is best to keep at your desk?
+What song gets the biggest singalong at a party?
 What soup is best to serve to a group?
 What spice would you hate to run out of?
 What is the best sport to watch?
 What is the best sports team?
-What is the best superpower?
+What superpower would be most useful during an ordinary workday?
 What is the best taco?
 What is the best tea?
 What is the best theme park?
 What time is too late to eat dinner?
 What time is too early to eat lunch?
-What is the best TV show?
-What is the best video game console?
-What is the best video game?
+What TV show is easiest to recommend to someone who has never seen it?
+Which game console is easiest for friends to play together?
+What video game is most fun when friends are watching?
 What is the best wake up routine?
-What is the best way to cook a fish?
+What is the easiest way to cook fish without drying it out?
 What is the best way to cook an egg?
 What greeting feels most welcoming when you meet someone?
 What is the best way to spend a long flight?
@@ -243,7 +243,7 @@ What is the most versatile color for a t-shirt?
 What is the worst arcade game?
 What is the worst beer?
 What is the worst board game?
-What is the worst book?
+What book is hardest to finish for a school assignment?
 What is the worst bread?
 What is the worst burger?
 What is the worst cake flavor?
@@ -253,31 +253,31 @@ What is the worst chip flavor?
 What is the worst clothing brand?
 What is the worst cocktail?
 What is the worst coffee?
-What is the worst color?
+What color is hardest to decorate a room around?
 What is the worst cookie?
 What is the worst dating app?
-What is the worst dessert?
-What is the worst director?
+What dessert is hardest to eat without making a mess?
+What movie sequel is most disappointing compared with the original?
 What is the worst dog breed?
-What is the worst drink?
+What drink is most disappointing when you are really thirsty?
 What is the worst eyebrow style?
-What is the worst eyeshadow color?
+Which eyeshadow color is hardest to pair with an outfit?
 What household chore is worst to put off?
 What video game feature makes a game frustrating?
-What is the worst gif type?
+Which is more annoying in a group chat: an unwanted thumbs-up or no reply?
 What is the worst ice cream flavor?
 What household gadget is most annoying when it needs Wi-Fi?
 What is the worst laptop brand?
 What is the worst messaging app?
 What is the worst thing to taste right after brushing your teeth?
-Which mythical creature would be the worst roommate?
+Which would be the worst roommate: a vampire, a werewolf, or a troll?
 What kind of headline makes you distrust a news story?
 What animal would you least want to find in your house at night?
 What is the worst noodle dish?
 What nut ruins a mixed snack?
 Which pasta dish is most disappointing to order at a restaurant?
-What is the worst perfume scent?
-What is the worst photo filter?
+What perfume scent is most likely to be overpowering in a small room?
+Which photo filter makes a normal picture look the most fake?
 What is the worst pie?
 What is the worst pizza topping?
 What advice do people give that makes you roll your eyes?
@@ -285,77 +285,77 @@ What phrase do people say that instantly annoys you?
 What referee call is most frustrating in a close game?
 What makes a rideshare trip uncomfortable?
 What is the worst salad?
-What is the worst sandwich?
+What sandwich is worst to eat during a commute?
 What cliché phrase makes someone sound insincere?
 What is the worst season?
 What is the worst shoe type?
-What is the worst sitcom?
+Which sitcom has the most annoying laugh track?
 What is the worst sleep routine?
 What smartwatch feature is more annoying than useful?
-What is the worst smell?
-What is the worst snack?
+What smell is worst to encounter in a small room?
+What snack makes the biggest mess on a couch?
 What is the worst soda brand?
-What is the worst song?
-What is the worst sound?
+What song makes people leave the dance floor?
+What sound is most annoying when you are trying to sleep?
 What is the worst soup?
 What is the worst sport to watch?
 What is the worst sport?
-What is the worst sports event?
+Which sports event is most boring to watch live?
 What is the worst suitcase type?
 What is the worst taco?
 What is the worst tea?
 What is the worst toothbrush type?
-What is the worst TV show?
-What is the worst type of beer?
-What is the worst type of bread?
-What is the worst type of breakfast?
-What is the worst type of burger?
-What is the worst type of cake?
-What is the worst type of candy?
-What is the worst type of cheese?
-What is the worst type of cocktail?
-What is the worst type of coffee?
-What is the worst type of cookie?
-What is the worst type of dessert?
-What is the worst type of dinner?
-What is the worst type of drink?
-What is the worst type of ice cream?
-What is the worst type of lunch?
-What is the worst type of noodle?
-What is the worst type of pasta?
-What is the worst type of pie?
-What is the worst type of pizza?
-What is the worst type of rice?
-What is the worst type of salad?
-What is the worst type of sandwich?
-What is the worst type of snack?
-What is the worst type of soup?
-What is the worst type of taco?
-What is the worst type of tea?
+Which TV show had the most disappointing finale?
+What drink tastes worst after it gets warm?
+Which bread falls apart most easily in a sandwich?
+What breakfast is hardest to eat in a moving car?
+What burger topping ruins a simple cheeseburger?
+What cake flavor is riskiest for a birthday party?
+What candy is most disappointing in a trick-or-treat bag?
+Which cheese is least welcome in a packed lunch?
+What drink is worst to order at a crowded bar?
+Which coffee order takes longest to make when you're in a hurry?
+Which cookie is worst for dunking in milk?
+What dessert is hardest to serve at a picnic?
+What dinner is worst to eat on a first date?
+What drink is worst to spill on a white shirt?
+What ice cream flavor is worst in a milkshake?
+What lunch is worst to eat at a desk?
+Which noodle dish is hardest to eat neatly?
+Which pasta shape is messiest to eat?
+Which pie is most likely to fall apart when served outdoors?
+What pizza topping are you most likely to pick off?
+What rice dish makes the best leftovers?
+What salad ingredient ruins a salad for you?
+What sandwich filling makes a lunchbox smell bad?
+What snack makes the worst mess in a car?
+What soup is worst to eat without spilling?
+What taco filling falls out most while eating?
+What tea is most popular at breakfast?
 What baseball rule is hardest to explain to a new fan?
-What is the worst vacation routine?
-What is the worst video game?
-What is the worst way to spend a rainy day?
+What vacation habit annoys everyone you are traveling with?
+What video game is most frustrating to play with friends?
+What is the worst thing to do when stuck inside on a rainy day?
 What drink is worst when it goes flat?
-Which fantasy creature would be the worst pet?
-What is the worst workout routine?
+Which would be hardest to keep as a pet: a dragon, a unicorn, or a mermaid?
+Which exercise is hardest to stick with for a month?
 What kind of car is most frustrating to park in a city?
 What kind of meeting should have been an email?
 What kind of pizza works best for a group with mixed tastes?
-What kind of reaction gif makes a serious conversation more awkward?
-What kind of reaction gif works best when someone shares good news?
-What kind of ship would you choose for a weeklong vacation?
+Which reaction is more awkward after a serious announcement: a heart or a thumbs-up?
+Which emoji best celebrates good news: a party popper, a heart, or applause?
+What is the best thing to do on a cruise ship?
 What kitchen gadget takes up space but rarely gets used?
 What lunch is easiest to pack without refrigeration?
-What makes a podcast episode hard to finish?
-What makes a video call feel less awkward when several people join?
-What makes a vlog feel like a waste of the viewer's time?
+What makes you quit a podcast fastest: a long intro, too many ads, or poor audio?
+What makes a group video call less awkward: a quick introduction, an agenda, or a shared activity?
+What makes a vlog boring fastest: a long intro, poor audio, or too much talking?
 What non-alcoholic drink feels special enough for a celebration?
 What piece of jewelry makes the safest gift when you do not know someone's style?
 What plant-based protein makes the most satisfying lunch?
 What prize would make a casual game-night competition worth winning?
 What game could keep a group entertained all evening?
-What question gets people talking at a dinner party?
+Which topic gets a dinner party talking fastest: travel, food, or embarrassing stories?
 What salad ingredient makes a salad feel like a full meal?
 What sandwich holds up best for a picnic?
 What small habit makes a daily commute more pleasant?
@@ -402,7 +402,7 @@ Which holiday is most stressful to host at home?
 Which hotel-room feature makes the biggest difference on a weekend trip?
 Which ice cream flavor works best in a milkshake?
 Which kind of movie is most disappointing when you paid to see it in theaters?
-Which meme format still makes you laugh years after it became popular?
+Which reaction fits a small mistake better: a facepalm or an eye-roll?
 Which month feels longest because the next holiday is so far away?
 Which movie franchise has the most satisfying first film?
 What animal would you least want to hear outside your tent at night?
@@ -422,11 +422,11 @@ Which sport is easiest to play casually with friends?
 What sports call gets fans arguing every time?
 Which tea is best to drink before bed?
 What is the best kind of tree to climb?
-Which fictional character would you invite on a road trip?
+Which road-trip passenger is most useful: the navigator, the DJ, or the snack-bringer?
 Which ingredient do people argue about adding to scrambled eggs?
 Which way to travel is least stressful for a weekend getaway?
 Which weather forecast makes people most likely to cancel plans?
-Which fictional character would be the most fun teacher?
+What makes a class most fun: a funny teacher, hands-on activities, or great stories?
 Who is the best superhero?
 Who is the best villain?
 Would you rather always be hot or always be cold?
