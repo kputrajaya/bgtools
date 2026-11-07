@@ -2,7 +2,7 @@ const { constructBggHandler } = require('./_shared/bgg');
 
 module.exports = (req, res) =>
   constructBggHandler(req, res, (query) => {
-    const username = typeof query.username === 'string' ? query.username.trim() : '';
+    const username = typeof query.u === 'string' ? query.u.trim() : '';
     if (!username || username.length > 100 || /[\u0000-\u001f\u007f]/.test(username)) {
       throw new TypeError('Valid username required');
     }

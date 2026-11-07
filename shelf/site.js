@@ -32,7 +32,7 @@ document.addEventListener('alpine:init', () => {
       .map((result) => Math.floor(result['@_numplayers']));
   };
   const getGames = async (username) => {
-    const collectionObj = await fetchBgg('games', { username });
+    const collectionObj = await fetchBgg('games', { u: username });
     return ensureArray(collectionObj?.items?.item)
       .map((item) => ({
         id: item['@_objectid'],
@@ -59,7 +59,7 @@ document.addEventListener('alpine:init', () => {
       .sort((a, b) => (b.rating || 0) - (a.rating || 0) || (a.rank || 999999) - (b.rank || 999999));
   };
   const getExpansions = async (username) => {
-    const collectionObj = await fetchBgg('expansions', { username });
+    const collectionObj = await fetchBgg('expansions', { u: username });
     return ensureArray(collectionObj?.items?.item)
       .filter((item) => item.status['@_own'] == '1') // Filtering "own" on the API somehow results in stale data
       .map((item) => ({
