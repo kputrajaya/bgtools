@@ -5,7 +5,7 @@ A collection of board game tools.
 - Shelf: showcase BoardGameGeek (owned) game collection
 - Dials: track health and other values without dials
 - Score: calculate board game score without score pads
-- Roll: roll a set of dice once for honest results
+- Prompts: generate prompts for party games
 
 ## Built With
 

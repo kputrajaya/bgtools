@@ -14,7 +14,7 @@ Local API testing requires Vercel CLI: `vercel dev` (serves serverless functions
 
 ## Architecture
 
-Five single-page apps sharing a common CSS file, each in its own directory:
+Single-page apps sharing a common CSS file, each in its own directory:
 
 | App | Purpose |
 |-----|---------|
