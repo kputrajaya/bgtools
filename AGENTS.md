@@ -31,7 +31,7 @@ Each app is a pair of `index.html` + `site.js`. `/_shared/site.css` applies glob
 
 **Persistence:** Alpine.js state + `localStorage` for user data. Score presets load from a GitHub Gist URL.
 
-**Routing:** `vercel.json` rewrites `/` → `/shelf/`.
+**Routing:** `vercel.json` redirects `/` → `/shelf/`.
 
 ## Shelf App (Most Complex)
 
