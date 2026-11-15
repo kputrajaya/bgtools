@@ -1,5 +1,6 @@
 At what age should a child get their first smartphone?
 At what age should kids be allowed to walk to school alone?
+Besides a laptop, what do people keep in a work bag?
 How many pillows are too many for a bed?
 How many slices of pizza is the normal amount to eat?
 If you had to choose only one pizza topping, what would it be?
@@ -23,7 +24,6 @@ Name a breakfast people eat at a diner.
 Name a breakfast people eat on a weekday.
 Name a breakfast people make on a weekend.
 Name a breakfast people make with eggs besides scrambled.
-Name a browser people use.
 Name a bug people are afraid of.
 Name a bug that isn't scary.
 Name a candy people eat at the movies.
@@ -32,7 +32,6 @@ Name a candy people keep in a desk drawer.
 Name a car brand everyone has an opinion on.
 Name a card game most people recognize.
 Name a card game people play with two players.
-Name a card people keep in their wallet besides a credit card.
 Name a cartoon character that is very annoying.
 Name a cartoon people watched as kids.
 Name a celebrity people either love or hate.
@@ -54,6 +53,7 @@ Name a cleaning tool people use on upholstery.
 Name a clothing brand everyone has an opinion on.
 Name a clothing item people buy in multiple colors.
 Name a clothing item people iron.
+Name a clothing item people steal from a partner's closet.
 Name a clothing item people wear at home.
 Name a clothing item people wear for a long car ride.
 Name a clothing item people wear in winter besides a coat.
@@ -73,6 +73,7 @@ Name a clothing item people wear until it falls apart.
 Name a clothing item people wear when it snows besides boots.
 Name a clothing item people wear when painting.
 Name a clothing item people wear when running errands.
+Name a clothing item that gets worn once and then never again.
 Name a coffee shop everyone has an opinion on.
 Name a common excuse for being late.
 Name a common fear people won't admit.
@@ -126,7 +127,6 @@ Name a drink people order when they want something warm.
 Name a drink people serve at a kid's birthday party.
 Name a drink people serve at a party besides soda.
 Name a drink people sip when they have a sore throat.
-Name a drink that is best served at room temperature.
 Name a drink that is best served with lots of ice.
 Name a famous wizard.
 Name a fast food chain everyone has an opinion on.
@@ -139,6 +139,7 @@ Name a flower people plant in spring.
 Name a flower that smells amazing.
 Name a food people bring on a hike.
 Name a food people bring to a sick friend.
+Name a food people commonly burn the first time they cook it.
 Name a food people cook in a Dutch oven.
 Name a food people cook in a cast iron skillet.
 Name a food people cook in an air fryer.
@@ -157,7 +158,6 @@ Name a food people eat on Thanksgiving.
 Name a food people eat straight from the container.
 Name a food people eat when hungover.
 Name a food people eat when sick.
-Name a food people eat with a fork that is awkward.
 Name a food people eat with chopsticks.
 Name a food people eat with their hands.
 Name a food people grill on skewers.
@@ -174,7 +174,6 @@ Name a food that is impossible to eat gracefully.
 Name a food that is impossible to eat quietly.
 Name a food that stains your fingers.
 Name a fruit people bake into a dessert besides apple.
-Name a fruit people commonly put in a smoothie.
 Name a fruit people dry besides raisins.
 Name a fruit people eat with cheese.
 Name a fruit people juice at home.
@@ -187,6 +186,7 @@ Name a fruit that is messy to eat.
 Name a game people play on road trips.
 Name a game people play with dice.
 Name a game that can turn a friendly group competitive.
+Name a game two people can play with only a pen and paper.
 Name a gift people bring to a housewarming.
 Name a gift people bring to a new parent.
 Name a gift people give to a teacher.
@@ -202,7 +202,6 @@ Name a herb people grow on a windowsill.
 Name a herb people use in Italian cooking.
 Name a hobby people pick up during winter.
 Name a hobby people pick up in retirement.
-Name a hobby people start after retirement.
 Name a hobby that is expensive to start.
 Name a holiday everyone argues about.
 Name a holiday people travel for.
@@ -216,7 +215,6 @@ Name a household chore people do before bed.
 Name a household chore people do daily.
 Name a household chore people do in pajamas.
 Name a household chore people do on Saturday morning.
-Name a household chore people do while waiting for water to boil.
 Name a household item people always buy two of.
 Name a household item people always forget to buy.
 Name a household item people always misplace.
@@ -224,7 +222,6 @@ Name a household item people buy in bulk.
 Name a household item people keep in a car.
 Name a household item people keep in a junk drawer.
 Name a household item people keep on a nightstand.
-Name a household item people keep on the nightstand.
 Name a household item people keep under the bed.
 Name a household item people keep under the sink.
 Name a household item people stockpile.
@@ -234,12 +231,11 @@ Name a household smell people associate with holidays.
 Name a household smell people love.
 Name a household sound people find comforting.
 Name a household sound that signals someone is home.
-Name a job people do while traveling.
+Name a job most people have at least once as a teenager.
 Name a job people think is easier than it is.
 Name a job that is harder than it looks.
 Name a job that requires wearing a uniform.
 Name a job where you stand all day.
-Name a kind of weather people complain about most.
 Name a kind of weather people love.
 Name a kind of weather that can ruin an outdoor wedding.
 Name a kitchen appliance you use almost every day.
@@ -294,7 +290,6 @@ Name a piece of furniture people keep in a living room besides a couch.
 Name a piece of furniture people keep in an entryway.
 Name a pizza people order for a group.
 Name a place people hide a spare key.
-Name a place with a huge amount of sand.
 Name a plant people keep in a kitchen.
 Name a plant people keep in a living room.
 Name a plant people keep on a balcony.
@@ -304,10 +299,8 @@ Name a plant that is hard to keep alive.
 Name a playground game you played as a kid.
 Name a podcast genre people listen to.
 Name a prize people would get excited to win at a party.
-Name a profession people respect for helping others in difficult moments.
 Name a reason people cancel plans.
 Name a reason people leave a party early.
-Name a reason people set an alarm besides waking up.
 Name a reason people stay up too late.
 Name a reason people take a sick day.
 Name a reason people whisper.
@@ -324,7 +317,6 @@ Name a room people spend the most time in.
 Name a sandwich people make at home.
 Name a sauce people dip chicken nuggets in.
 Name a sauce people dip fries in besides ketchup.
-Name a sauce people put on chicken wings besides buffalo.
 Name a sauce people put on chicken wings.
 Name a scent people love in candles.
 Name a school supply people buy for nostalgia.
@@ -341,12 +333,10 @@ Name a side dish people serve with burgers.
 Name a side dish people serve with fish.
 Name a side dish people serve with steak besides potatoes.
 Name a singer everyone knows.
-Name a skill people wish they had.
+Name a small check people do before leaving the house.
 Name a small kitchen appliance people keep on the counter.
-Name a small kitchen appliance people use daily besides a toaster.
 Name a small kitchen appliance people use daily.
 Name a small talk topic people default to.
-Name a smell that reminds you of childhood.
 Name a snack people eat at a desk.
 Name a snack people eat at a movie theater besides popcorn.
 Name a snack people eat at a sleepover besides popcorn.
@@ -367,7 +357,6 @@ Name a sound that is especially annoying in a quiet room.
 Name a sound that makes you sleepy.
 Name a soup people make at home.
 Name a souvenir people bring home from trips.
-Name a spice people put in chili besides cumin.
 Name a spice people put in chili.
 Name a spice that goes in almost every savory dish.
 Name a sport everyone has an opinion on.
@@ -420,7 +409,6 @@ Name a vacation activity people do first.
 Name a vegetable children usually hate.
 Name a vegetable people eat raw as a snack.
 Name a vegetable people grill.
-Name a vegetable people put in a salad besides lettuce.
 Name a vegetable people put in a salad.
 Name a vegetable people put in a soup.
 Name a vegetable people put in a stir fry.
@@ -445,23 +433,18 @@ Name a workplace snack people share.
 Name a zoo animal people expect to see first.
 Name an activity people argue about whether it counts as a sport.
 Name an activity people do on a rainy day.
-Name an actor everyone knows.
-Name an actress everyone knows.
 Name an animal people are afraid of.
-Name an animal people feed at a park.
 Name an animal people hear at night besides crickets.
+Name an animal people imitate to make a baby laugh.
 Name an animal people keep in a fish tank.
 Name an animal people see at a petting zoo.
 Name an animal people see at a zoo besides a lion.
-Name an animal people see in a city.
 Name an animal people see in a forest.
-Name an animal people see in their backyard besides birds.
 Name an animal people see in their backyard.
 Name an animal people see on a farm besides a cow.
 Name an animal people see on a hike.
 Name an animal that is surprisingly fast.
 Name an animal that makes a good first pet.
-Name an animal that starts with the letter 'P'.
 Name an animal that would be terrifying if it were 1 meter tall.
 Name an app people delete to save storage.
 Name an app people use to waste time.
@@ -471,17 +454,22 @@ Name an item people pack first for a trip.
 Name an item you'd find in a hotel room.
 Name an office supply people borrow and never return.
 Name an office supply people keep on their desk.
+Name something people do at a red light.
+Name something people do in an elevator with a stranger.
+Name something people keep in a wallet besides money and cards.
 Name something people lie about on their resumes.
 Name something people pretend to understand at work.
+Name something people secretly do during a work call.
 Name something you always forget to pack for vacation.
 Name something you'd find on a teacher's desk.
 Name something you'd find under a sofa cushion.
+Name the animal people blame for a noise in the attic.
 Name the room guests judge most when they visit someone's home.
 What TV show is easiest to recommend to someone who has never seen it?
-What advice do people give that makes you roll your eyes?
+What always falls out of a sandwich and onto the plate?
+What animal do people stop to watch at a park pond?
 What animal would you least want to find in your house at night?
 What animal would you least want to hear outside your tent at night?
-What baseball rule is hardest to explain to a new fan?
 What bedtime habit is most likely to ruin a good night's sleep?
 What beer is best to bring to a barbecue?
 What book is hardest to finish for a school assignment?
@@ -494,6 +482,7 @@ What burger topping ruins a simple cheeseburger?
 What cake flavor is the safest choice for a birthday party?
 What candy is most disappointing in a trick-or-treat bag?
 What cliché phrase makes someone sound insincere?
+What clothing item do people leave behind at a friend's house?
 What cocktail is the safest order at a new bar?
 What coffee drink is best for a cold morning?
 What color is hardest to decorate a room around?
@@ -504,8 +493,17 @@ What dessert is hardest to serve at a picnic?
 What dessert is the safest crowd-pleaser at a family dinner?
 What dinner is most reliable for feeding picky guests?
 What dinner is worst to eat on a first date?
+What do people add to water to make it less boring?
+What do people do every Sunday to prepare for the week?
+What do people do first when the Wi-Fi stops working?
+What do people do in the last five minutes before a guest arrives?
+What do people grab at the supermarket even when it isn't on the list?
+What do people take home from a hotel room even though they shouldn't?
+What do people throw on when someone knocks at an unexpected hour?
 What do you add to coffee to make it taste better?
 What do you do to make a long wait in line feel shorter?
+What drink do people make by the pitcher for a crowd?
+What drink is a dead giveaway that someone is on a diet?
 What drink is best for a movie night?
 What drink is most disappointing when you are really thirsty?
 What drink is the best choice for a summer cookout?
@@ -513,22 +511,26 @@ What drink is worst to order at a crowded bar?
 What drink is worst when it goes flat?
 What drink should you serve with pizza?
 What drink tastes worst after it gets warm?
-What exercise do people most often skip?
+What excuse do students use for missing homework?
 What filling belongs in a crowd-pleasing taco?
 What flavor combination is most likely to ruin a snack?
+What food do people put ketchup on that others find strange?
 What food is best to eat with a cold beer?
 What game could keep a group entertained all evening?
+What gets stacked on top of the fridge?
 What greeting feels most welcoming when you meet someone?
-What hat is easiest to wear on a bad-hair day?
 What hobby can anyone try with a friend?
+What hobby is mostly waiting?
 What hobby looks relaxing but is actually hard work?
+What hobby produces gifts people actually keep?
 What household chore is worst to put off?
 What household chore should be automated first?
 What household gadget is most annoying when it needs Wi-Fi?
+What household sound tells you someone else is awake?
+What household task is much easier with two people?
 What ice cream flavor belongs in a sundae?
 What ice cream flavor is worst in a milkshake?
 What is a low-pressure first date idea?
-What is a safe last-minute gift to bring to a dinner party?
 What is the best camping food?
 What is the best candy?
 What is the best car brand?
@@ -541,15 +543,11 @@ What is the best fast-food burger chain?
 What is the best fast-food fried chicken chain?
 What is the best horror movie?
 What is the best indoor activity on a rainy day?
-What is the best kind of tree to climb?
-What is the best month?
 What is the best nail polish color?
 What is the best pie?
 What is the best scent for a candle?
 What is the best season for a wedding?
-What is the best shape for pasta?
 What is the best sport to watch?
-What is the best taco?
 What is the best thing to do on a cruise ship?
 What is the best way to cool down on a hot day?
 What is the best way to eat a potato?
@@ -571,46 +569,43 @@ What is the most common way people ruin eggs?
 What is the most fun thing to do on a boat?
 What is the most iconic Disney movie?
 What is the most versatile color for a t-shirt?
-What is the worst board game?
 What is the worst candy?
 What is the worst cheese?
 What is the worst chip flavor?
 What is the worst clothing brand?
 What is the worst cocktail?
-What is the worst cookie?
 What is the worst dating app?
 What is the worst laptop brand?
 What is the worst messaging app?
 What is the worst shoe type?
 What is the worst sport to watch?
 What is the worst thing a host can run out of at a dinner party?
-What is the worst thing to taste right after brushing your teeth?
 What is the worst way to wake someone up?
 What is the worst weather for a commute?
 What kind of car is most frustrating to park in a city?
 What kind of headline makes you distrust a news story?
 What lunch is easiest to pack without refrigeration?
 What lunch is worst to eat at a desk?
-What makes a good roommate?
 What makes a rideshare trip uncomfortable?
 What makes you delete an app from your phone?
 What movie is the safest pick for a group movie night?
 What movie sequel is most disappointing compared with the original?
 What non-alcoholic drink feels special enough for a celebration?
 What nut ruins a mixed snack?
+What object do people borrow and never return?
+What part of getting ready for bed do people rush most?
 What perfume scent is most likely to be overpowering in a small room?
 What phrase do people say that instantly annoys you?
 What piece of jewelry makes the safest gift when you do not know someone's style?
 What pizza topping are you most likely to pick off?
 What plant is hardest to kill?
-What prize would make a casual game-night competition worth winning?
 What rice dish makes the best leftovers?
 What salad ingredient makes a salad feel like a full meal?
 What salad ingredient ruins a salad for you?
-What sandwich filling makes a lunchbox smell bad?
 What sandwich holds up best for a picnic?
 What sandwich is best for a packed lunch?
 What sandwich is worst to eat during a commute?
+What sauce do people always ask for on the side?
 What should you always bring to the beach?
 What small habit makes a daily commute more pleasant?
 What smell instantly makes a house feel welcoming?
@@ -625,7 +620,6 @@ What sound is most annoying when you are trying to sleep?
 What soup is best to serve to a group?
 What soup is worst to eat without spilling?
 What spice would you hate to run out of?
-What superpower would be most useful during an ordinary workday?
 What taco filling falls out most while eating?
 What tea is most popular at breakfast?
 What time is too early to eat lunch?
@@ -633,14 +627,19 @@ What time is too early to wake up?
 What time is too late to eat dinner?
 What topping turns plain toast into a filling breakfast?
 What treat is most likely to disappear first on movie night?
-What vacation habit annoys everyone you are traveling with?
 What video game feature makes a game frustrating?
 What video game is most frustrating to play with friends?
 What video game is most fun when friends are watching?
 What was the coolest subject in school?
 What was the worst subject in school?
-Which TV show had the most disappointing finale?
-Which actor would you cast as the lead in a big-budget adventure movie?
+When guests arrive, what snack goes into a bowl first?
+Where do people go to kill an hour before an appointment?
+Where do people go when they need ten minutes of quiet?
+Where do people hide birthday presents before the big day?
+Where do people wait in a line that never seems to move?
+Which animal always looks like it knows it did something wrong?
+Which animal do you hear before you see at the zoo?
+Which animal looks friendly but absolutely is not?
 Which animal should every zoo make sure visitors can see?
 Which animal would be the worst houseguest?
 Which animal would make the best school mascot?
@@ -652,47 +651,48 @@ Which board game stays fun after dozens of plays?
 Which book would you recommend to someone who wants a page-turner?
 Which bread falls apart most easily in a sandwich?
 Which car color hides dirt best between washes?
-Which celebrity would make the most entertaining talk-show host?
 Which cheese is least welcome in a packed lunch?
 Which cheese melts best in a grilled sandwich?
 Which city would be easiest to recognize from a single landmark?
+Which clothing item do people keep wearing even after it gets a hole?
+Which clothing item is easier to hang than to fold?
+Which clothing item is the fastest fix for a bad hair day?
 Which coffee order takes longest to make when you're in a hurry?
 Which color is easiest to use as an accent in a room?
 Which condiment improves a plain sandwich the most?
 Which cookie travels best in a lunchbox?
 Which day feels longest when you have a busy workweek?
-Which dress color is easiest to wear to a formal event?
-Which everyday invention gets more credit than it deserves?
-Which everyday invention would be hardest to live without for a week?
+Which drink do people make far too sweet at home?
 Which everyday sound is most satisfying to hear?
 Which exercise is hardest to stick with for a month?
 Which extinct animal would be the coolest to see alive?
-Which flavor can make a bland meal taste exciting?
+Which food do people cut into tiny pieces for a toddler?
 Which game console is easiest for friends to play together?
+Which hobby leaves a permanent mess in one room?
 Which holiday do people most often spend at someone else's house?
 Which holiday is most stressful to host at home?
 Which hotel-room feature makes the biggest difference on a weekend trip?
+Which household tool do people borrow from a neighbor?
 Which ice cream flavor works best in a milkshake?
 Which ingredient do people argue about adding to scrambled eggs?
 Which kind of movie is most disappointing when you paid to see it in theaters?
-Which month feels longest because the next holiday is so far away?
 Which movie franchise has the most satisfying first film?
 Which noodle dish is hardest to eat neatly?
 Which noodle works best in a stir-fry?
+Which object is always missing one piece?
+Which part of the morning routine gets skipped when someone is late?
 Which pasta dish is most disappointing to order at a restaurant?
 Which pasta shape holds sauce best?
 Which pasta shape is messiest to eat?
-Which photo filter makes a normal picture look the most fake?
 Which pie is most likely to fall apart when served outdoors?
+Which room do people misplace their phone in most often?
 Which room in a house would be hardest to live without for a week?
+Which school project do parents end up doing most of the work on?
 Which season is best for outdoor parties?
-Which shoe color goes with the most outfits?
 Which singer could get the biggest crowd singing along?
 Which sitcom has the most annoying laugh track?
 Which sitcom has the most rewatchable episodes?
-Which small household invention makes daily life much easier?
 Which social media app do people open first thing in the morning?
-Which soup is most comforting on a cold day?
 Which sport is easiest to play casually with friends?
 Which tea is best to drink before bed?
 Which weather forecast makes people most likely to cancel plans?
