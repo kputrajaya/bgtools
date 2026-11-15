@@ -2,27 +2,20 @@ Are people usually barefoot, in socks, or in slippers at home?
 At what age should a child get their first smartphone?
 At what age should kids be allowed to walk to school alone?
 Do people back into a parking spot or pull in nose-first?
-Do people break spaghetti before boiling it?
 Do people brush their teeth before or after breakfast?
 Do people cut sandwiches diagonally or straight across?
 Do people drink their coffee black or with milk?
-Do people eat pizza with their hands or with a fork?
 Do people eat soup with crackers or with bread?
 Do people keep butter in the fridge or on the counter?
-Do people keep their camera on or off during video calls?
 Do people keep their phone in the bedroom overnight?
 Do people let their dog sleep in their bed?
 Do people like orange juice with pulp or without?
 Do people make their bed every morning?
-Do people put milk in the bowl before or after the cereal?
-Do people put on socks before or after their pants?
 Do people shower in the morning or at night?
 Do people sleep on their back, side, or stomach?
 Do people sleep with a fan on or off?
 Do people sleep with their bedroom door open or closed?
-Do people squeeze toothpaste from the middle or the end?
 Do people stretch before or after a workout?
-Do people take their shoes off when they walk in the door?
 Do people use a top sheet or just a duvet?
 Does pineapple belong on pizza?
 How do groups split a restaurant bill?
@@ -468,22 +461,30 @@ What dinner is most reliable for feeding picky guests?
 What dinner is worst to eat on a first date?
 What do people add to a cup of tea besides sugar?
 What do people add to laundry besides detergent?
+What do people add to oatmeal besides fruit?
 What do people add to water to make it less boring?
 What do people bring a dinner party host?
 What do people do every Sunday to prepare for the week?
 What do people do in the last five minutes before a guest arrives?
 What do people do when the light turns yellow?
 What do people do when they hear an ambulance?
-What do people leave out for Santa?
+What do people drink with pizza?
 What do people listen to on a walk?
 What do people order with a burger besides fries?
 What do people put in a grilled cheese besides cheese?
 What do people put on French toast besides syrup?
+What do people put on a bagel besides cream cheese?
+What do people put on a baked potato besides butter?
 What do people put on a grocery list first?
+What do people put on a hot dog besides mustard?
+What do people put on a salad besides dressing?
+What do people put on a sandwich besides meat?
+What do people put on pancakes besides syrup?
 What do people put on popcorn besides butter?
 What do people rent at a bowling alley?
 What do people take home from a hotel room even though they shouldn't?
 What do people throw on when someone knocks unexpectedly?
+What do people wear to bed?
 What do you add to coffee to make it taste better?
 What do you do to make a long wait in line feel shorter?
 What drink do people make by the pitcher for a crowd?
@@ -687,7 +688,6 @@ Which social media app do people open first thing in the morning?
 Which sport is easiest to play casually with friends?
 Which tea is best to drink before bed?
 Which villain is more iconic: Darth Vader or the Joker?
-Which way do people hang a toilet roll: over or under?
 Which weather forecast makes people most likely to cancel plans?
 Who is the best superhero?
 Would people rather be too hot or too cold?
