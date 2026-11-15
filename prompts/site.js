@@ -3,6 +3,7 @@
     { name: 'Herd Mentality', file: 'herd_mentality.txt' },
     { name: 'Ito', file: 'ito.txt' },
     { name: 'Just One', file: 'just_one.txt' },
+    { name: 'So Clover', file: 'so_clover.txt' },
   ];
 
   function shuffle(array) {
