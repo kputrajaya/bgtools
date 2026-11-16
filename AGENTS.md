@@ -52,3 +52,35 @@ Presets and their categories, items, and metrics are defined in `dials/site.js`.
 ## Prompts App
 
 Game prompts live one per line in `prompts/data/*.txt`. `prompts/site.js` maps game names to files and fetches a game's prompts when selected.
+
+### Prompt Curation Workflow
+
+When generating or curating prompts for any game:
+
+1. Generate 100 prompts at a time that match that game's criteria.
+2. Review the generated batch before trimming.
+3. Reduce to the targeted number only after review.
+
+### Prompt Criteria
+
+#### Just One
+
+- Nouns that are easy to describe.
+- Mostly physical items.
+- Not too obscure.
+- Mostly understandable by an elementary school student.
+
+#### So Clover
+
+- Nouns that can be slightly obscure.
+- Still easy to understand for non-native English speakers.
+
+#### Herd Mentality
+
+- Aim for 2-5 viable answers.
+- Not too convergent (1 obvious answer) or too divergent (many scattered answers).
+- Not obscure.
+- Not Western-centric.
+- Not too religious.
+- Not a trivia/quiz question.
+- Phrased clearly and easy to understand.
