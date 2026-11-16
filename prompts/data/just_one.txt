@@ -570,6 +570,7 @@ Mouth
 Mower
 Mozart
 Muffin
+Mug
 Mummy
 Muse
 Museum
@@ -752,7 +753,6 @@ Rooster
 Root
 Rope
 Rose
-Router
 Ruler
 Rum
 Safari
