@@ -211,6 +211,7 @@ Coffee
 Coin
 Collar
 Colonel
+Comb
 Comedian
 Comedy
 Comforter
@@ -551,7 +552,6 @@ Mint
 Mirage
 Mirror
 Missile
-Mittens
 Mom
 Money
 Monitor
