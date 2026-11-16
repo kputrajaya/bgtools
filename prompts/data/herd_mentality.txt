@@ -91,7 +91,6 @@ Name a Saturday morning chore that involves laundry.
 Name a backyard sport that needs only a ball.
 Name a bean people put in a burrito.
 Name a bug people find cute.
-Name a burger topping besides cheese that is a sauce.
 Name a card game people play for money.
 Name a cheese people either love or hate on a pizza.
 Name a cheese people grate over spaghetti.
@@ -538,6 +537,7 @@ What salad ingredient ruins a salad for you?
 What sandwich holds up best for a picnic?
 What sandwich is worst to eat during a commute?
 What sauce do people always ask for on the side?
+What sauces do people put on a burger besides ketchup?
 What scent do people want their clean sheets to have?
 What small habit makes a daily commute more pleasant?
 What smell makes people think of a hospital?
