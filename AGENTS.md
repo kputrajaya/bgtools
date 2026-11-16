@@ -60,6 +60,7 @@ When generating or curating prompts for any game:
 1. Generate 100 prompts at a time that match that game's criteria.
 2. Review the generated batch before trimming.
 3. Reduce to the targeted number only after review.
+4. Deduplicate and sort the final prompt list.
 
 ### Prompt Criteria
 
