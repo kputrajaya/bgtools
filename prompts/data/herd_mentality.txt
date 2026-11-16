@@ -23,47 +23,61 @@ Do people stand still on an escalator or walk up?
 Do people stretch before or after a workout?
 Do people take the bus or drive to work?
 Do people use a dishwasher or wash dishes by hand?
-Do people use a top sheet or just a duvet?
-Do people wash their car at home or at a car wash?
 Does pineapple belong on pizza?
+How do people carry an umbrella: by the handle, on the wrist, or in a bag?
+How do people carry groceries home: bags, a basket, or delivery?
 How do people choose an outfit in the morning: the weather, their mood, or what is clean?
 How do people cook bacon other than in a pan?
 How do people cook eggs on a lazy Sunday: scrambled, fried, or poached?
 How do people cool a warm drink quickly: ice, the freezer, or cold water?
 How do people cut a cake for a crowd: slices, squares, or wedges?
 How do people deal with socks after laundry: pair them, ball them, or leave them loose?
+How do people dry their hair: with a towel, in the air, or with a hairdryer?
+How do people eat a banana: peeled halfway, sliced, or broken in pieces?
 How do people eat a boiled egg: peeled whole, sliced, or from an egg cup?
 How do people eat breakfast on a commute: a bar, a smoothie, or a sandwich?
 How do people eat cereal: milk first, cereal first, or dry?
 How do people eat corn on the cob: typewriter style, in a spiral, or cut off the cob?
+How do people eat noodles: with a fork, chopsticks, or a spoon?
+How do people eat rice: with a spoon, a fork, or their hands?
 How do people fold a t-shirt: flat, in thirds, or rolled up?
+How do people fold a towel: in half, in thirds, or rolled up?
+How do people greet a friend's parents: a handshake, a hug, or a wave?
 How do people greet colleagues in the morning: say hello, nod, or nothing?
 How do people handle an invitation: reply right away, wait, or forget?
 How do people hang laundry to dry: outside on a line, on an indoor rack, or in a dryer?
+How do people hold a cup of tea: by the handle or around the cup?
 How do people keep cats off the furniture: a spray, foil, or closing the door?
 How do people keep their schedule: a paper planner, a phone calendar, or memory?
 How do people keep track of receipts: a shoebox, a folder, or a phone app?
 How do people leave their phone on a table: face up, face down, or in a pocket?
+How do people mark their place in a book: a bookmark, a folded corner, or memory?
 How do people merge into traffic: early, late, or whenever there's a gap?
 How do people organize a wardrobe: by type, by color, or not at all?
 How do people pack for a flight: carry-on only, one checked bag, or both?
+How do people peel a carrot: with a peeler, a knife, or not at all?
 How do people pick a restaurant in a new city: reviews, walking past, or asking a local?
 How do people play a game with no equipment: twenty questions, truth or dare, or spin the bottle?
+How do people prepare toast: butter then jam, jam first, or plain?
+How do people remove a bandage: slowly or in one quick pull?
 How do people revise for an exam: reread notes, do practice questions, or explain it to someone?
+How do people sleep in summer: sheet only, duvet, or nothing?
 How do people sort household waste: one bin, two bins, or several?
 How do people spend Sunday evening: meal prepping, doing laundry, or planning the week?
 How do people spend a day on a boat: swimming, fishing, or sunbathing?
 How do people spend an afternoon at a coffee shop: reading, working, or meeting a friend?
 How do people spend day one on a cruise: eating, exploring, or unpacking?
 How do people spend the last minute before bed: brushing teeth, setting an alarm, or plugging in a phone?
+How do people squeeze toothpaste: from the middle, from the end, or roll the tube?
 How do people start a new project: read the instructions, watch a video, or figure it out?
 How do people stay awake on a long drive: music, coffee, or a break?
+How do people store bread: in the fridge, in a bread bin, or on the counter?
+How do people store eggs: in the fridge, in a cupboard, or on the counter?
 How do people store shoes at home: on a rack, in a cupboard, or in a pile by the door?
 How do people take their hot chocolate: with cream, with marshmallows, or plain?
 How do people take their tea: with milk, with lemon, or plain?
 How do people tie their shoes: one knot, a double knot, or tuck the ends?
 How do people wake someone rudely: shaking them, yelling, or turning on the light?
-How early do people get to the airport: two hours, ninety minutes, or just before boarding?
 How long can leftovers stay in the fridge?
 How many alarms do people set?
 How many pillows are too many for a bed?
@@ -96,10 +110,8 @@ Name a clothing item people wear when painting.
 Name a coffee shop drink that is mostly steamed milk.
 Name a dance style people take lessons for before a wedding.
 Name a dessert people make with apples besides pie.
-Name a dessert people make with chocolate chips.
 Name a dessert people share at a restaurant.
 Name a document people keep in a safe.
-Name a donut topping that is not sprinkles.
 Name a drink people buy at a movie theater.
 Name a drink people drink from a mug besides coffee.
 Name a drink people have after a workout.
@@ -126,7 +138,6 @@ Name a hiding spot for birthday presents at home.
 Name a hobby that looks relaxing but is physically hard.
 Name a hobby two friends can start this weekend with no gear.
 Name a hobby with a high startup cost for gear.
-Name a holiday everyone argues about.
 Name a holiday people travel for.
 Name a hot drink made with steamed milk and espresso.
 Name a hotel item guests take home.
@@ -219,8 +230,6 @@ Name a shoe worn to an office job.
 Name a side dish people serve with fish.
 Name a side dish people serve with steak besides potatoes.
 Name a sign that a sequel was made only for money.
-Name a sleepover game played in the dark.
-Name a sleepover snack that is not popcorn.
 Name a small appliance that lives on the counter.
 Name a small kitchen appliance people use daily.
 Name a small pet that is good with kids.
@@ -229,12 +238,10 @@ Name a smart home device that breaks when Wi-Fi drops.
 Name a smell that is awful in a small room.
 Name a smell that makes a house feel welcoming.
 Name a snack people bring to share at work.
-Name a snack people eat at a movie theater besides popcorn.
 Name a snack that goes best with a cold beer.
 Name a snack that is easy to finish in one sitting.
 Name a snack that keeps hunger away for hours.
 Name a snack that leaves your fingers sticky.
-Name a snack that makes the worst mess in a car.
 Name a snow-day activity that needs no electricity.
 Name a social media app people say they are quitting but keep using.
 Name a social media trend people regret trying.
@@ -248,11 +255,9 @@ Name a sport people play at a park with no net.
 Name a sport people watch only every four years.
 Name a sport that is more fun to play than watch.
 Name a sport that takes one afternoon to learn.
-Name a store most people visit at least once a month.
 Name a subject people hated in school.
 Name a summer activity people do at a lake.
 Name a superhero everyone knows.
-Name a sweet pastry people eat for breakfast.
 Name a tech device people upgrade too often.
 Name a toiletry kept in a gym bag.
 Name a toiletry that always leaks in a travel bag.
@@ -299,14 +304,12 @@ Name an animal heard at night in the woods besides crickets.
 Name an animal hikers dread seeing on the trail.
 Name an animal kids pet at a farm.
 Name an animal people are scared to swim near.
-Name an animal people blame for a noise in the attic.
 Name an animal people crowd around at the zoo.
 Name an animal people least want to hear outside a tent at night.
 Name an animal sound adults imitate to make a baby laugh.
 Name an animal that can ruin a picnic.
 Name an animal that is always the villain in a children's story.
 Name an animal that is surprisingly fast.
-Name an animal that raids a backyard garden.
 Name an animal that would be the worst coworker.
 Name an animal that would be the worst houseguest.
 Name an animal you hear before you see at a zoo.
@@ -336,7 +339,6 @@ Name an object under a sofa cushion besides coins.
 Name an office supply people keep in a drawer, not on the desk.
 Name an office supply that disappears from a desk.
 Name an outdoor hobby people take up after retiring.
-Name footwear people wear to a backyard barbecue.
 Name something people check on their phone before getting out of bed.
 Name something people do five minutes before guests arrive.
 Name something people do in an elevator with a stranger.
@@ -355,7 +357,6 @@ What animal do people hear before sunrise in a city?
 What animal do people spot at the beach?
 What animal do people stop to watch at a park pond?
 What batteries do people always run out of?
-What bed size do couples buy?
 What belongs on a club sandwich besides turkey?
 What bird do people see every day in a city?
 What book is hardest to finish for a school assignment?
@@ -370,13 +371,11 @@ What color do people paint a bedroom to play it safe?
 What color do people paint a front door to make it pop?
 What color is hardest to decorate a room around?
 What color makes a room feel cozy?
-What comfort food do people make in a slow cooker?
 What dessert is hardest to eat without making a mess?
 What dessert is hardest to serve at a picnic?
 What dessert is the safest crowd-pleaser at a family dinner?
 What dinner is most reliable for feeding picky guests?
 What do dinner-party hosts always run out of: ice or napkins?
-What do parents cut into tiny pieces for a toddler: grapes or hot dogs?
 What do people add to a cup of tea besides sugar?
 What do people add to a glass of water besides ice?
 What do people add to a plain omelette besides cheese?
@@ -385,14 +384,11 @@ What do people add to laundry besides detergent?
 What do people add to oatmeal besides fruit?
 What do people always forget to dust in a living room?
 What do people borrow from a partner without asking: a hoodie or socks?
-What do people bring a dinner party host?
 What do people bring home from a trip besides photos?
 What do people bring on a hike besides water?
 What do people bring to a sick friend besides soup?
-What do people burn on the grill most: chicken or hot dogs?
-What do people cook in a Dutch oven besides stew?
-What do people cook in a cast iron skillet besides steak?
 What do people cook in an air fryer besides fries?
+What do people dip bread in besides soup?
 What do people dip in chocolate besides strawberries?
 What do people dip in melted cheese besides bread?
 What do people dip in soy sauce besides sushi?
@@ -401,9 +397,13 @@ What do people do in the first hour of a new job: meet people, read, or set thin
 What do people do on a long train journey: sleep, read, or watch the window?
 What do people do on a plane: sleep, watch something, or read?
 What do people do to air out a room: open a window, open a door, or use a fan?
+What do people do when a pen stops working: bin it, shake it, or keep it?
 What do people do when the light turns yellow?
 What do people do when they see a stray dog: feed it, ignore it, or call someone?
+What do people do with a book once they finish it: keep it, lend it, or give it away?
+What do people do with a spider in the bath: catch it, wash it down, or leave it?
 What do people do with dirty dishes after guests leave: wash up, soak them, or leave them?
+What do people do with leftover bread: breadcrumbs, toast, or freeze it?
 What do people do with old towels?
 What do people do with their desk at the end of the day: tidy it, pile it up, or leave it?
 What do people drink at a kid's birthday party besides juice?
@@ -411,21 +411,23 @@ What do people drink at a wedding reception besides champagne?
 What do people drink to stay awake besides coffee?
 What do people drink when they cannot sleep?
 What do people drink when they have a cold besides tea?
+What do people drink when they wake up in the night: water, milk, or tea?
 What do people drink with a spicy meal?
 What do people drink with birthday cake?
+What do people drink with breakfast besides tea?
+What do people drink with lunch at work: water, tea, or juice?
 What do people drink with sushi?
 What do people drink with tacos?
 What do people dry besides raisins?
 What do people eat when they do not want to cook: pasta or cereal?
 What do people eat with cheese besides crackers?
-What do people eat with chicken soup besides crackers?
 What do people eat with chopsticks besides sushi?
 What do people eat with hummus besides bread?
 What do people eat with rice besides curry?
 What do people feed a dog besides dog food?
-What do people grab at the checkout counter besides gum?
 What do people grill besides burgers?
 What do people keep by the front door besides keys?
+What do people keep in a bedside drawer besides medicine?
 What do people keep in a kitchen drawer besides cutlery?
 What do people keep in the freezer for emergencies besides ice?
 What do people listen to on a walk?
@@ -433,6 +435,7 @@ What do people make when the bananas go brown?
 What do people make when they have too many eggs?
 What do people make with berries besides jam?
 What do people make with ground beef besides burgers?
+What do people mix into yoghurt besides fruit?
 What do people order at a coffee shop besides coffee?
 What do people order at a food truck besides tacos?
 What do people order when they do not want caffeine: decaf or herbal tea?
@@ -442,20 +445,21 @@ What do people pack for a road trip lunch: sandwiches or wraps?
 What do people put in a bowl of noodles besides vegetables?
 What do people put in a fish tank besides fish?
 What do people put in a green salad besides leaves?
+What do people put in a lunchbox besides a sandwich?
 What do people put in dumplings besides pork?
 What do people put on French toast besides syrup?
 What do people put on a bagel besides cream cheese?
 What do people put on a baked potato besides butter?
+What do people put on a cut finger besides a bandage?
 What do people put on a grocery list first?
-What do people put on a hot dog besides mustard?
 What do people put on a sandwich besides meat?
 What do people put on a slice of toast besides butter?
 What do people put on baked fish besides lemon?
 What do people put on pancakes besides syrup?
 What do people put on pasta besides tomato sauce?
 What do people put on popcorn besides butter?
+What do people put on rice besides soy sauce?
 What do people rent at a bowling alley?
-What do people serve with barbecue besides coleslaw?
 What do people snack on during a road trip besides chips?
 What do people throw on when someone knocks unexpectedly?
 What do people wear cycling in the rain: a poncho, an umbrella, or nothing?
@@ -463,14 +467,12 @@ What do people wear on a plane to stay warm: a hoodie or thick socks?
 What do people wear to bed?
 What do people wear to work from home: sweatpants or pajamas?
 What do people wear when running errands: leggings or jeans?
-What do people wrap in bacon besides scallops?
 What do you add to coffee to make it taste better?
 What do you do to make a long wait in line feel shorter?
 What drink do people make by the pitcher for a crowd?
 What drink is a dead giveaway that someone is on a diet?
 What drink is best for a movie night?
 What drink is most disappointing when you are really thirsty?
-What drink is the best choice for a summer cookout?
 What drink is worst to order at a crowded bar?
 What drink is worst when it goes flat?
 What drink tastes worst after it gets warm?
@@ -480,7 +482,6 @@ What food always falls out of a sandwich?
 What food do people put ketchup on that others find strange?
 What fruit do people add to a green salad?
 What fruit do people bake into a crumble besides apple?
-What furniture do people assemble with an Allen wrench?
 What garden tool does every shed have?
 What goes on pancakes besides syrup?
 What goes on top of a Christmas tree?
@@ -496,7 +497,6 @@ What is always in a desk candy jar?
 What is always in a five-minute weekday breakfast?
 What is always in a fruit bowl on the counter?
 What is always in a gym bag?
-What is always in a packed lunch that needs no fridge?
 What is always missing from a beach bag?
 What is always on a lazy Sunday breakfast table?
 What is always on an office desk?
@@ -521,7 +521,6 @@ What is the worst messaging app?
 What is the worst sport to watch?
 What is the worst weather for a commute?
 What kind of car is most frustrating to park in a city?
-What kind of cone do people order at an ice cream shop: waffle or sugar?
 What kind of headline makes you distrust a news story?
 What kind of water do people order at a restaurant?
 What lunch is worst to eat at a desk?
@@ -569,12 +568,9 @@ Which baby animal do people most want to pet: a puppy, a kitten, or a bunny?
 Which birthday dessert do people prefer: cake or ice cream?
 Which board game mechanic starts the most arguments: trading or backstabbing?
 Which bread falls apart most easily in a sandwich?
-Which candle scent do people buy in fall: pumpkin or apple cinnamon?
 Which car color do people avoid most: yellow or brown?
 Which car color hides dirt best between washes?
 Which car feature do people pay extra for: heated seats or a sunroof?
-Which card game do kids learn first: Go Fish or Old Maid?
-Which card game is easier to teach in five minutes: Crazy Eights or War?
 Which cheese is the worst choice for a packed lunch?
 Which cheese melts best in a grilled sandwich?
 Which chip flavor do people fight over: sour cream and onion or salt and vinegar?
@@ -588,7 +584,6 @@ Which coffee drink do people order iced: a latte or an americano?
 Which coffee order takes longest to make when you're in a hurry?
 Which color is easiest to use as an accent in a room?
 Which condiment improves a plain sandwich the most?
-Which cookie travels best in a lunchbox?
 Which day feels longest during a busy workweek?
 Which desk snack leaves no crumbs: grapes or yogurt?
 Which desk snack survives a warm office: crackers or chocolate?
@@ -609,11 +604,19 @@ Which do people order at a bar: wine or a cocktail?
 Which do people own in both black and white: t-shirts or sneakers?
 Which do people postpone for months: backing up photos or updating a password?
 Which do people prefer on a Friday night: going out or staying in?
+Which do people prefer on bread: butter or margarine?
 Which do people prefer on pizza night: delivery or homemade?
+Which do people prefer: a bath or a shower?
 Which do people prefer: a booth or a table at a restaurant?
+Which do people prefer: a duvet or a blanket?
+Which do people prefer: a mug or a glass for a hot drink?
+Which do people prefer: a paper book or an e-reader?
 Which do people prefer: a pen or a pencil?
+Which do people prefer: a phone in a front pocket or a back pocket?
 Which do people prefer: a soft mattress or a firm one?
+Which do people prefer: a soft-boiled egg or a hard-boiled one?
 Which do people prefer: cash or card?
+Which do people prefer: still water or sparkling water?
 Which do people put on first: socks or shoes?
 Which do people reach for in the shower: bar soap or body wash?
 Which do people read on vacation: thrillers or romance?
@@ -631,7 +634,6 @@ Which flower do people bring to a dinner party: tulips or lilies?
 Which food is better as a leftover: pizza or chili?
 Which food is impossible to eat quietly: chips or celery?
 Which fruit is messiest to eat: a mango or a pomegranate?
-Which fruit pie do people prefer: cherry or blueberry?
 Which fruit tree do people grow in a backyard: apple or lemon?
 Which game console is easiest for friends to play together?
 Which game flaw makes players quit faster: a long tutorial or unfair difficulty?
@@ -641,8 +643,6 @@ Which habit do people have while watching TV: snacking or scrolling?
 Which habit is hardest to break: nail biting or phone checking?
 Which hairstyle from the eighties do people regret more: a mullet or a perm?
 Which handmade gift do people actually keep: a photo album or a knitted scarf?
-Which holiday do people most often spend at someone else's house?
-Which holiday smell do people like more: pine or cinnamon?
 Which hotel feature matters more: a big bed or a good breakfast?
 Which ice cream flavor do people always get: chocolate or vanilla?
 Which ice cream flavor works best in a milkshake?
