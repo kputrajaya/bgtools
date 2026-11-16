@@ -4,6 +4,7 @@ A meeting could have been an email. Do people still attend, send a colleague, or
 A neighbor's parcel arrives while they're out. Do people take it in, leave it by the door, or message them?
 A pot boils over. Do people turn it down, move it, or wipe up straight away?
 A restaurant is fully booked. Do people wait, try somewhere else, or book for another night?
+An older relative arrives at a family gathering. Do people stand to greet them, go to them first, or carry on talking?
 Are people usually barefoot, in socks, or in slippers at home?
 At a barbecue, do people help at the grill, bring a side dish, or just eat?
 At a buffet, do people fill one plate, go back several times, or start with dessert?
@@ -62,6 +63,7 @@ How do people apologize after an argument: say sorry first, buy a gift, or act n
 How do people ask a neighbor to turn down music: knock on the door or leave a note?
 How do people attract birds to a garden: a feeder, water, or plants?
 How do people back up photos: the cloud, an external drive, or not at all?
+How do people carry a baby on a walk: in their arms, in a sling, or in a stroller?
 How do people carry an umbrella: by the handle, on the wrist, or in a bag?
 How do people celebrate a birthday at work: cake, a card, or lunch together?
 How do people choose a book to read: the cover, a recommendation, or the first page?
@@ -92,6 +94,7 @@ How do people eat rice: with a spoon, a fork, or their hands?
 How do people end a phone call with someone who won't stop talking: repeat goodbye, invent an appointment, or hang up?
 How do people exercise a dog on a rainy day: indoor games, a short walk, or skip it?
 How do people find a photo from years ago: albums, search, or scrolling forever?
+How do people find their car again in a huge parking lot: a photo, a landmark, or a parking app?
 How do people focus in a noisy office: headphones or earplugs?
 How do people fold a fitted sheet: into quarters, into a roll, or not at all?
 How do people fold a t-shirt: flat, in thirds, or rolled up?
@@ -267,7 +270,6 @@ Name a meat people put in a stir fry.
 Name a meat people put in chili besides beef.
 Name a morning habit that takes under two minutes.
 Name a movie snack people fight over.
-Name a movie-night treat that disappears first.
 Name a multiplayer game genre people play on a couch together.
 Name a neighbor noise that ruins sleep.
 Name a nightmare almost everyone has had.
@@ -333,7 +335,6 @@ Name a summer activity people do at a lake.
 Name a tech device people upgrade too often.
 Name a toiletry kept in a gym bag.
 Name a toiletry that always leaks in a travel bag.
-Name a topping people add to hot chocolate.
 Name a topping people put on a bowl of chili.
 Name a topping people put on ice cream besides sprinkles.
 Name a travel item people forget at home.
@@ -346,7 +347,6 @@ Name a type of seafood people eat raw.
 Name a type of seafood people fry.
 Name a type of shoe that is uncomfortable.
 Name a type of tree that is beautiful in autumn.
-Name a type of weather that cancels outdoor plans.
 Name a vegetable parents hide in kids' food.
 Name a vegetable people eat raw as a snack.
 Name a vegetable people grill.
@@ -398,6 +398,7 @@ On a long drive with friends, do people take turns at the wheel, let one person 
 On a plane, do people talk to their seatmate or keep to themselves?
 On public transport, do people give up their seat, pretend not to notice, or wait to be asked?
 Should you rinse dishes before loading the dishwasher?
+Someone cuts ahead of you in a line. Do people say something, give them a look, or let it go?
 Someone new joins the team. Do people introduce themselves straight away, wait to be introduced, or say hello later?
 Someone owes you a small amount of money. Do people remind them, wait for them to remember, or let it go?
 The internet goes down at home. Do people read, tidy up, or call the provider?
@@ -421,7 +422,6 @@ What do dinner-party hosts always run out of: ice or napkins?
 What do hosts do when a guest offers to help in the kitchen: accept, refuse, or find them a small job?
 What do people add to a bowl of rice besides soy sauce?
 What do people add to a bowl of stew besides meat?
-What do people add to a cup of tea besides sugar?
 What do people add to a pasta sauce besides herbs?
 What do people add to a smoothie for protein?
 What do people add to a toasted sandwich besides cheese?
@@ -586,6 +586,7 @@ When a free trial is about to end, do people cancel it, set a reminder, or let i
 When a friend asks how you are, do people give a real answer or say fine?
 When a friend gives them bad advice, do people thank them, ignore it, or argue?
 When a friend is late meeting them, do people wait inside, wait outside, or leave?
+When a group shares a meal, do people order their own dishes, put everything in the middle, or serve plates in the kitchen?
 When a hotel room isn't ready, do people wait in the lobby, leave their bags, or ask for a different room?
 When a light bulb goes, do people replace it immediately, wait until another goes, or use a lamp?
 When a meeting runs past its end time, do people leave, say something, or stay quiet?
@@ -706,7 +707,7 @@ Which is more annoying: a loud neighbor or slow internet?
 Which is more important: a good chair or a good desk?
 Which is more important: a short commute or a big home?
 Which is more useful in a kitchen: a good knife or a good pan?
-Which is the safe order when nobody can decide: chicken or pasta?
+Which is the safer choice when nobody can decide: chicken or pasta?
 Which is worse: arriving early or arriving late?
 Which keeps people up past midnight on a weeknight: a show or their phone?
 Which makes the best pet in a small apartment: a cat, a small dog, or a fish?
@@ -718,7 +719,6 @@ Which party game keeps people going for hours: charades or trivia?
 Which party game needs no props: charades or sardines?
 Which pasta dish is most disappointing to order at a restaurant?
 Which pasta shape holds sauce best?
-Which pasta shape is messiest to eat?
 Which phrase annoys people faster: no offense or calm down?
 Which pie is most likely to fall apart when served outdoors?
 Which rainy Sunday activity costs nothing: reading or a nap?
