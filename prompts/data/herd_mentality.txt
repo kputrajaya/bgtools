@@ -71,7 +71,6 @@ How do people keep children entertained on a long journey: games, snacks, or scr
 How do people keep moths out of a wardrobe: lavender, cedar, or traps?
 How do people keep their schedule: a paper planner, a phone calendar, or memory?
 How do people keep track of receipts: a shoebox, a folder, or a phone app?
-How do people keep warm in bed without heat: an extra blanket, a hot water bottle, or socks?
 How do people learn a new board game: the rulebook, a video, or just play?
 How do people leave their phone on a table: face up, face down, or in a pocket?
 How do people mark their place in a book: a bookmark, a folded corner, or memory?
@@ -91,7 +90,6 @@ How do people relax after a long day: a bath, a walk, or watching TV?
 How do people remember a new colleague's name: repeat it, write it down, or ask again?
 How do people remember to take medication: an alarm, a pill box, or a routine?
 How do people remove a bandage: slowly or in one quick pull?
-How do people remove a stain from a carpet: soda water, detergent, or a steam cleaner?
 How do people remove lint from clothes: a roller, tape, or a brush?
 How do people respond to a compliment: say thanks, deflect, or return it?
 How do people revise for an exam: reread notes, do practice questions, or explain it to someone?
@@ -110,6 +108,7 @@ How do people start a meeting: wait for latecomers or begin on time?
 How do people start a new project: read the instructions, watch a video, or figure it out?
 How do people start learning a language: an app, a class, or a book?
 How do people stay awake on a long drive: music, coffee, or a break?
+How do people stay warm at home in winter besides heating?
 How do people stop a baby crying: feed, rock, or walk?
 How do people stop colors running in the laundry: cold water, a color catcher, or separate loads?
 How do people stop slugs eating plants: beer traps, copper tape, or hand picking?
@@ -442,9 +441,11 @@ What do people eat with chopsticks besides sushi?
 What do people eat with hummus besides bread?
 What do people grill besides burgers?
 What do people keep in a bathroom cabinet besides medicine?
-What do people keep in a hallway cupboard besides coats?
+What do people keep in a desk drawer besides pens?
 What do people keep in the freezer for emergencies besides ice?
+What do people keep near the front door besides keys?
 What do people keep on a bedside table besides a lamp?
+What do people keep on a desk besides a computer?
 What do people listen to on a walk?
 What do people make when the bananas go brown?
 What do people make when they have too many eggs?
@@ -505,7 +506,6 @@ What household job gets done once a week without fail?
 What ice cream flavor belongs in a sundae?
 What ice cream flavor is worst in a milkshake?
 What is always in a bakery display case?
-What is always in a desk candy jar?
 What is always in a fruit bowl on the counter?
 What is always in a gym bag?
 What is always missing from a beach bag?
