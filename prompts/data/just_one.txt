@@ -570,7 +570,6 @@ Mouth
 Mower
 Mozart
 Muffin
-Mug
 Mummy
 Muse
 Museum
@@ -915,6 +914,7 @@ Toilet
 Tokyo
 Tolkien
 Tomato
+Tongs
 Tool
 Tooth
 Toothbrush
