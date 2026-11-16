@@ -70,10 +70,16 @@ When generating or curating prompts for any game:
 - Not too obscure.
 - Mostly understandable by an elementary school student.
 
+#### Ito
+
+- Topics that spark discussion on commonly known areas.
+- Not too obscure.
+
 #### So Clover
 
-- Nouns that can be slightly obscure.
-- Still easy to understand for non-native English speakers.
+- Common is still preferred; obscurity is not a target.
+- Easy to understand for non-native English speakers.
+- Allow a mix of common and slightly less common nouns so players can choose and rotate them.
 
 #### Herd Mentality
 
