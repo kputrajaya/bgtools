@@ -62,6 +62,11 @@ When generating or curating prompts for any game:
 3. Reduce to the targeted number only after review.
 4. Deduplicate and sort the final prompt list.
 
+### Prompt Provenance
+
+- **Just One:** the original 550-word game list is preserved as-is and excluded from curation/review. Apply the criteria only to added prompts.
+- **So Clover:** the prompt list comes from the original game. Do not modify or curate it.
+
 ### Prompt Criteria
 
 #### Just One
