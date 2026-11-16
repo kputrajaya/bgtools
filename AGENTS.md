@@ -64,6 +64,7 @@ When generating or curating prompts for any game:
 
 ### Prompt Provenance
 
+- Never modify, reword, or remove prompts from an original game list. Original lists are the source of truth; curation applies only to added or curated prompts.
 - **Just One:** the original 550-word game list is preserved as-is in `prompts/data/just_one_original.txt` and excluded from curation/review. Apply the criteria only to added prompts.
 - **So Clover:** the prompt list comes from the original game. Do not modify or curate it.
 
