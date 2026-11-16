@@ -79,8 +79,12 @@ When generating or curating prompts for any game:
 
 - Aim for 2-5 viable answers.
 - Not too convergent (1 obvious answer) or too divergent (many scattered answers).
+- Slight divergence is more acceptable than convergence.
+- Avoid very large answer spaces such as songs, movies, celebrities, cities, countries, or brands with dozens of valid answers.
+- Brand answers are fine when the wording clearly asks for a brand.
 - Not obscure.
 - Not Western-centric.
 - Not too religious.
-- Not a trivia/quiz question.
-- Phrased clearly and easy to understand.
+- Not a trivia/quiz question or fixed-recipe recall.
+- Phrased clearly, with no ambiguous wording or vague "thing/item" prompts.
+- Ensure variety: mix topics and sentence patterns, avoid repetitive "Name a..." phrasing, and avoid near-duplicate prompts.
