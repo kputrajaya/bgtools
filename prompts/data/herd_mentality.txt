@@ -22,7 +22,7 @@ Do people take the bus or drive to work?
 Do people use a dishwasher or wash dishes by hand?
 Does pineapple belong on pizza?
 How do people apologize after an argument: say sorry first, buy a gift, or act normal?
-How do people ask a neighbor to turn down music: knock, leave a note, or ignore it?
+How do people ask a neighbor to turn down music: knock on the door or leave a note?
 How do people attract birds to a garden: a feeder, water, or plants?
 How do people back up photos: the cloud, an external drive, or not at all?
 How do people carry an umbrella: by the handle, on the wrist, or in a bag?
@@ -30,12 +30,12 @@ How do people celebrate a birthday at work: cake, a card, or lunch together?
 How do people choose a book to read: the cover, a recommendation, or the first page?
 How do people choose a gift for a close friend: ask them, look for hints, or take a guess?
 How do people choose an outfit in the morning: the weather, their mood, or what is clean?
-How do people clean a mirror without streaks: a cloth, newspaper, or vinegar?
+How do people clean a mirror: with a cloth or with newspaper?
 How do people console a friend who is crying: hug them, listen, or give advice?
 How do people cook bacon other than in a pan?
 How do people cook eggs on a lazy Sunday: scrambled, fried, or poached?
 How do people cool a warm drink quickly: ice, the freezer, or cold water?
-How do people cross a busy road: at the lights, between cars, or wait for a gap?
+How do people cross a busy road: at the lights or wait for a gap?
 How do people deal with a full inbox: reply now, sort later, or ignore it?
 How do people deal with a guest who arrives late: wait, start without them, or call?
 How do people deal with jet lag: stay awake, nap, or get sunlight?
@@ -50,7 +50,7 @@ How do people eat cereal: milk first, cereal first, or dry?
 How do people eat noodles: with a fork, chopsticks, or a spoon?
 How do people eat rice: with a spoon, a fork, or their hands?
 How do people exercise a dog on a rainy day: indoor games, a short walk, or skip it?
-How do people focus in a noisy office: headphones, earplugs, or a quiet room?
+How do people focus in a noisy office: headphones or earplugs?
 How do people fold a fitted sheet: into quarters, into a roll, or not at all?
 How do people fold a t-shirt: flat, in thirds, or rolled up?
 How do people fold a towel: in half, in thirds, or rolled up?
@@ -87,7 +87,7 @@ How do people prepare for a presentation: rehearse aloud, read notes, or wing it
 How do people prepare for a storm: stock up, charge devices, or nothing?
 How do people prepare toast: butter then jam, jam first, or plain?
 How do people protect plants from frost: cover them, move them inside, or water them?
-How do people relax after a long day: a bath, a walk, or the television?
+How do people relax after a long day: a bath, a walk, or watching TV?
 How do people remember a new colleague's name: repeat it, write it down, or ask again?
 How do people remember to take medication: an alarm, a pill box, or a routine?
 How do people remove a bandage: slowly or in one quick pull?
@@ -106,7 +106,7 @@ How do people spend day one on a cruise: eating, exploring, or unpacking?
 How do people spend the last minute before bed: brushing teeth, setting an alarm, or plugging in a phone?
 How do people split a bill at a restaurant: evenly, by order, or one person pays?
 How do people squeeze toothpaste: from the middle, from the end, or roll the tube?
-How do people start a meeting on time: wait for latecomers, begin, or chat first?
+How do people start a meeting: wait for latecomers or begin on time?
 How do people start a new project: read the instructions, watch a video, or figure it out?
 How do people start learning a language: an app, a class, or a book?
 How do people stay awake on a long drive: music, coffee, or a break?
