@@ -1,6 +1,6 @@
 {
   "private": true,
   "dependencies": {
-    "fast-xml-parser": "5.12.0"
+    "fast-xml-parser": "5.12.1"
   }
 }
